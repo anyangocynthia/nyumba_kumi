@@ -1,4 +1,70 @@
-RECIPES
-["core", "deployment", "devise", "email", "extras", "frontend", "gems", "git", "init", "learn_rails", "locale", "omniauth", "pages", "rails_bootstrap", "rails_devise", "rails_devise_pundit", "rails_foundation", "rails_mailinglist_signup", "rails_omniauth", "rails_signup_download", "railsapps", "readme", "roles", "setup", "tests"]
-PREFERENCES
-{:git=>true, :apps4=>"railsapps", :announcements=>"none", :dev_webserver=>"webrick", :prod_webserver=>"same", :database=>"sqlite", :templates=>"erb", :tests=>"rspec", :continuous_testing=>"none", :frontend=>"foundation5", :email=>"mandrill", :authentication=>"devise", :devise_modules=>"invitable", :authorization=>"pundit", :form_builder=>"none", :pages=>"about+users"}
+Nyumba Kumi
+========================
+
+This application was generated with the rails_apps_composer gem:
+https://github.com/RailsApps/rails_apps_composer
+provided by the RailsApps Project:
+http://railsapps.github.io/
+
+________________________
+
+Recipes:
+
+* core
+* deployment
+* devise
+* email
+* extras
+* frontend
+* gems
+* git
+* init
+* learn_rails
+* locale
+* omniauth
+* pages
+* rails_bootstrap
+* rails_devise
+* rails_devise_pundit
+* rails_foundation
+* rails_mailinglist_signup
+* rails_omniauth
+* rails_signup_download
+* railsapps
+* readme
+* roles
+* setup
+* tests
+
+Preferences:
+
+* git: true
+* apps4: railsapps
+* announcements: none
+* dev_webserver: webrick
+* prod_webserver: same
+* database: sqlite
+* templates: erb
+* tests: rspec
+* continuous_testing: none
+* frontend: foundation5
+* email: mandrill
+* authentication: devise
+* devise_modules: invitable
+* authorization: pundit
+* form_builder: none
+* pages: about+users
+* locale: none
+* rvmrc: false
+* quiet_assets: true
+* local_env_file: figaro
+* better_errors: true
+* pry: true
+* ban_spiders: true
+* jsruntime: false
+* github: true
+* deployment: capistrano3
+
+________________________
+
+License
