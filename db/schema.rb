@@ -11,7 +11,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710142340) do
+ActiveRecord::Schema.define(version: 20140710154048) do
+
+  create_table "appartment_residents", force: true do |t|
+    t.integer  "appartment_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "appartment_residents", ["appartment_id"], name: "index_appartment_residents_on_appartment_id"
+  add_index "appartment_residents", ["user_id"], name: "index_appartment_residents_on_user_id"
+
+  create_table "appartments", force: true do |t|
+    t.string   "house_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "appartments", ["user_id"], name: "index_appartments_on_user_id"
+
+  create_table "groups", force: true do |t|
+    t.string   "group_name"
+    t.string   "location"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groups", ["user_id"], name: "index_groups_on_user_id"
+
+  create_table "houses", force: true do |t|
+    t.string   "house_name"
+    t.string   "location"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "houses", ["user_id"], name: "index_houses_on_user_id"
+
+  create_table "members", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "members", ["group_id"], name: "index_members_on_group_id"
+  add_index "members", ["user_id"], name: "index_members_on_user_id"
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -40,6 +95,8 @@ ActiveRecord::Schema.define(version: 20140710142340) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
+    t.string   "id_number"
+    t.string   "phone_number"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

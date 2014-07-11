@@ -1,7 +1,7 @@
 Nyumba Kumi
 =========
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
+<!-- This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
 provided by the [RailsApps Project](http://railsapps.github.io/).
 
 Diagnostics
@@ -140,13 +140,13 @@ If you make improvements to this application, please share with others.
 If you add functionality to this application, create an alternative
 implementation, or build an application that is similar, please contact
 me and I’ll add a note to the README so that others can find your work.
-
-Credits
+ -->
+<!-- Credits
 -------
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
+ -->
 License
 -------
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Private

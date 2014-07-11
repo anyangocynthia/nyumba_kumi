@@ -16,6 +16,11 @@ gem 'figaro', '>= 1.0.0.rc1'
 gem 'foundation-rails'
 gem 'high_voltage'
 gem 'pundit'
+gem 'annotate'
+gem 'rails_admin'
+gem 'minitest-colorize'
+gem 'minitest-focus'
+# gem 'minitest-spec-rails'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
