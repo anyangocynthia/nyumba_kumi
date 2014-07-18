@@ -8,6 +8,8 @@
 #  user_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  latitude   :float
+#  longitude  :float
 #
 
 require 'rails_helper'

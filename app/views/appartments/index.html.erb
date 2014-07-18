@@ -1,0 +1,23 @@
+<h1>Listing appartments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @appartments.each do |appartment| %>
+      <tr>
+        <td><%= link_to 'Show', appartment %></td>
+        <td><%= link_to 'Edit', edit_appartment_path(appartment) %></td>
+        <td><%= link_to 'Destroy', appartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Appartment', new_appartment_path %>

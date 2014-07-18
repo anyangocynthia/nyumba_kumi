@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710154048) do
+ActiveRecord::Schema.define(version: 20140711094727) do
 
   create_table "appartment_residents", force: true do |t|
     t.integer  "appartment_id"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20140710154048) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "groups", ["user_id"], name: "index_groups_on_user_id"
@@ -48,6 +50,8 @@ ActiveRecord::Schema.define(version: 20140710154048) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "houses", ["user_id"], name: "index_houses_on_user_id"
