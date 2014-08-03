@@ -16,6 +16,8 @@ class Group < ActiveRecord::Base
   belongs_to :user
   has_many :users
 
+  has_many :notifications
+
   has_many :group_companies
   has_many :companies, through: :group_companies
   reverse_geocoded_by :latitude, :longitude

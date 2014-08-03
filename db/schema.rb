@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140803205048) do
+ActiveRecord::Schema.define(version: 20140803205731) do
 
   create_table "appartment_residents", force: true do |t|
     t.integer  "appartment_id"
@@ -119,6 +119,24 @@ ActiveRecord::Schema.define(version: 20140803205048) do
 
   add_index "members", ["group_id"], name: "index_members_on_group_id"
   add_index "members", ["user_id"], name: "index_members_on_user_id"
+
+  create_table "notification_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notifications", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.integer  "notification_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notifications", ["group_id"], name: "index_notifications_on_group_id"
+  add_index "notifications", ["notification_type_id"], name: "index_notifications_on_notification_type_id"
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"

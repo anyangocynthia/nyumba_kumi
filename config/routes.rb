@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :notifications
+
+  resources :notification_types
+
   resources :group_companies
 
   resources :users
