@@ -17,7 +17,7 @@ class Branch < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
 
   def self.find_nearest location
-  	branch = Branch.near([location.latitude, location.longitude], 20, :units => :km).first
+  	branch = Branch.near([location[:latitude], location[:longitude]], 20, :units => :km).first
   	return branch
   end
 end

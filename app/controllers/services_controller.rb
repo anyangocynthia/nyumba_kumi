@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_service, only: [:show, :edit, :update, :destroy, :companies]
 
   # GET /services
   # GET /services.json
@@ -35,6 +35,10 @@ class ServicesController < ApplicationController
         format.json { render json: @service.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def companies
+    render json: @service.companies
   end
 
   # PATCH/PUT /services/1

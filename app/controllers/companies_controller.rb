@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :branches, :nearest_branch]
 
   # GET /companies
   # GET /companies.json
@@ -35,6 +35,15 @@ class CompaniesController < ApplicationController
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def branches
+    render json: @company.branches
+  end
+
+  def nearest_branch
+    location = params[:location]
+    render json: Branch.find_nearest location
   end
 
   # PATCH/PUT /companies/1

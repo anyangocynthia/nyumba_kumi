@@ -14,8 +14,7 @@
 
 class Group < ActiveRecord::Base
   belongs_to :user
-  has_many :members
-  has_many :users, through: :members
+  has_many :users
   reverse_geocoded_by :latitude, :longitude
 
   def self.find_nearest location

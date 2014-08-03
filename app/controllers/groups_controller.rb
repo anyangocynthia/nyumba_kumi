@@ -1,10 +1,12 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :members]
+  # respond_to :json
 
   # GET /groups
   # GET /groups.json
   def index
     @groups = Group.all
+    render json: @groups
   end
 
   # GET /groups/1
@@ -35,6 +37,10 @@ class GroupsController < ApplicationController
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def members
+    render json: @group.users
   end
 
   # PATCH/PUT /groups/1
