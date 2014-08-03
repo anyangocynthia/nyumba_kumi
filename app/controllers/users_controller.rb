@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   private
 
   def secure_params
-    params.require(:user).permit(:role)
+    params.require(:user).permit(:role, :name, :phone_number, :group_id, :id_number)
   end
 
 end
