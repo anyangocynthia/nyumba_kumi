@@ -1,0 +1,31 @@
+<h1>Listing group_companies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Company</th>
+      <th>Company type</th>
+      <th>Branch</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @group_companies.each do |group_company| %>
+      <tr>
+        <td><%= group_company.group %></td>
+        <td><%= group_company.company %></td>
+        <td><%= group_company.company_type %></td>
+        <td><%= group_company.branch %></td>
+        <td><%= link_to 'Show', group_company %></td>
+        <td><%= link_to 'Edit', edit_group_company_path(group_company) %></td>
+        <td><%= link_to 'Destroy', group_company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Group company', new_group_company_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140803190104) do
+ActiveRecord::Schema.define(version: 20140803205048) do
 
   create_table "appartment_residents", force: true do |t|
     t.integer  "appartment_id"
@@ -72,6 +72,19 @@ ActiveRecord::Schema.define(version: 20140803190104) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "group_companies", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "company_id"
+    t.string   "company_type"
+    t.integer  "branch_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "group_companies", ["branch_id"], name: "index_group_companies_on_branch_id"
+  add_index "group_companies", ["company_id"], name: "index_group_companies_on_company_id"
+  add_index "group_companies", ["group_id"], name: "index_group_companies_on_group_id"
 
   create_table "groups", force: true do |t|
     t.string   "group_name"

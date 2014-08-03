@@ -14,6 +14,9 @@
 class Branch < ActiveRecord::Base
   belongs_to :company
 
+  has_many :group_companies
+  has_many :groups, through: :group_companies
+
   reverse_geocoded_by :latitude, :longitude
 
   def self.find_nearest location

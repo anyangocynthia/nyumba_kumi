@@ -14,4 +14,7 @@
 class Company < ActiveRecord::Base
   belongs_to :service
   has_many :branches
+
+  has_many :group_companies
+  has_many :groups, through: :group_companies
 end

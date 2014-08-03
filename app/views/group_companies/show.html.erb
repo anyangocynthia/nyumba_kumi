@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @group_company.group %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @group_company.company %>
+</p>
+
+<p>
+  <strong>Company type:</strong>
+  <%= @group_company.company_type %>
+</p>
+
+<p>
+  <strong>Branch:</strong>
+  <%= @group_company.branch %>
+</p>
+
+<%= link_to 'Edit', edit_group_company_path(@group_company) %> |
+<%= link_to 'Back', group_companies_path %>
