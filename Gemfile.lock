@@ -274,6 +274,7 @@ DEPENDENCIES
   geocoder
   google_places
   high_voltage
+  httparty
   hub
   jbuilder (~> 2.0)
   jquery-rails

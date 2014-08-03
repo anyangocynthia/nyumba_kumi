@@ -20,6 +20,7 @@ gem 'annotate'
 gem 'rails_admin'
 gem 'geocoder'
 gem 'google_places'
+gem 'httparty'
 
 group :development do
   gem 'better_errors'

@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   get 'companies/:id/branches', to: 'companies#branches', as: 'company_branches'
   get 'companies/:id/nearest_branch', to: 'companies#nearest_branch', as: 'company_nearest_branch'
   get 'groups/:id/members', to:'groups#members',as:'group_members'
+  match 'verify', to: 'users#verify', as: 'verify', via: "post"
 end

@@ -41,10 +41,10 @@ class CompaniesController < ApplicationController
     render json: @company.branches
   end
 
-  def nearest_branch
-    location = params[:location]
-    render json: Branch.find_nearest location
-  end
+  # def nearest_branch
+  #   location = params[:location]
+  #   render json: Branch.find_nearest location
+  # end
 
   # PATCH/PUT /companies/1
   # PATCH/PUT /companies/1.json
