@@ -31,6 +31,7 @@
 #  invitations_count      :integer          default(0)
 #  id_number              :string(255)
 #  phone_number           :string(255)
+#  group_id               :integer
 #
 
 FactoryGirl.define do

@@ -11,4 +11,8 @@
 
 class Appartment < ActiveRecord::Base
   belongs_to :user
+  belongs_to :house
+
+  has_many :appartment_residents
+  has_many :users, through: :appartment_residents
 end

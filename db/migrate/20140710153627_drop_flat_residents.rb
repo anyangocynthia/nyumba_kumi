@@ -1,5 +1,5 @@
 class DropFlatResidents < ActiveRecord::Migration
   def change
-  	drop_table :flat_residents
+  	# drop_table :flat_residents
   end
 end

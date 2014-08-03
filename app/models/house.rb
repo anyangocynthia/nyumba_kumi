@@ -14,6 +14,7 @@
 
 class House < ActiveRecord::Base
   belongs_to :user
+  has_many :appartments
   # reverse_geocoded_by :latitude, :longitude
 
   # def self.find_nearest location

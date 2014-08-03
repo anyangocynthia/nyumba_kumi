@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711094727) do
+ActiveRecord::Schema.define(version: 20140803143625) do
 
   create_table "appartment_residents", force: true do |t|
     t.integer  "appartment_id"
@@ -31,6 +31,47 @@ ActiveRecord::Schema.define(version: 20140711094727) do
   end
 
   add_index "appartments", ["user_id"], name: "index_appartments_on_user_id"
+
+  create_table "attendees", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attendees", ["event_id"], name: "index_attendees_on_event_id"
+  add_index "attendees", ["user_id"], name: "index_attendees_on_user_id"
+
+  create_table "branches", force: true do |t|
+    t.integer  "company_id"
+    t.string   "phone_number"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "branches", ["company_id"], name: "index_branches_on_company_id"
+
+  create_table "companies", force: true do |t|
+    t.string   "name"
+    t.integer  "service_id"
+    t.string   "location"
+    t.string   "phone_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "companies", ["service_id"], name: "index_companies_on_service_id"
+
+  create_table "events", force: true do |t|
+    t.string   "title"
+    t.datetime "time_of_event"
+    t.string   "venue"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "groups", force: true do |t|
     t.string   "group_name"
@@ -72,6 +113,13 @@ ActiveRecord::Schema.define(version: 20140711094727) do
     t.datetime "updated_at"
   end
 
+  create_table "services", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: ""
@@ -101,9 +149,11 @@ ActiveRecord::Schema.define(version: 20140711094727) do
     t.integer  "invitations_count",      default: 0
     t.string   "id_number"
     t.string   "phone_number"
+    t.integer  "group_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["group_id"], name: "index_users_on_group_id"
   add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true
   add_index "users", ["invitations_count"], name: "index_users_on_invitations_count"
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id"
