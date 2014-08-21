@@ -40,4 +40,14 @@ class HomeController < ApplicationController
 		end
 		render json: { in_a_group: in_a_group, not_in_a_group: not_in_a_group }
 	end
+
+	def add_services
+		# params = {group_id: 1, services: [[service_id, company_id], [service_id, company_id]]}
+		services = params[:services]
+		services.each do |service|
+			service_name = Service.find(service[0]).name
+			GroupCompany.create! group_id: params[:group_id], company_id: service[1], company_type: service_name
+		end
+		render json: { success: true }
+	end
 end

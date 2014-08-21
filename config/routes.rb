@@ -39,6 +39,9 @@ Rails.application.routes.draw do
   get 'companies/:id/nearest_branch', to: 'companies#nearest_branch', as: 'company_nearest_branch'
   get 'groups/:id/members', to:'groups#members',as:'group_members'
   get 'services_and_companies', to:'services#services_and_companies',as:'services_and_companies'
+  get 'group_services', to:'groups#group_services',as:'group_services'
+  get 'group_notifications', to:'groups#notifications',as:'group_notifications'
   
   match 'verify', to: 'users#verify', as: 'verify', via: "post"
+  match 'add_services', to: 'home#add_services', as: 'add_services', via: "post"
 end

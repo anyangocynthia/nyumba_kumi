@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy, :members]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :members, :group_services, :notifications]
   # respond_to :json
 
   # GET /groups
@@ -39,8 +39,20 @@ class GroupsController < ApplicationController
     end
   end
 
+  def notifications
+    render json: @group.notifications
+  end
+
   def members
     render json: @group.users
+  end
+
+  def group_services
+    services = {}
+    @group.companies.each do |company|
+      services[company.service.name] = company.name
+    end
+    render json: services
   end
 
   # PATCH/PUT /groups/1

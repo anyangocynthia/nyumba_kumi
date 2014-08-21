@@ -77,7 +77,7 @@ group_id comes from the previous response when creating the group
 
 #### Request
     
-    The Url is GET {URL}/notifications
+    The Url is GET {URL}/group_notifications
  
 ### List of services and companies
 
@@ -104,3 +104,25 @@ This will be used when creating a group to provide a list of services and compan
         ]
     }
  
+### Saving services and companies to group
+
+#### Request
+
+Send in the group id, and an array of arrays with service id and company id as elements. These should be the ones selected. Again, these IDs are available from the previous response
+
+    
+    The Url is POST {URL}/add_services
+
+### List of services and companies a group is subscribed to
+
+#### Request
+
+This will be used in the list of companies given to the user when they tap the panic button
+
+    
+    The Url is GET {URL}/group_services
+
+#### Response
+
+	
+	
