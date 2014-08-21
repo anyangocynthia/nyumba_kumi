@@ -8,6 +8,7 @@
 #  notification_type_id :integer
 #  created_at           :datetime
 #  updated_at           :datetime
+#  message              :string(255)
 #
 
 class Notification < ActiveRecord::Base

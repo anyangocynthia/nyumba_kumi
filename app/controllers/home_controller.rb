@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 
 	def sign_up
 		phone_number = params[:number]
-		user = User.find_or_create_by_phone_number! phone_number: phone_number
+		user = User.find_or_create_by! phone_number: phone_number
 		profile_setup = user.id_number.nil? && user.name.nil?
 		is_in_a_group = !user.group_id.nil?
 		verified = !user.verified.nil?
@@ -15,18 +15,18 @@ class HomeController < ApplicationController
 	end
 
 	def add_members
-		# users = [{name: "254722772838", phone_number: "John Doe"}, {name: "254722772832", phone_number: "Jane Doe"}]
+		# users = [{name: "John Doe", phone_number: "254722772838"}, {name: "Jane Doe", phone_number: "254722772832"}]
 		# params = {"group" => group_id, users => users}
 		gateway = SMSGateway.new
-		group_name = Group.find(params[:group]).name
-		group_admin = Group.find(params[:group]).user.name
+		group_name = Group.find(params[:group]).group_name
+		# group_admin = Group.find(params[:group]).user.name
 		users = params[:users]
 		in_a_group = []
 		not_in_a_group = []
 		users.each do |u|
 			phone_number = u[:phone_number]
 			name = u[:name]
-			user = User.find_or_create_by_phone_number! phone_number: phone_number, name: name
+			user = User.find_or_create_by! phone_number: phone_number, name: name
 			is_in_a_group = !user.group_id.nil?
 			if is_in_a_group
 				in_a_group << phone_number
@@ -34,7 +34,7 @@ class HomeController < ApplicationController
 				user.group_id = params[:group]
 				user.save!
 				# send invitation SMS to user
-				gateway.send user.phone_number, "Hi. You have been added to the Nyumba Kumi group #{group_name} by #{group_admin}. Please click {{link}} to download the app."
+				# gateway.send user.phone_number, "Hi. You have been added to the Nyumba Kumi group #{group_name} by #{group_admin}. Please click {{link}} to download the app."
 				not_in_a_group << phone_number
 			end
 		end

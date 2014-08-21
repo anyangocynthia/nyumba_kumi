@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :notifications
+  resources :notifications, :defaults => { :format => 'json' }
 
   resources :notification_types
 
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   root to: 'visitors#index'
 
   match 'sign_up', to: 'home#sign_up', as: 'sign_up', via: "post"
-  match 'login', to: 'home#add_members', as: 'add_members', via: "post"
+  match 'add_members', to: 'home#add_members', as: 'add_members', via: "post"
 
   match 'login', to: 'sessions#create', as: 'login', via: "post"
 

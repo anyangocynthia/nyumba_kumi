@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140803205731) do
+ActiveRecord::Schema.define(version: 20140820202121) do
 
   create_table "appartment_residents", force: true do |t|
     t.integer  "appartment_id"
@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 20140803205731) do
     t.integer  "notification_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "message"
   end
 
   add_index "notifications", ["group_id"], name: "index_notifications_on_group_id"
