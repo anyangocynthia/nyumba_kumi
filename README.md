@@ -49,6 +49,13 @@ If is_in_a_group is true, the notifications screen is shown else, the create gro
     The Url is POST  {URL}/groups.json
     
 
+#### Response
+    
+    {
+        "id": 3
+    }
+    
+
 ### Adding contacts to group
     
 #### Request    
@@ -56,6 +63,8 @@ If is_in_a_group is true, the notifications screen is shown else, the create gro
     The Url is POST  {URL}/add_members
 
     post :add_members, {"group" => group_id, users => [{name: "John Doe", phone_number: "254722772838"}, {name: "Jane Doe", phone_number: "254722772832"}]}
+
+    group_id comes from the previous response when creating the group
     
     
 ### Creating a notification
@@ -75,6 +84,7 @@ If is_in_a_group is true, the notifications screen is shown else, the create gro
 #### Request
 
 	This will be used when creating a group to provide a list of services and companies for the group admin to choose
+	
     
     The Url is GET {URL}/services_and_companies
  
