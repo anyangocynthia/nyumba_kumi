@@ -41,6 +41,14 @@ class ServicesController < ApplicationController
     render json: @service.companies
   end
 
+  def services_and_companies
+    services_and_companies = {}
+    Service.all.each do |service|
+      services_and_companies[service.name] = service.companies
+    end
+    render json: services_and_companies
+  end
+
   # PATCH/PUT /services/1
   # PATCH/PUT /services/1.json
   def update

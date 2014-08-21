@@ -39,6 +39,8 @@ The URL is: http://41.242.2.154:3001/
         "status" : "success"
     }
 
+If is_in_a_group is true, the notifications screen is shown else, the create group screen is shown
+
 ### Creating a group
     
 
@@ -61,4 +63,34 @@ The URL is: http://41.242.2.154:3001/
 #### Request
     
     The Url is POST {URL}/notifications.json
+ 
+### List of notifications
+
+#### Request
+    
+    The Url is GET {URL}/notifications
+ 
+### List of services and companies
+
+#### Request
+
+	This will be used when creating a group to provide a list of services and companies for the group admin to choose
+    
+    The Url is GET {URL}/services_and_companies
+ 
+#### Response
+    
+    {
+        "Security": [
+            {
+                "id": 1,
+                "name": "G4S",
+                "service_id": 1,
+                "location": "CBD",
+                "phone_number": "254711223344",
+                "created_at": "2014-08-03T18:31:47.910Z",
+                "updated_at": "2014-08-03T18:31:47.910Z"
+            }
+        ]
+    }
  
