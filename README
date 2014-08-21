@@ -1,67 +1,70 @@
 Nyumba Kumi
 ========================
 
-# Nyumba Kumi
+This application was generated with the rails_apps_composer gem:
+https://github.com/RailsApps/rails_apps_composer
+provided by the RailsApps Project:
+http://railsapps.github.io/
 
+________________________
 
-## Overview
+Recipes:
 
-The URL is: http://41.242.2.154:3001/
+* core
+* deployment
+* devise
+* email
+* extras
+* frontend
+* gems
+* git
+* init
+* learn_rails
+* locale
+* omniauth
+* pages
+* rails_bootstrap
+* rails_devise
+* rails_devise_pundit
+* rails_foundation
+* rails_mailinglist_signup
+* rails_omniauth
+* rails_signup_download
+* railsapps
+* readme
+* roles
+* setup
+* tests
 
-### First Screen (Sign Up)
-    
-    The URL is POST {URL}/sign_up
-    
-#### Request
+Preferences:
 
-    post :sign_up, { number: "254722123456" }
+* git: true
+* apps4: railsapps
+* announcements: none
+* dev_webserver: webrick
+* prod_webserver: same
+* database: sqlite
+* templates: erb
+* tests: rspec
+* continuous_testing: none
+* frontend: foundation5
+* email: mandrill
+* authentication: devise
+* devise_modules: invitable
+* authorization: pundit
+* form_builder: none
+* pages: about+users
+* locale: none
+* rvmrc: false
+* quiet_assets: true
+* local_env_file: figaro
+* better_errors: true
+* pry: true
+* ban_spiders: true
+* jsruntime: false
+* github: true
+* deployment: capistrano3
 
+________________________
 
-#### Response    
-
-    
-    { user_id: 1, is_in_a_group: true/false, profile_setup: true/false, verified: true/false }
-    
-    
-
-### Setting up a Profile
-
-    If profile_setup is false, the user should be given a way to update their profile
-
-    The URL is POST {URL}/users/{:id}.json
-
-    Where id is returned as part of the previous response
-
-#### Request
-    post { name: "John Doe", phone_number: "254722876889", id_number: "12345687989" }
-
-#### Response
-
-    {
-        "id" : 1,
-        "status" : "success"
-    }
-
-### Creating a group
-    
-
-#### Request    
-    
-    The Url is POST  {URL}/groups.json
-    
-
-### Adding contacts to group
-    
-#### Request    
-    
-    The Url is POST  {URL}/add_members
-
-    post :add_members, {"group" => group_id, users => [{name: "John Doe", phone_number: "254722772838"}, {name: "Jane Doe", phone_number: "254722772832"}]}
-    
-    
-### Creating a notification
-
-#### Request
-    
-    The Url is POST {URL}/notifications.json
- 
+License
