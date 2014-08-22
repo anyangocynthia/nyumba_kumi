@@ -25,12 +25,16 @@ The URL is: http://41.242.2.154:3001/
 
     If profile_setup is false, the user should be given a way to update their profile
 
-    The URL is POST {URL}/users/{:id}.json
+    The URL is PUT {URL}/users/{:id}.json
 
     Where id is returned as part of the previous response
 
 #### Request
-    post { name: "John Doe", phone_number: "254722876889", id_number: "12345687989" }
+    put { name: "John Doe", phone_number: "254722876889", id_number: "12345687989" }
+    
+NB: If you are using postman to test, you will need to wrap the resource name around the parameters e.g. 
+user[name], user[phone_number], etc. Especially when you are doing a PUT/PATCH request. The same will 
+apply for the other resources.
 
 #### Response
 
