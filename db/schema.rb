@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140820202121) do
+ActiveRecord::Schema.define(version: 20140826193401) do
 
   create_table "appartment_residents", force: true do |t|
     t.integer  "appartment_id"
@@ -162,8 +162,11 @@ ActiveRecord::Schema.define(version: 20140820202121) do
     t.datetime "updated_at"
     t.string   "verification_code"
     t.boolean  "verified"
+    t.integer  "house_id"
+    t.string   "house_number"
   end
 
   add_index "users", ["group_id"], name: "index_users_on_group_id"
+  add_index "users", ["house_id"], name: "index_users_on_house_id"
 
 end

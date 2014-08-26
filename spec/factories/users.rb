@@ -12,6 +12,8 @@
 #  updated_at        :datetime
 #  verification_code :string(255)
 #  verified          :boolean
+#  house_id          :integer
+#  house_number      :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
