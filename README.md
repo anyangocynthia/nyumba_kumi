@@ -126,9 +126,9 @@ Send in the group id, and an array of arrays with service id and company id as e
 This will be used in the list of companies given to the user when they tap the panic button
 
     
-    The Url is GET {URL}/group_services
+    The Url is GET {URL}/group_services?id=group_id
 
 #### Response
 
 	
-	
+    {"service1" => "company1", "service2" => "company2"}	
