@@ -78,12 +78,38 @@ group_id comes from the previous response when creating the group
 #### Request
     
     The Url is POST {URL}/notifications.json
+    
+    {"user_id" => "1", "group_id" => 1, "message" => "Hello"}
+    
+#### Response
+
+    {
+      "id": 1,
+      "status": "success"
+    }
  
 ### List of notifications
 
 #### Request
     
     The Url is GET {URL}/group_notifications
+    
+#### Response
+
+    [
+     {
+      "user_id": 1,
+      "group_id": 1,
+      "message": "Hi",
+      "time": "08/09/2014 04:24PM"
+     },
+     {
+      "user_id": 2,
+      "group_id": 1,
+      "message": "Hi",
+      "time": "08/09/2014 04:30PM"
+     }
+    ]
  
 ### List of services and companies
 
