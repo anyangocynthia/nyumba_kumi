@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 	def sign_up
 		phone_number = params[:number]
 		user = User.find_or_create_by! phone_number: phone_number
-		profile_setup = user.id_number.nil? && user.name.nil?
+		profile_setup = !(user.id_number.nil? || user.name.nil?)
 		is_in_a_group = !user.group_id.nil?
 		verified = !user.verified.nil?
 

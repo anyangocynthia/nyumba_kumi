@@ -40,7 +40,16 @@ class GroupsController < ApplicationController
   end
 
   def notifications
-    render json: @group.notifications
+    notifications = []
+    notification = {}
+    @group.notifications.each do |n|
+      notification[:user_id] = n.user_id
+      notification[:group_id] = n.group_id
+      notification[:message] = n.message
+      notification[:time] = "#{n.created_at.strftime("%d/%m/%Y")} #{n.created_at.strftime("%I:%M%p")}"
+      notifications << notification
+    end
+    render json: notifications
   end
 
   def members

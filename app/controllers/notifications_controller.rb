@@ -1,5 +1,5 @@
 class NotificationsController < ApplicationController
-  before_action :set_notification, only: [:show, :edit, :update, :destroy]
+  before_action :set_notification, only: [:show, :edit, :update, :destroy, :index]
 
   # GET /notifications
   # GET /notifications.json
@@ -29,7 +29,7 @@ class NotificationsController < ApplicationController
     respond_to do |format|
       if @notification.save
         format.html { redirect_to @notification, notice: 'Notification was successfully created.' }
-        format.json { render :show, status: :created, location: @notification }
+        format.json { render json: { id: @notification.id.to_i, status: "success" } }
       else
         format.html { render :new }
         format.json { render json: @notification.errors, status: :unprocessable_entity }
@@ -69,6 +69,6 @@ class NotificationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def notification_params
-      params.require(:notification).permit(:user_id, :group_id, :notification_type_id)
+      params.require(:notification).permit(:user_id, :group_id, :notification_type_id, :message)
     end
 end
