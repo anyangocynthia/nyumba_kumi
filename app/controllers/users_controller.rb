@@ -48,16 +48,18 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    # @user.update(user_params)
-    # render json: { id: @user.id.to_i, status: "success" }
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render json: { id: @user.id.to_i, status: "success" } }
-      else
-        format.html { render :edit }
-        format.json { render json: { id: @user.id.to_i, status: "failure" } }
-      end
+    if @user.update(user_params)
+      user = {}
+      user[:id] = @user.id
+      user[:name] = @user.name
+      user[:phone_number] = @user.phone_number
+      user[:group_id] = @user.group_id
+      user[:user_type] = @user.user_type
+      user[:member_since] = "#{@user.created_at.strftime("%d/%m/%Y")} #{@user.created_at.strftime("%I:%M%p")}"
+
+      render json: user
+    else
+      render json: { status: "FAIL"}
     end
   end
 
