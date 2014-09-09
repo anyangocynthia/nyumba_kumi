@@ -10,6 +10,15 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    user = {}
+    user[:id] = @user.id
+    user[:name] = @user.name
+    user[:phone_number] = @user.phone_number
+    user[:group_id] = @user.group_id
+    user[:user_type] = @user.user_type
+    user[:member_since] = "#{@user.created_at.strftime("%d/%m/%Y")} #{@user.created_at.strftime("%I:%M%p")}"
+
+    render json: user
   end
 
   # GET /users/new

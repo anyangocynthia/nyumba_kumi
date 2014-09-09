@@ -40,11 +40,32 @@ apply for the other resources.
 #### Response
 
     {
-        "id" : 1,
-        "status" : "success"
+        "id": 4,
+        "name": "Mohaa",
+        "phone_number": "254722123456",
+        "group_id": 1,
+        "user_type": "Admin",
+        "member_since": "19/08/2014 09:15PM"
     }
 
 If is_in_a_group is true, the notifications screen is shown else, the create group screen is shown
+
+### User Details (Profile)
+
+#### Request
+
+    GET {URL}/users/{id}.json
+
+#### Response
+
+    {
+        "id": 4,
+        "name": "Mohaa",
+        "phone_number": "254722123456",
+        "group_id": 1,
+        "user_type": "Admin",
+        "member_since": "19/08/2014 09:15PM"
+    }
 
 ### Creating a group
     
