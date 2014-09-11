@@ -92,7 +92,32 @@ If is_in_a_group is true, the notifications screen is shown else, the create gro
     post :add_members, {"group" => group_id, users => [{name: "John Doe", phone_number: "254722772838"}, {name: "Jane Doe", phone_number: "254722772832"}]}
 
 group_id comes from the previous response when creating the group
-    
+
+### Group Members
+
+#### Request
+
+	The URL is GET {URL}/groups/{group_id}/members
+	
+#### Response
+
+	[
+		{
+			"id":101,
+			"name":"Jone Doe",
+			"phone_number":"254722123456",
+			"id_number":1233435343,
+			"group_id":134,
+			"user_type":"Admin"
+		},
+		{
+			"id":102,
+			"name":"Jane Doe",
+			"phone_number":"0700123456",
+			"id_number":12324352421,
+			"group_id":134,
+		}
+	]
     
 ### Creating a notification
 
