@@ -123,6 +123,7 @@ group_id comes from the previous response when creating the group
 			"name":"Jone Doe",
 			"phone_number":"254722123456",
 			"id_number":1233435343,
+      "in_a_group":true,
 			"group_id":134,
 			"user_type":"Admin"
 		},
@@ -131,7 +132,8 @@ group_id comes from the previous response when creating the group
 			"name":"Jane Doe",
 			"phone_number":"0700123456",
 			"id_number":12324352421,
-			"group_id":134,
+      "in_a_group":true,
+			"group_id":134
 		}
 	]
     

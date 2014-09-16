@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     user[:name] = @user.name
     user[:phone_number] = @user.phone_number
     user[:group_id] = @user.group_id
+    user[:in_a_group] = !@user.group_id.nil?
     user[:user_type] = @user.user_type
     user[:member_since] = "#{@user.created_at.strftime("%d/%m/%Y")} #{@user.created_at.strftime("%I:%M%p")}"
 
