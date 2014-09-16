@@ -93,6 +93,12 @@ If is_in_a_group is true, the notifications screen is shown else, the create gro
         "status": "Group already exists!"
     }
 
+    If a user who is already in a group tries to create another group, response is:
+
+    {
+        "error": "You already belong to group_name."
+    }
+
 ### Adding contacts to group
     
 #### Request    
