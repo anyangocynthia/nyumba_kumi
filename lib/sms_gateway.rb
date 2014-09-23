@@ -16,8 +16,13 @@ class SMSGateway
     def send to, message
      password = Digest::MD5.hexdigest(to + @password)
      begin
+      # puts "#{@base_uri}?target=info&msisdn=#{to}&text=#{add_pluses(message)}&login=#{@login}&pass=#{password}"
+      if Rails.env.production?
        response = HTTParty.get("#{@base_uri}?target=info&msisdn=#{to}&text=#{add_pluses(message)}&login=#{@login}&pass=#{password}")
        puts ">>>>>> #{response}"
+      else
+        puts "<>>>>>> TARGET: INFO\nMSISDN: #{to}\nTEXT: #{message}"
+      end
      rescue Exception => e
        puts e.backtrace
      end

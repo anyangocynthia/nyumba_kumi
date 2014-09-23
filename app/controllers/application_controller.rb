@@ -17,12 +17,11 @@ class ApplicationController < ActionController::Base
   end
 
   def send_verification_code user
-  	gateway = SMSGateway.new
-  	code = generate_verification_code
-  	gateway.send user.phone_number, "Hi. Welcome to the Nyumba Kumi Initiative. 
-  			Your verification code is #{code}. Go back to the app and enter it."
+    gateway = SMSGateway.new
+    code = generate_verification_code
+    gateway.send user.phone_number, "Hi. Welcome to the Nyumba Kumi Initiative. Your verification code is #{code}. Go back to the app and enter it."
 
-  	user.verification_code = code
-  	user.save!
+    user.verification_code = code
+    user.save!
   end
 end
