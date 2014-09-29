@@ -34,6 +34,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    # user_params[:phone_number] = user_params[:phone_number].phony_formatted(:normalize => "KE", :format => :international).gsub(/\D/, '')
     @user = User.new(user_params)
 
     respond_to do |format|
@@ -63,6 +64,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    # PhonyRails.normalize_number PhonyRails.normalize_number(params[:number]), country_number: "254"
     if @user.update(user_params)
       user = {}
       user[:id] = @user.id

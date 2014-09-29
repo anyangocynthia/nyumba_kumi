@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 
 	def sign_up
 		gateway = SMSGateway.new
-		phone_number = params[:number]
+		phone_number = PhonyRails.normalize_number PhonyRails.normalize_number(params[:number]), country_number: "254"
 		user = User.find_or_create_by! phone_number: phone_number
 		profile_setup = !(user.id_number.nil? || user.name.nil?)
 		is_in_a_group = !user.group_id.nil?
