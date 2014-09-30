@@ -2,14 +2,19 @@ require 'sms_gateway'
 class HomeController < ApplicationController
 
 	def sign_up
-		phone_number = params[:number]
+		gateway = SMSGateway.new
+		phone_number = PhonyRails.normalize_number PhonyRails.normalize_number(params[:number]), country_number: "254"
 		user = User.find_or_create_by! phone_number: phone_number
 		profile_setup = !(user.id_number.nil? || user.name.nil?)
 		is_in_a_group = !user.group_id.nil?
 		verified = !user.verified.nil?
 
 		if verified == false
-			send_verification_code user
+			if user.verification_code.nil?
+				send_verification_code user
+			else
+				gateway.send(user.phone_number, "We had already sent you the verification code. Here it is again: #{user.verification_code}.")
+			end
 		end
 		render json: { user_id: user.id, is_in_a_group: is_in_a_group, profile_setup: profile_setup, verified: verified }
 	end

@@ -26,16 +26,26 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(group_params)
-
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
-        format.json { render json: { id: @group.id.to_i, status: "success" } }
+    grp = Group.find_by(group_name: group_params[:group_name])
+    if grp.nil?
+      user = User.find(group_params[:user_id])
+      if user.group_id.nil?
+        @group = Group.new(group_params)
+        respond_to do |format|
+          if @group.save
+            user.update(group_id: @group.id)
+            format.html { redirect_to @group, notice: 'Group was successfully created.' }
+            format.json { render json: { id: @group.id.to_i, status: "success" } }
+          else
+            format.html { render :new }
+            format.json { render json: { id: @group.id.to_i, status: "failure" } }
+          end
+        end
       else
-        format.html { render :new }
-        format.json { render json: { id: @group.id.to_i, status: "failure" } }
+        render json: { error: "You already belong to #{user.group.group_name}." }
       end
+    else
+      render json: { id: grp.id.to_i, status: "Group already exists!" }
     end
   end
 

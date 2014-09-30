@@ -48,7 +48,7 @@ apply for the other resources.
         "member_since": "19/08/2014 09:15PM"
     }
 
-If is_in_a_group is true, the completing profile  screen is shown else, the create group screen is shown
+If is_in_a_group is true, the notifications screen is shown else, the create group screen is shown
 
 ### User Details (Profile)
 
@@ -73,31 +73,15 @@ If is_in_a_group is true, the completing profile  screen is shown else, the crea
 #### Request    
     
     The Url is POST  {URL}/groups.json
-
-    post {"group_name" => "Group 1", "location" => "Some location", "user_id" => "Group admin id"}
     
 
 #### Response
-    
-    If group doesn't exist in the database: (ie group_name should be unique)
     
     {
         "id": 3
         "status" : "success"
     }
     
-    else
-
-    {
-        "id": 8,
-        "status": "Group already exists!"
-    }
-
-    If a user who is already in a group tries to create another group, response is:
-
-    {
-        "error": "You already belong to group_name."
-    }
 
 ### Adding contacts to group
     
@@ -108,34 +92,7 @@ If is_in_a_group is true, the completing profile  screen is shown else, the crea
     post :add_members, {"group" => group_id, users => [{name: "John Doe", phone_number: "254722772838"}, {name: "Jane Doe", phone_number: "254722772832"}]}
 
 group_id comes from the previous response when creating the group
-
-### Group Members
-
-#### Request
-
-	The URL is GET {URL}/groups/{group_id}/members
-	
-#### Response
-
-	[
-		{
-			"id":101,
-			"name":"Jone Doe",
-			"phone_number":"254722123456",
-			"id_number":1233435343,
-      "in_a_group":true,
-			"group_id":134,
-			"user_type":"Admin"
-		},
-		{
-			"id":102,
-			"name":"Jane Doe",
-			"phone_number":"0700123456",
-			"id_number":12324352421,
-      "in_a_group":true,
-			"group_id":134
-		}
-	]
+    
     
 ### Creating a notification
 

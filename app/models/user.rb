@@ -17,6 +17,12 @@
 #
 
 class User < ActiveRecord::Base
+	after_create :normalize_number
   belongs_to :group
   has_many :notifications
+
+  def normalize_number
+		self.phone_number = PhonyRails.normalize_number PhonyRails.normalize_number(self.phone_number), country_number: "254"
+		self.save!
+  end
 end

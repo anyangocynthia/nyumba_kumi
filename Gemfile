@@ -21,6 +21,7 @@ gem 'rails_admin'
 gem 'geocoder'
 gem 'google_places'
 gem 'httparty'
+gem 'phony_rails'
 
 group :development do
   gem 'better_errors'
