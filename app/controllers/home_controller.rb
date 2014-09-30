@@ -7,7 +7,7 @@ class HomeController < ApplicationController
 		user = User.find_or_create_by! phone_number: phone_number
 		profile_setup = !(user.id_number.nil? || user.name.nil?)
 		is_in_a_group = !user.group_id.nil?
-		verified = !user.verified.nil?
+		verified = user.verified == true
 
 		if verified == false
 			if user.verification_code.nil?
