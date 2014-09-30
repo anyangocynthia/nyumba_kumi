@@ -49,16 +49,19 @@ class UsersController < ApplicationController
   end
 
   def verify
-    code = user_params[:verification_code]
+    sms = SMSGateway.new
+    code = params[:verification_code]
+    user = User.find(params[:id])
     status = ""
-    if @user.verified.nil? || !@user.verified
-      @user.verified = @user.verification_code == code
-      @user.save!
-      status = @user.verification_code == code ? "User verified successfully!" : "Wrong verification code! Please try again."
+    if user.verified.nil? || user.verified == false
+      user.verified = user.verification_code == code
+      user.save!
+      status = user.verification_code == code ? "User verified successfully!" : "Wrong verification code! Please try again."
+      sms.send user.phone_number, "You have been successfully verified! Thank you."
     else
       status = "User has already been verified!"
     end
-    render json: { id: @user.id, verified: @user.verified, status: status }
+    render json: { id: user.id, verified: user.verified, status: status }
   end
 
   # PATCH/PUT /users/1
@@ -147,14 +150,6 @@ class UsersController < ApplicationController
         format.html { render :new }
         format.json { render json: { id: @user.id.to_i, status: "failure" } }
       end
-    end
-  end
-
-  def verify
-    code = params[:verification_code]
-    if @user.verification_code == code
-      @user.verified == true
-      @user.verified.save!
     end
   end
 

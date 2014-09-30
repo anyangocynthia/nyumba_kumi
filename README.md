@@ -20,6 +20,41 @@ The URL is: http://41.242.2.154:3001/
     { user_id: 1, is_in_a_group: true/false, profile_setup: true/false, verified: true/false }
     
     
+### User verification
+
+    If, from the previous response, verified is false, the user should be taken to the verification screen.
+
+#### Request
+
+    The URL is POST {URL}/verify
+
+    post : { verification_code: "123456", id: 1 }
+
+#### Response
+
+##### Successfull verification (Verification code matches what is expected)
+
+    {
+        "id": 1,
+        "verified": true,
+        "status": "User verified successfully!"
+    }
+
+##### Trying to verify after a successfull verification
+
+    {
+        "id": 1,
+        "verified": true,
+        "status": "User has already been verified!"
+    }
+
+##### Unsuccessfull verification (Verification code doesn't match what is expected)
+
+    {
+        "id": 1 ,
+        "verified": false,
+        "status": "Wrong verification code! Please try again."
+    }
 
 ### Setting up a Profile
 
