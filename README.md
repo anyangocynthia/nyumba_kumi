@@ -66,7 +66,7 @@ The URL is: http://41.242.2.154:3001/
 
 #### Request
     
-    put { name: "John Doe", phone_number: "254722876889", id_number: "12345687989", house_id: "1", house_number: "200" }
+    put { name: "John Doe", phone_number: "254722876889", id_number: "12345687989", house_id: "1", house_number: "200", photo: 'path/to/file.jpg/png..' }
     
 NB: If you are using postman to test, you will need to wrap the resource name around the parameters e.g. 
 user[name], user[phone_number], etc. Especially when you are doing a PUT/PATCH request. The same will 
