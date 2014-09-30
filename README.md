@@ -83,7 +83,7 @@ apply for the other resources.
         "member_since": "19/08/2014 09:15PM"
     }
 
-If is_in_a_group is true, the notifications screen is shown else, the create group screen is shown
+If is_in_a_group is true, the completing profile  screen is shown else, the create group screen is shown
 
 ### User Details (Profile)
 
