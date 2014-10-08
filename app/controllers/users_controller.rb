@@ -158,6 +158,9 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     # user_params[:photo] = File.open(user_params[:photo])
+    if user_params[:phone_number]
+      user_params[:phone_number] = @user.phone_number
+    end
     if @user.update(user_params)
       user = {}
       user[:id] = @user.id
