@@ -140,7 +140,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    user_params[:photo] = File.open(user_params[:photo])
+    # user_params[:photo] = File.open(user_params[:photo])
     @user = User.new(user_params)
 
     respond_to do |format|
@@ -157,7 +157,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    user_params[:photo] = File.open(user_params[:photo])
+    # user_params[:photo] = File.open(user_params[:photo])
     if @user.update(user_params)
       user = {}
       user[:id] = @user.id
