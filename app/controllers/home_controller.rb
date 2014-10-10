@@ -47,7 +47,6 @@ class HomeController < ApplicationController
 	end
 
 	def add_services
-		# params = {group_id: 1, services: [[service_id, company_id], [service_id, company_id]]}
 		# {"services"=>[{"service_id"=>"1", "company_id"=>"1"}, {"service_id"=>"3", "company_id"=>"10"}, {"service_id"=>"2", "company_id"=>"3"}], "home"=>{"services"=>[{"service_id"=>"1", "company_id"=>"1"}
 		services = params[:services]
 		services.each do |service|

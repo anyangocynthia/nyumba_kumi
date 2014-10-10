@@ -161,6 +161,10 @@ class UsersController < ApplicationController
     # if user_params[:phone_number]
     #   user_params[:phone_number] = @user.phone_number
     # end
+    if user_params[:photo]
+      @user.photo = File.open(user_params[:photo])
+      @user.save!
+    end
     if @user.update(user_params.except(:phone_number))
       user = {}
       user[:id] = @user.id
