@@ -162,7 +162,7 @@ class UsersController < ApplicationController
     #   user_params[:phone_number] = @user.phone_number
     # end
     if user_params[:photo]
-      @user.photo = File.open(user_params[:photo])
+      @user.photo = File.open(user_params[:photo].tempfile)
       @user.save!
     end
     if @user.update(user_params.except(:phone_number))
