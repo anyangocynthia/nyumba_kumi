@@ -51,8 +51,8 @@ class HomeController < ApplicationController
 		# {"services"=>[{"service_id"=>"1", "company_id"=>"1"}, {"service_id"=>"3", "company_id"=>"10"}, {"service_id"=>"2", "company_id"=>"3"}], "home"=>{"services"=>[{"service_id"=>"1", "company_id"=>"1"}
 		services = params[:services]
 		services.each do |service|
-			service_name = Service.find(service.keys[0]).name
-			GroupCompany.create! group_id: params[:group_id], company_id: service.values[0], company_type: service_name
+			service_name = Service.find(service[:service_id]).name
+			GroupCompany.create! group_id: params[:group_id], company_id: service[:company_id], company_type: service_name
 		end
 		render json: { success: true }
 	end
