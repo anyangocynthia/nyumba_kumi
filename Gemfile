@@ -22,7 +22,8 @@ gem 'geocoder'
 gem 'google_places'
 gem 'httparty'
 gem 'phony_rails'
-gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem "paperclip"#, :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'leaflet-rails'
 
 group :development do
   gem 'better_errors'

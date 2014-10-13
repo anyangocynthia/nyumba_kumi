@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   resources :appartment_residents
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-  root to: 'visitors#index'
+  root to: 'home#index'
 
   match 'sign_up', to: 'home#sign_up', as: 'sign_up', via: "post"
   match 'add_members', to: 'home#add_members', as: 'add_members', via: "post"

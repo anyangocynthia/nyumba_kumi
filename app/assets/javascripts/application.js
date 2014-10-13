@@ -13,8 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require foundation
+//= require bootstrap
+//= require flexslider
+//= require leaflet
 //= require_tree .
-$(function() {
-  $(document).foundation();
-});
+
+// $(function() {
+//   $(document).foundation();
+// });

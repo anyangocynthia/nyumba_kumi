@@ -1,6 +1,10 @@
 require 'sms_gateway'
 class HomeController < ApplicationController
 
+	def index
+		
+	end
+
 	def sign_up
 		gateway = SMSGateway.new
 		phone_number = PhonyRails.normalize_number PhonyRails.normalize_number(params[:number]), country_number: "254"
