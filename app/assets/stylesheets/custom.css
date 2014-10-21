@@ -58,7 +58,7 @@ h3.sectionTitle {
 
 .navbar-inverse {
 	/**
-	background: url(../assets/img/80.png);
+	background: url(../assets/80.png);
 	**/
 	background: #fff;
 	border: 0 none;
@@ -127,7 +127,7 @@ h3.sectionTitle {
 /********************************************************************/
 
 .jumbotron {
-	background: url(../assets/img/nai.jpg) no-repeat center center scroll; 
+	background: url(../assets/nai.jpg) no-repeat center center scroll; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -138,7 +138,7 @@ h3.sectionTitle {
 	margin-bottom: 0;
 }
 .jumbotron .mobile {
-	background-image: url("../assets/img/mobile.png");
+	background-image: url("../assets/mobile.png");
     background-repeat: no-repeat;
     height: 499px;
     margin-left: -96px;
@@ -350,7 +350,7 @@ h3.sectionTitle {
 	padding-bottom: 60px;
 }
 #contactWrap .overlay {
-    background: url("../assets/img/60.png");
+    background: url("../assets/60.png");
 	padding-bottom: 60px;
 }
 #contactWrap h2.sectionTitle {

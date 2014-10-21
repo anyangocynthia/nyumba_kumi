@@ -24,6 +24,7 @@ gem 'httparty'
 gem 'phony_rails'
 gem "paperclip"#, :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'leaflet-rails'
+gem 'gcm'
 
 group :development do
   gem 'better_errors'

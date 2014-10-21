@@ -98,6 +98,9 @@ GEM
     foundation-rails (5.3.0.1)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
+    gcm (0.0.9)
+      httparty
+      json
     geocoder (1.2.2)
     google_places (0.22.0)
       httparty (~> 0.13.1)
@@ -289,6 +292,7 @@ DEPENDENCIES
   faker
   figaro (>= 1.0.0.rc1)
   foundation-rails
+  gcm
   geocoder
   google_places
   high_voltage
