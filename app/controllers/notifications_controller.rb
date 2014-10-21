@@ -1,3 +1,4 @@
+require "gcm_notifications"
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :edit, :update, :destroy, :index]
 
@@ -24,10 +25,14 @@ class NotificationsController < ApplicationController
   # POST /notifications
   # POST /notifications.json
   def create
+    gcm = GCMNotifications.new
     @notification = Notification.new(notification_params)
 
     respond_to do |format|
       if @notification.save
+        registration_ids = @notification.group.users.collect {|user| user.devices.collect {|device| device.registration_id}}
+        data = {message: @notification.message}
+        gcm.send registration_ids, data, "New notification"
         format.html { redirect_to @notification, notice: 'Notification was successfully created.' }
         format.json { render json: { id: @notification.id.to_i, status: "success" } }
       else
