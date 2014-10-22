@@ -11,7 +11,7 @@ The URL is: http://41.242.2.154:3001/
     
 #### Request
 
-    post :sign_up, { number: "254722123456" }
+    post :sign_up, { number: "254722123456", registration_id: "123456" }
 
 
 #### Response    
