@@ -9,6 +9,9 @@ class HomeController < ApplicationController
 		gateway = SMSGateway.new
 		phone_number = PhonyRails.normalize_number PhonyRails.normalize_number(params[:number]), country_number: "254"
 		user = User.find_or_create_by! phone_number: phone_number
+		if params[:registration_id]
+			Device.find_or_create_by! registration_id: params[:registration_id], user_id: user.id
+		end
 		profile_setup = !(user.id_number.nil? || user.name.nil?)
 		is_in_a_group = !user.group_id.nil?
 		verified = user.verified == true
