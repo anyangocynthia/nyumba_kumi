@@ -44,6 +44,7 @@ class HomeController < ApplicationController
 				in_a_group << phone_number
 			else
 				user.group_id = params[:group]
+				user.user_type = "Member"
 				user.save!
 				# send invitation SMS to user
 				# gateway.send user.phone_number, "Hi. You have been added to the Nyumba Kumi group #{group_name} by #{group_admin}. Please click {{link}} to download the app."

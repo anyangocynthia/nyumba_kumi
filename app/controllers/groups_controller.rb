@@ -33,7 +33,7 @@ class GroupsController < ApplicationController
         @group = Group.new(group_params)
         respond_to do |format|
           if @group.save
-            user.update(group_id: @group.id)
+            user.update(group_id: @group.id, user_type: "Admin")
             format.html { redirect_to @group, notice: 'Group was successfully created.' }
             format.json { render json: { id: @group.id.to_i, status: "success" } }
           else
