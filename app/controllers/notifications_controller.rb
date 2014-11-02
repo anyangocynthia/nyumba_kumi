@@ -31,7 +31,7 @@ class NotificationsController < ApplicationController
     respond_to do |format|
       if @notification.save
         registration_ids = @notification.group.users.collect {|user| user.devices.collect {|device| device.registration_id}}[0]
-        data = {message: @notification.message}
+        data = {message: @notification.message, sender: @notification.user.name}
         gcm.send registration_ids, data, "New notification"
         format.html { redirect_to @notification, notice: 'Notification was successfully created.' }
         format.json { render json: { id: @notification.id.to_i, status: "success" } }
