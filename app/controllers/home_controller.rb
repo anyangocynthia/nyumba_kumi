@@ -23,7 +23,7 @@ class HomeController < ApplicationController
 				gateway.send(user.phone_number, "We had already sent you the verification code. Here it is again: #{user.verification_code}.")
 			end
 		end
-		render json: { user_id: user.id, is_in_a_group: is_in_a_group, profile_setup: profile_setup, verified: verified }
+		render json: { user_id: user.id, is_in_a_group: is_in_a_group, profile_setup: profile_setup, verified: verified, verification_code: user.verification_code }
 	end
 
 	def add_members
