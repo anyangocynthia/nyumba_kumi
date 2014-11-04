@@ -30,7 +30,15 @@ class NotificationsController < ApplicationController
 
     respond_to do |format|
       if @notification.save
-        registration_ids = @notification.group.users.collect {|user| user.devices.collect {|device| device.registration_id}}[0]
+        # registration_ids = @notification.group.users.collect {|user| user.devices.collect {|device| device.registration_id}}[0]
+        registration_ids = []
+        users = @notification.group.users - [@notification.user]
+        users.each do |u|
+         u.devices.each do |d|
+           registration_ids << d.registration_id
+         end
+        end
+
         data = {message: @notification.message, sender: @notification.user.name}
         gcm.send registration_ids, data, "New notification"
         format.html { redirect_to @notification, notice: 'Notification was successfully created.' }
