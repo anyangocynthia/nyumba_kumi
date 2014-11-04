@@ -31,7 +31,7 @@ class HomeController < ApplicationController
 		# params = {"group" => group_id, users => users}
 		gateway = SMSGateway.new
 		group_name = Group.find(params[:group]).group_name
-		# group_admin = Group.find(params[:group]).user.name
+		group_admin = Group.find(params[:group]).user.name
 		users = params[:users]
 		in_a_group = []
 		not_in_a_group = []
@@ -47,7 +47,7 @@ class HomeController < ApplicationController
 				user.user_type = "Member"
 				user.save!
 				# send invitation SMS to user
-				# gateway.send user.phone_number, "Hi. You have been added to the Nyumba Kumi group #{group_name} by #{group_admin}. Please click {{link}} to download the app."
+				gateway.send user.phone_number, "Hi. You have been added to the Nyumba Kumi group #{group_name} by #{group_admin}. Please click {{link}} to download the app."
 				not_in_a_group << phone_number
 			end
 		end
