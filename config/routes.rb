@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :incidents
+
   get 'dashboard/index'
 
   get 'dashbord/index'
