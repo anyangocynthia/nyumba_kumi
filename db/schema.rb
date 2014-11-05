@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021113914) do
+ActiveRecord::Schema.define(version: 20141105180630) do
 
   create_table "appartment_residents", force: true do |t|
     t.integer  "appartment_id"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 20141021113914) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "alert_message"
   end
 
   create_table "notifications", force: true do |t|

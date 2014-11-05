@@ -46,7 +46,7 @@ class HomeController < ApplicationController
 				user.group_id = params[:group]
 				user.user_type = "Member"
 				user.save!
-				
+
 				gateway.send user.phone_number, "Hi. You have been added to #{group_name} in the Ujirani app by #{group_admin}. Please click {{link}} to download the app."
 
 				not_in_a_group << phone_number
@@ -63,5 +63,15 @@ class HomeController < ApplicationController
 			GroupCompany.create! group_id: params[:group_id], company_id: service[:company_id], company_type: service_name
 		end
 		render json: { success: true }
+	end
+
+	def panic_menu_alerts
+		notification_type = NotificationType.find_by name: params[:service]
+		if !notification_type.nil?
+			notification = Notification.create! user_id: params[:user_id], group_id: User.find(params[:user_id]).group.id, notification_type_id: notification_type.id, message: notification_type.alert_message
+			render json: {group: notification.group.id, service: params[:service], location: params[:location], message: notification.message}
+		else
+			render json: {error: "Unknown request!"}
+		end
 	end
 end
