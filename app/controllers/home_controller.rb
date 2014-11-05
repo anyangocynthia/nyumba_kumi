@@ -68,8 +68,10 @@ class HomeController < ApplicationController
 	def panic_menu_actions
 		notification_type = NotificationType.find_by name: params[:service]
 		if !notification_type.nil?
-			notification = Notification.create! user_id: params[:user_id], group_id: User.find(params[:user_id]).group.id, notification_type_id: notification_type.id, message: notification_type.alert_message
-			Incident.create! incident_type: notification_type.name, user_id: params[:user_id], notification_id: notification.id, location: params[:location]
+			user = User.find(params[:user_id])
+			notification = Notification.create! user_id: params[:user_id], group_id: user.group.id, notification_type_id: notification_type.id, message: notification_type.alert_message
+			company = user.group.companies.where(company_type: params[:service])
+			Incident.create! incident_type: notification_type.name, user_id: params[:user_id], notification_id: notification.id, location: params[:location], company_id: company.id
 			render json: {group: notification.group.id, service: params[:service], location: params[:location], message: notification.message}
 		else
 			render json: {error: "Unknown request!"}
