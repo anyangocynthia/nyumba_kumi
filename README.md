@@ -272,4 +272,4 @@ This will happen when a user chooses one of the items in the panic menu
 #### Response
 
 	
-    {group: "1", service: "Security, location: "2134353435,123243642", message: "Hi fellow group members. We have a security situation around here."}
+    {group: "1", service: "Security", location: "2134353435,123243642", message: "Hi fellow group members. We have a security situation around here."}
