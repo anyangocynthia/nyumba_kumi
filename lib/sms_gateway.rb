@@ -2,11 +2,12 @@ require 'json'
 class SMSGateway
 
   def initialize
-      @login = ENV['SMS_GATEWAY_LOGIN']
+      @user = ENV['SMS_GATEWAY_USER']
       @password = ENV['SMS_GATEWAY_PASSWORD']
-      @base_uri = ENV['SMS_GATEWAY_URL']
-      # @max_segment = 160 #ENV['SMS_MAX_SEGMENT_LENGTH'].to_i
-      # @split = false #ENV['SPLIT_SMS']
+      @url = ENV['SMS_GATEWAY_URL']
+      @shortcode = ENV['SMS_SHORTCODE']
+      @campaign_id = ENV['SMS_CAMPAIGN_ID']
+      @channel = ENV['SMS_CHANNEL']
     end
 
     def add_pluses msg
@@ -14,17 +15,22 @@ class SMSGateway
     end
 
     def send to, message
-     password = Digest::MD5.hexdigest(to + @password)
-     begin
-      # puts "#{@base_uri}?target=info&msisdn=#{to}&text=#{add_pluses(message)}&login=#{@login}&pass=#{password}"
       if Rails.env.production?
-       response = HTTParty.get("#{@base_uri}?target=info&msisdn=#{to}&text=#{add_pluses(message)}&login=#{@login}&pass=#{password}")
-       puts ">>>>>> #{response}"
+        `curl -H "Content-Type: application/x-www-form-urlencoded; charset=utf-8" -d "username=#{@user}&password=#{@password}&MSISDN=#{to}&content=#{message}&channel=#{@channel}&shortcode=#{@shortcode}&campaignid=#{@campaign_id}&premium=1" #{@url}`
       else
         puts "<>>>>>> TARGET: INFO\nMSISDN: #{to}\nTEXT: #{message}"
       end
-     rescue Exception => e
-       puts e.backtrace
-     end
+     # password = Digest::MD5.hexdigest(to + @password)
+     # begin
+     #  # puts "#{@base_uri}?target=info&msisdn=#{to}&text=#{add_pluses(message)}&login=#{@login}&pass=#{password}"
+     #  if Rails.env.production?
+     #   response = HTTParty.get("#{@base_uri}?target=info&msisdn=#{to}&text=#{add_pluses(message)}&login=#{@login}&pass=#{password}")
+     #   puts ">>>>>> #{response}"
+     #  else
+     #    puts "<>>>>>> TARGET: INFO\nMSISDN: #{to}\nTEXT: #{message}"
+     #  end
+     # rescue Exception => e
+     #   puts e.backtrace
+     # end
     end
 end
