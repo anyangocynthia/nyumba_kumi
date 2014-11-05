@@ -51,5 +51,5 @@ Rails.application.routes.draw do
   match 'verify', to: 'users#verify', as: 'verify', via: "post"
   match 'add_services', to: 'home#add_services', as: 'add_services', via: "post"
   
-  match 'panic_menu_alerts', to: 'home#panic_menu_alerts', as: 'panic_menu_alerts', via: "post"
+  match 'panic_menu_actions', to: 'home#panic_menu_actions', as: 'panic_menu_actions', via: "post"
 end
