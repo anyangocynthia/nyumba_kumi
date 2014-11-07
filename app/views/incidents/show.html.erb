@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @incident.type %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @incident.user %>
+</p>
+
+<p>
+  <strong>Notification:</strong>
+  <%= @incident.notification %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @incident.location %>
+</p>
+
+<p>
+  <strong>Resolved:</strong>
+  <%= @incident.resolved %>
+</p>
+
+<p>
+  <strong>False flag:</strong>
+  <%= @incident.false_flag %>
+</p>
+
+<%= link_to 'Edit', edit_incident_path(@incident) %> |
+<%= link_to 'Back', incidents_path %>

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :incidents
+
+  get 'dashboard/index'
+
+  get 'dashbord/index'
+
   resources :devices
 
   resources :notifications, :defaults => { :format => 'json' }
@@ -46,4 +52,6 @@ Rails.application.routes.draw do
   
   match 'verify', to: 'users#verify', as: 'verify', via: "post"
   match 'add_services', to: 'home#add_services', as: 'add_services', via: "post"
+  
+  match 'panic_menu_actions', to: 'home#panic_menu_actions', as: 'panic_menu_actions', via: "post"
 end

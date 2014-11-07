@@ -255,5 +255,21 @@ This will be used in the list of companies given to the user when they tap the p
 
 #### Response
 
+    
+    {"service1" => "company1", "service2" => "company2"}    
+
+### Handling panic menu actions
+
+#### Request
+
+This will happen when a user chooses one of the items in the panic menu
+
+    
+    The Url is POST {URL}/panic_menu_actions
+
+    {"user_id" => "1", "service" => "Security", "location" => "2134353435,123243642"}
+
+#### Response
+
 	
-    {"service1" => "company1", "service2" => "company2"}	
+    {group: "1", service: "Security", location: "2134353435,123243642", message: "Hi fellow group members. We have a security situation around here."}

@@ -46,13 +46,16 @@ class HomeController < ApplicationController
 				user.group_id = params[:group]
 				user.user_type = "Member"
 				user.save!
-<<<<<<< HEAD
-				send invitation SMS to user
+
 				gateway.send user.phone_number, "Hi. You have been added to #{group_name} in the Ujirani app by #{group_admin}. Please click {{link}} to download the app."
+<<<<<<< HEAD
 =======
 				# send invitation SMS to user
 				gateway.send user.phone_number, "Hi. You have been added to the Nyumba Kumi group #{group_name} by #{group_admin}. Please click http://goo.gl/XeBk2c to download the app."
 >>>>>>> 866012fe3bd95731a22b1bac81f2b14ea2b36310
+=======
+
+>>>>>>> 15c0e4d91cf69695e82463110106c652670ef88b
 				not_in_a_group << phone_number
 			end
 		end
@@ -67,5 +70,18 @@ class HomeController < ApplicationController
 			GroupCompany.create! group_id: params[:group_id], company_id: service[:company_id], company_type: service_name
 		end
 		render json: { success: true }
+	end
+
+	def panic_menu_actions
+		notification_type = NotificationType.find_by name: params[:service]
+		if !notification_type.nil?
+			user = User.find(params[:user_id])
+			notification = Notification.create! user_id: params[:user_id], group_id: user.group.id, notification_type_id: notification_type.id, message: notification_type.alert_message
+			company = user.group.group_companies.where(company_type: params[:service]).first
+			Incident.create! incident_type: notification_type.name, user_id: params[:user_id], notification_id: notification.id, location: params[:location], company_id: company.id
+			render json: {group: notification.group.id, service: params[:service], location: params[:location], message: notification.message}
+		else
+			render json: {error: "Unknown request!"}
+		end
 	end
 end
