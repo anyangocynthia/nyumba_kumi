@@ -51,7 +51,7 @@ class HomeController < ApplicationController
 				gateway.send user.phone_number, "Hi. You have been added to #{group_name} in the Ujirani app by #{group_admin}. Please click {{link}} to download the app."
 =======
 				# send invitation SMS to user
-				gateway.send user.phone_number, "Hi. You have been added to the Nyumba Kumi group #{group_name} by #{group_admin}. Please click https://play.google.com/store/search?q=ujirani&c=apps&hl=en to download the app."
+				gateway.send user.phone_number, "Hi. You have been added to the Nyumba Kumi group #{group_name} by #{group_admin}. Please click http://goo.gl/XeBk2c to download the app."
 >>>>>>> 866012fe3bd95731a22b1bac81f2b14ea2b36310
 				not_in_a_group << phone_number
 			end
