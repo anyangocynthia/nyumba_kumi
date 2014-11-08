@@ -47,7 +47,7 @@ class HomeController < ApplicationController
 				user.user_type = "Member"
 				user.save!
 
-				gateway.send user.phone_number, "Hi. You have been added to #{group_name} in the Ujirani app by #{group_admin}. Please click http://goo.gl/XeBk2c to download the app."
+				gateway.send user.phone_number, "Hi. You have been added to the group #{group_name} in the Ujirani app by #{group_admin}. Please click http://goo.gl/XeBk2c to download the app."
 				not_in_a_group << phone_number
 			end
 		end
