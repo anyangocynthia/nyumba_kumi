@@ -75,7 +75,12 @@ class UsersController < ApplicationController
         @user.photo = File.open(user_params[:photo].tempfile)
         @user.save!
       end
-      user_params[:house_id] = House.find_or_create_by!(house_name: user_params[:house_estate]).id
+      if user_params[:house_estate] && user_params[:house_number]
+        house_id = House.find_or_create_by!(house_name: user_params[:house_estate]).id
+        @user.house_id = house_id
+        @user.house_number = user_params[:house_number]
+        @user.save!
+      end
       if @user.update(user_params.except(:phone_number).except(:photo))
         user = {}
         user[:id] = @user.id
