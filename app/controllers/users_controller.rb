@@ -71,14 +71,14 @@ class UsersController < ApplicationController
       # if user_params[:phone_number]
       #   user_params[:phone_number] = @user.phone_number
       # end
-      if user_params[:photo]
-        @user.photo = File.open(user_params[:photo].tempfile)
+      if params[:photo]
+        @user.photo = File.open(params[:photo].tempfile)
         @user.save!
       end
-      if user_params[:house_estate] && user_params[:house_number]
-        house_id = House.find_or_create_by!(house_name: user_params[:house_estate]).id
+      if params[:house_estate] && params[:house_number]
+        house_id = House.find_or_create_by!(house_name: params[:house_estate]).id
         @user.house_id = house_id
-        @user.house_number = user_params[:house_number]
+        @user.house_number = params[:house_number]
         @user.save!
       end
       if @user.update(user_params.except(:phone_number).except(:photo))
