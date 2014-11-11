@@ -99,6 +99,9 @@ If is_in_a_group is true, the completing profile  screen is shown else, the crea
         "phone_number": "254722123456",
         "group_id": 1,
         "user_type": "Admin",
+        "house_name": "My House",
+        "house_number": "40",
+        "photo": "41.242.2.154:3001/system/users/photos/000/000/476/original/RackMultipart20141111-21067-1xpy3vr?1415719508",
         "member_since": "19/08/2014 09:15PM"
     }
 
