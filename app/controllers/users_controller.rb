@@ -17,6 +17,9 @@ class UsersController < ApplicationController
     user[:group_id] = @user.group_id
     user[:in_a_group] = !@user.group_id.nil?
     user[:user_type] = @user.user_type
+    user[:house_name] = House.find(@user.house_id).house_name
+    user[:house_number] = @user.house_number
+    user[:photo] = @user.photo.url
     user[:member_since] = "#{@user.created_at.strftime("%d/%m/%Y")} #{@user.created_at.strftime("%I:%M%p")}"
 
     render json: user
