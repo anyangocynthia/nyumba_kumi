@@ -72,7 +72,7 @@ class GroupsController < ApplicationController
       user[:group_id] = u.group_id
       user[:in_a_group] = !u.group_id.nil?
       user[:user_type] = u.user_type
-      user[:house_name] = House.find(u.house_id).house_name
+      user[:house_name] = House.find(u.house_id).house_name if !u.house_id.nil?
       user[:house_number] = u.house_number
       user[:photo] = "#{ENV['ROOT_URL']}#{u.photo.url}"
       user[:member_since] = "#{u.created_at.strftime("%d/%m/%Y")} #{u.created_at.strftime("%I:%M%p")}"
