@@ -64,18 +64,18 @@ class GroupsController < ApplicationController
 
   def members
     members = []
-    @group.users.each do |user|
+    @group.users.each do |u|
       user = {}
-      user[:id] = user.id
-      user[:name] = user.name
-      user[:phone_number] = user.phone_number
-      user[:group_id] = user.group_id
-      user[:in_a_group] = !user.group_id.nil?
-      user[:user_type] = user.user_type
-      user[:house_name] = House.find(user.house_id).house_name
-      user[:house_number] = user.house_number
-      user[:photo] = "#{ENV['ROOT_URL']}#{@user.photo.url}"
-      user[:member_since] = "#{@user.created_at.strftime("%d/%m/%Y")} #{@user.created_at.strftime("%I:%M%p")}"
+      user[:id] = u.id
+      user[:name] = u.name
+      user[:phone_number] = u.phone_number
+      user[:group_id] = u.group_id
+      user[:in_a_group] = !u.group_id.nil?
+      user[:user_type] = u.user_type
+      user[:house_name] = House.find(u.house_id).house_name
+      user[:house_number] = u.house_number
+      user[:photo] = "#{ENV['ROOT_URL']}#{u.photo.url}"
+      user[:member_since] = "#{u.created_at.strftime("%d/%m/%Y")} #{u.created_at.strftime("%I:%M%p")}"
       members << user
     end
     render json: members
