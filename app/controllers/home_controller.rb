@@ -36,8 +36,8 @@ class HomeController < ApplicationController
 		in_a_group = []
 		not_in_a_group = []
 		users.each do |u|
-			phone_number = u[:phone_number]
 			name = u[:name]
+			phone_number = PhonyRails.normalize_number PhonyRails.normalize_number(u[:phone_number]), country_number: "254"
 			user = User.find_or_create_by! phone_number: phone_number, name: name
 			is_in_a_group = !user.group_id.nil?
 			if is_in_a_group
