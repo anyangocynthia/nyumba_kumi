@@ -17,7 +17,7 @@
         var myLatlng = new google.maps.LatLng(-1.2137278, 36.8928517);
         var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
-        $.get('http://localhost:3000/incidents.json', function(data) {
+        $.get('/incidents.json', function(data) {
         	$.each(data, function(key, incident){
         		console.log(incident);
         		coords = incident.location;
