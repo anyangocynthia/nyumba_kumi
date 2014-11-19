@@ -7,6 +7,7 @@
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4u6EYHG6OxEBHORkBbKXUm7OQBySIxr8">
     </script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script type="text/javascript">
       function initialize() {
         var mapOptions = {
@@ -16,9 +17,9 @@
         var myLatlng = new google.maps.LatLng(-1.2137278, 36.8928517);
         var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
-        $.get('/incidents.json', function(data) {
+        $.get('http://localhost:3000/incidents.json', function(data) {
         	$.each(data, function(key, incident){
-        		// console.log(city.name);
+        		console.log(incident);
         		coords = incident.location;
         		console.log(coords)
         		lat = parseFloat(coords.substr(0, coords.indexOf(', ')))
@@ -30,7 +31,7 @@
         		    animation: google.maps.Animation.DROP,
         		    title:"Hello World!"
         		});
-        	}
+        	})
         });
         google.maps.event.addListener(marker, 'click', toggleBounce);
       }
