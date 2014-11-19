@@ -17,15 +17,20 @@
         var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
         $.get('/incidents.json', function(data) {
-        	var marker = new google.maps.Marker({
+        	$.each(data, function(key, incident){
+        		// console.log(city.name);
         		coords = incident.location;
+        		console.log(coords)
         		lat = parseFloat(coords.substr(0, coords.indexOf(', ')))
         		lng = parseFloat(coords.substr(coords.indexOf(', ')+2, coords.length))
-        	    position: new google.maps.LatLng(lat, lng),
-        	    map: map,
-        	    animation: google.maps.Animation.DROP,
-        	    title:"Hello World!"
-        	});
+
+        		var marker = new google.maps.Marker({
+        		    position: new google.maps.LatLng(lat, lng),
+        		    map: map,
+        		    animation: google.maps.Animation.DROP,
+        		    title:"Hello World!"
+        		});
+        	}
         });
         google.maps.event.addListener(marker, 'click', toggleBounce);
       }
