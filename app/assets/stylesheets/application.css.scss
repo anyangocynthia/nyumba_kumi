@@ -10,8 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= depend_on_asset "layers.png"
- *= depend_on_asset "layers-2x.png"
+ * depend_on_asset "layers.png"
+ * depend_on_asset "layers-2x.png"
  *= require_tree .
  *= require leaflet
  *= require bootstrap.min
@@ -20,3 +20,5 @@
  *= require font-awesome
  *= require_self
  */
+
+ @import "semantic-ui";

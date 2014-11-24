@@ -23,9 +23,10 @@ gem 'google_places'
 gem 'httparty'
 gem 'phony_rails'
 gem "paperclip"#, :git => "git://github.com/thoughtbot/paperclip.git"
-gem 'leaflet-rails'
+# gem 'leaflet-rails'
 gem 'gcm'
 gem 'gmaps4rails'
+gem 'semantic-ui-sass'
 
 group :development do
   gem 'better_errors'
