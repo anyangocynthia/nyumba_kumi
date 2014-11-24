@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117212141) do
+ActiveRecord::Schema.define(version: 20141124192036) do
 
   create_table "accounts", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -78,8 +78,10 @@ ActiveRecord::Schema.define(version: 20141117212141) do
     t.string   "phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
 
+  add_index "companies", ["account_id"], name: "index_companies_on_account_id"
   add_index "companies", ["service_id"], name: "index_companies_on_service_id"
 
   create_table "devices", force: true do |t|
