@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'dashboard/index'
 
-  get 'dashbord/index'
+  get 'map', to: 'dashboard#map', as: 'map'
 
   resources :devices
 
@@ -55,4 +55,6 @@ Rails.application.routes.draw do
   match 'add_services', to: 'home#add_services', as: 'add_services', via: "post"
   
   match 'panic_menu_actions', to: 'home#panic_menu_actions', as: 'panic_menu_actions', via: "post"
+
+  get 'company/:id/incidents', to: 'companies#incidents', as: 'company_incidents'
 end

@@ -1,0 +1,20 @@
+<div class="ui purple inverted menu">
+  <a class="active item">
+    <i class="home icon"></i> Home
+  </a>
+  <a class="item" href=<%= dashboard_index_path %>>
+    <i class="settings icon"></i> Dashboard
+  </a>
+  <a class="item" href="/map">
+    <i class="pin icon"></i> Map
+  </a>
+  <div class="right menu">
+  	<div class="ui dropdown item">
+  	  <i class="dropdown icon"></i>
+  	  <%= current_account.email %>
+  	  <div class="menu">
+  	    <a class="item">Log Out</a>
+  	  </div>
+  	</div>
+  </div>
+</div>

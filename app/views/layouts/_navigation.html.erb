@@ -17,10 +17,12 @@
     </div>
     <div class="collapse navbar-collapse appiNav">
       <ul class="nav navbar-nav">
+        <% if account_signed_in? %>
+          <li><a href="<%= new_account_registration_path %>">Sign Up</a></li>
+          <li><a href="<%= new_account_session_path %>">Sign In</a></li>
+        <% end %>
         <li><a href="#featureWrap">Features</a></li>
         <li><a href="#productWrap">The App</a></li>
-        <li><a href="#pricingWrap">Design</a></li>
-        <li><a href="#testimonialsWrap">Testimonials</a></li>
         <li><a href="#contactWrap">Contact Us</a></li>
       </ul>
     </div><!--/.nav-collapse -->

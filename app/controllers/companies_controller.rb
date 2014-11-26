@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy, :branches, :nearest_branch]
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :branches, :nearest_branch, :incidents]
 
   # GET /companies
   # GET /companies.json
@@ -19,6 +19,19 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1/edit
   def edit
+  end
+
+  def incidents
+    incidents = {}
+    @company.incidents.each do |incident|
+      incidents[:location] = incident.location,
+      incidents[:user_name] = incident.user.name,
+      incidents[:user_phone] = incident.user.phone_number,
+      incidents[:house_name] = House.find(incident.user.house_id).house_name,
+      incidents[:house_number] = incident.user.house_number,
+      incidents[:resolved] = incident.resolved ? "YES", : "NO"
+    end
+    render json: incidents
   end
 
   # POST /companies
