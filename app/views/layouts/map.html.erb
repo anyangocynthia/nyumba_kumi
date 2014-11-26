@@ -44,7 +44,7 @@
               '</div>'+
               '</div>';
 
-        $.get('/incidents.json', function(data) {
+        $.get('/company_incidents', function(data) {
           $.each(data, function(key, incident){
             console.log(incident);
             coords = incident.location;
@@ -56,10 +56,10 @@
                 position: new google.maps.LatLng(lat, lng),
                 map: map,
                 animation: google.maps.Animation.DROP,
-                title: incident.name + " (" + incident.phone_number + ")"
+                title: incident.user_name + " (" + incident.user_phone + ")"
             });
             var infowindow = new google.maps.InfoWindow({
-                content: incident.name
+                content: incident.user_name
             });
             google.maps.event.addListener(marker, 'click', function() {
               infowindow.open(map,marker);
