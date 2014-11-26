@@ -24,14 +24,15 @@ class CompaniesController < ApplicationController
   def incidents
     incidents = []
     @company.incidents.each do |incident|
-      inc = {}
-      inc[:location] = incident.location,
-      inc[:user_name] = incident.user.name,
-      inc[:user_phone] = incident.user.phone_number,
-      inc[:house_name] = House.find(incident.user.house_id).house_name,
-      inc[:house_number] = incident.user.house_number,
-      inc[:resolved] = incident.resolved ? "YES" : "NO"
-      
+      inc = {
+        :location => incident.location,
+        :user_name => incident.user.name,
+        :user_phone => incident.user.phone_number,
+        :house_name => House.find(incident.user.house_id).house_name,
+        :house_number => incident.user.house_number,
+        :resolved => incident.resolved ? "YES" : "NO"
+      }
+
       incidents << inc
     end
     render json: incidents
