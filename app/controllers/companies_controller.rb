@@ -23,7 +23,7 @@ class CompaniesController < ApplicationController
 
   def incidents
     incidents = []
-    @company.incidents.each do |incident|
+    current_account.companies.first.incidents.each do |incident|
       inc = {
         :location => incident.location,
         :user_name => incident.user.name,
