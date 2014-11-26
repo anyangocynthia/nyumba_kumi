@@ -56,5 +56,5 @@ Rails.application.routes.draw do
   
   match 'panic_menu_actions', to: 'home#panic_menu_actions', as: 'panic_menu_actions', via: "post"
 
-  get 'companies/:id/incidents', to: 'companies#incidents', as: 'company_incidents'
+  get 'companies_incidents', to: 'companies#incidents', as: 'company_incidents'
 end
