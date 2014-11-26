@@ -29,7 +29,7 @@ class CompaniesController < ApplicationController
       incidents[:user_phone] = incident.user.phone_number,
       incidents[:house_name] = House.find(incident.user.house_id).house_name,
       incidents[:house_number] = incident.user.house_number,
-      incidents[:resolved] = incident.resolved ? "YES", : "NO"
+      incidents[:resolved] = incident.resolved ? "YES" : "NO"
     end
     render json: incidents
   end
