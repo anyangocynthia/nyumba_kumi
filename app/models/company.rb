@@ -13,6 +13,7 @@
 
 class Company < ActiveRecord::Base
   belongs_to :service
+  belongs_to :account
   has_many :branches
   has_many :incidents
 
