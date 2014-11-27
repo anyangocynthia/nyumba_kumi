@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124192036) do
+ActiveRecord::Schema.define(version: 20141127081702) do
 
   create_table "accounts", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 20141124192036) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "company_id"
+    t.boolean  "viewed",          default: false
   end
 
   add_index "incidents", ["company_id"], name: "index_incidents_on_company_id"
