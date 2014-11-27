@@ -94,6 +94,7 @@
               var infowindow = new google.maps.InfoWindow({
                   content: incident.user_name
               });
+              new Audio('assets/siren.mp3').play()
               google.maps.event.addListener(marker, 'click', function() {
                 infowindow.open(map,marker);
               });
