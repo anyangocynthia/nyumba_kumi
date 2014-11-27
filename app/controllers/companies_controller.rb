@@ -32,9 +32,28 @@ class CompaniesController < ApplicationController
         :house_number => incident.user.house_number,
         :resolved => incident.resolved ? "YES" : "NO"
       }
-
+      current_account.companies.first.incidents.update_all(viewed: true)
       incidents << inc
     end
+
+    render json: incidents
+  end
+
+  def unviewed_incidents
+    incidents = []
+    current_account.companies.first.incidents.where(viewed: false).each do |incident|
+      inc = {
+        :location => incident.location,
+        :user_name => incident.user.name,
+        :user_phone => incident.user.phone_number,
+        :house_name => House.find(incident.user.house_id).house_name,
+        :house_number => incident.user.house_number,
+        :resolved => incident.resolved ? "YES" : "NO"
+      }
+      current_account.companies.first.incidents.update_all(viewed: true)
+      incidents << inc
+    end
+
     render json: incidents
   end
 

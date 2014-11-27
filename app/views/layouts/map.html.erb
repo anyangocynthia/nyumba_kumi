@@ -76,7 +76,7 @@
 
       function executeQuery() {
         $.ajax({
-          url: 'company_incidents',
+          url: 'unviewed_incidents',
           success: function(data) {
             $.each(data, function(key, incident){
               console.log(incident);
