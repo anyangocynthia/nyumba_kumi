@@ -2,15 +2,20 @@
   <a class="active item">
     <i class="home icon"></i> Home
   </a>
-  <a class="item" href=<%= dashboard_index_path %>>
+  <!-- <a class="item" href=<%= dashboard_index_path %>>
     <i class="settings icon"></i> Dashboard
-  </a>
+  </a> -->
   <a class="item" href="/map">
     <i class="pin icon"></i> Map
   </a>
+  <a class="item" href="<%= new_company_path %>">
+    <i class="plus icon"></i> Add a company
+  </a>
+  <a class="item" href="<%= new_branch_path %>">
+    <i class="plus icon"></i> Add a branch
+  </a>
   <div class="right menu">
   	<div class="ui dropdown item">
-  	  <i class="dropdown icon"></i>
       <% if account_signed_in? %>
         <%= link_to "Sign Out", destroy_account_session_path, :method => :delete %>
       <% end %>
