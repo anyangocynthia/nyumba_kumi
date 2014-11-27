@@ -28,7 +28,7 @@ class BranchesController < ApplicationController
 
     respond_to do |format|
       if @branch.save
-        format.html { redirect_to @branch, notice: 'Branch was successfully created.' }
+        format.html { redirect_to map_path, notice: 'Branch was successfully created.' }
         format.json { render :show, status: :created, location: @branch }
       else
         format.html { render :new }

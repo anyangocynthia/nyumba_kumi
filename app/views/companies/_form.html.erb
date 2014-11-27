@@ -1,3 +1,4 @@
+<div class="authform">
 <%= form_for(@company) do |f| %>
   <% if @company.errors.any? %>
     <div id="error_explanation">
@@ -11,23 +12,24 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :service_id %><br>
     <%= f.text_field :service_id %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :location %><br>
     <%= f.text_field :location %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :phone_number %><br>
     <%= f.text_field :phone_number %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Sign up', :class => 'button right' %>
   </div>
 <% end %>
+</div>

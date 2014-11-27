@@ -1,5 +1,7 @@
 // This manifest pulls a lot of files from 
 //
+//= require jquery
+//= require jquery_ujs
 //= require semantic-ui
 
 

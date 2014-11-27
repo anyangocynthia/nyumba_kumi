@@ -45,7 +45,8 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
+        @company.update(account_id: current_account.id)
+        format.html { redirect_to new_branch_path, notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new }
@@ -95,6 +96,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :service_id, :location, :phone_number)
+      params.require(:company).permit(:name, :service_id, :location, :phone_number, :account_id)
     end
 end

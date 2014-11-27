@@ -16,6 +16,18 @@ class ApplicationController < ActionController::Base
     6.times.map { cs.sample }.join.upcase
   end
 
+  def after_sign_in_path_for(res)
+    map_path
+  end
+
+  def after_sign_out_path_for(arg)
+    new_account_session_path
+  end
+
+  def after_sign_up_path_for(resource)
+    new_company_path
+  end
+
   def send_verification_code user
     gateway = SMSGateway.new
     code = generate_verification_code

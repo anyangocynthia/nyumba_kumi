@@ -17,9 +17,11 @@
     </div>
     <div class="collapse navbar-collapse appiNav">
       <ul class="nav navbar-nav">
-        <% if account_signed_in? %>
+        <% if !account_signed_in? %>
           <li><a href="<%= new_account_registration_path %>">Sign Up</a></li>
           <li><a href="<%= new_account_session_path %>">Sign In</a></li>
+        <% else %>
+          <li><%= link_to "Map", map_path %></li>
         <% end %>
         <li><a href="#featureWrap">Features</a></li>
         <li><a href="#productWrap">The App</a></li>

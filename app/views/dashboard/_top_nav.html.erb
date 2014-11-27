@@ -11,10 +11,12 @@
   <div class="right menu">
   	<div class="ui dropdown item">
   	  <i class="dropdown icon"></i>
-  	  <%= current_account.email %>
-  	  <div class="menu">
+      <% if account_signed_in? %>
+        <%= link_to "Sign Out", destroy_account_session_path, :method => :delete %>
+      <% end %>
+  	  <!-- <div class="menu">
   	    <a class="item">Log Out</a>
-  	  </div>
+  	  </div> -->
   	</div>
   </div>
 </div>

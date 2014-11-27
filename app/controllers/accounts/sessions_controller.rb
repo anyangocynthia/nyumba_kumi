@@ -1,5 +1,5 @@
 class Accounts::SessionsController < Devise::SessionsController
-	layout "security"
+	# layout "security"
   # def new
   #   super
   # end
