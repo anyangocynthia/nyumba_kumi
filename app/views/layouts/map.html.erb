@@ -60,10 +60,12 @@
                 position: new google.maps.LatLng(lat, lng),
                 map: map,
                 animation: google.maps.Animation.DROP,
-                title: incident.user_name + " (" + incident.user_phone + ")"
+                title: incident.user_name + " (" + incident.user_phone + ")",
+                // icon: incident.user_photo
             });
             var infowindow = new google.maps.InfoWindow({
-                content: incident.user_name
+                content: "<div id='content'><table><tr><td><img src=" + incident.user_photo + "/><td>Name: " + incident.user_name +
+                "<br>Phone number: " + incident.user_phone + "<br>Estate: " + incident.house_name + "<br>House number: " + incident.house_number + "</td></tr></table></div>"
             });
             google.maps.event.addListener(marker, 'click', function() {
               infowindow.open(map,marker);
@@ -89,10 +91,12 @@
                   position: new google.maps.LatLng(lat, lng),
                   map: map,
                   animation: google.maps.Animation.DROP,
-                  title: incident.user_name + " (" + incident.user_phone + ")"
+                  title: incident.user_name + " (" + incident.user_phone + ")",
+                  // icon: incident.user_photo
               });
               var infowindow = new google.maps.InfoWindow({
-                  content: incident.user_name
+                  content: "<div id='content'><table><tr><td><img src=" + incident.user_photo + "/><td>" + incident.user_name +
+                  "<br>Phone number: " + incident.user_phone + "<br>Estate: " + incident.house_name + "<br>House number: " + incident.house_number + "</td></tr></table></div>"
               });
               new Audio('assets/siren.mp3').play()
               google.maps.event.addListener(marker, 'click', function() {
