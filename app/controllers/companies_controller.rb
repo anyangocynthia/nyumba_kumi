@@ -27,7 +27,7 @@ class CompaniesController < ApplicationController
     current_account.companies.each do |company|
       company.incidents.each do |incident|
         inc = {
-          :incident_type => incident.service,
+          :incident_type => incident.incident_type,
           :location => incident.location,
           :user_name => incident.user.name,
           :user_phone => incident.user.phone_number,
