@@ -23,8 +23,8 @@ class CompaniesController < ApplicationController
 
   def incidents
     incidents = []
-    inc = {}
     current_account.companies.each do |company|
+      all = []
       company.incidents.each do |incident|
         inc = {
           :incident_type => incident.incident_type,
@@ -37,8 +37,9 @@ class CompaniesController < ApplicationController
           :resolved => incident.resolved ? "YES" : "NO"
         }
         incident.update(viewed: true)
+        all << inc
       end
-      incidents << { Service.find(company.service_id).name => inc }
+      incidents << { Service.find(company.service_id).name => all }
     end
     render json: incidents
   end
