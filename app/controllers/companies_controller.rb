@@ -23,9 +23,11 @@ class CompaniesController < ApplicationController
 
   def incidents
     incidents = []
+    inc = {}
     current_account.companies.each do |company|
       company.incidents.each do |incident|
         inc = {
+          :incident_type => incident.service,
           :location => incident.location,
           :user_name => incident.user.name,
           :user_phone => incident.user.phone_number,
@@ -34,9 +36,9 @@ class CompaniesController < ApplicationController
           :house_number => incident.user.house_number,
           :resolved => incident.resolved ? "YES" : "NO"
         }
-        current_account.companies.first.incidents.update_all(viewed: true)
-        incidents << { Service.find(company.service_id).name => inc }
+        incident.update(viewed: true)
       end
+      incidents << { Service.find(company.service_id).name => inc }
     end
     render json: incidents
   end
