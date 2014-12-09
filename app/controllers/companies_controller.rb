@@ -32,7 +32,7 @@ class CompaniesController < ApplicationController
           :user_name => incident.user.name,
           :user_phone => incident.user.phone_number,
           :user_photo => incident.user.photo.url,
-          :house_name => incident.user.house_id.nil?? House.find(incident.user.house_id).house_name : nil,
+          :house_name => !incident.user.house_id.nil?? House.find(incident.user.house_id).house_name : nil,
           :house_number => incident.user.house_number,
           :resolved => incident.resolved ? "YES" : "NO"
         }
@@ -52,7 +52,7 @@ class CompaniesController < ApplicationController
         :user_name => incident.user.name,
         :user_phone => incident.user.phone_number,
         :user_photo => incident.user.photo.url,
-        :house_name => incident.user.house_id.nil?? House.find(incident.user.house_id).house_name : nil,
+        :house_name => !incident.user.house_id.nil?? House.find(incident.user.house_id).house_name : nil,
         :house_number => incident.user.house_number,
         :resolved => incident.resolved ? "YES" : "NO"
       }
