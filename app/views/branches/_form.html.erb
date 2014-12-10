@@ -14,7 +14,7 @@
 
   <div class="field">
     <%= f.label :company_id %><br>
-    <%= f.select :company_id, Company.all.collect {|company| [ company.name, company.id] }, { include_blank: 'Select Company' } %>
+    <%= f.select :company_id, current_account.companies.collect {|company| [ company.name, company.id] }, { include_blank: 'Select Company' } %>
   </div>
   <div class="field">
     <%= f.label :phone_number %><br>
