@@ -84,8 +84,8 @@ class UsersController < ApplicationController
         @user.photo = File.open(params[:photo].tempfile)
         @user.save!
       end
-      if params[:house_name] && params[:house_number]
-        house_id = House.find_or_create_by!(house_name: params[:house_name]).id
+      if params[:user][:house_name] && user_params[:house_number]
+        house_id = House.find_or_create_by!(house_name: params[:user][:house_name]).id
         @user.house_id = house_id
         @user.house_number = params[:house_number]
         @user.save!
