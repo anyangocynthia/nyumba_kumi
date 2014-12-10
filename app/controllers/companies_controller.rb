@@ -52,9 +52,9 @@ class CompaniesController < ApplicationController
         inc = {
           :incident_type => incident.incident_type,
           :location => incident.location,
-          :user_name => incident.user.name,
-          :user_phone => incident.user.phone_number,
-          :user_photo => incident.user.photo.url,
+          :user_name => !incident.user_id.nil?? incident.user.name : "",
+          :user_phone => !incident.user_id.nil?? incident.user.phone_number : "",
+          :user_photo => !incident.user_id.nil?? incident.user.photo.url : "",
           :house_name => !incident.user.house_id.nil?? House.find(incident.user.house_id).house_name : nil,
           :house_number => incident.user.house_number,
           :resolved => incident.resolved ? "YES" : "NO"
