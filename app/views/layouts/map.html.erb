@@ -106,29 +106,55 @@
         $.ajax({
           url: 'unviewed_incidents',
           success: function(data) {
-            $.each(data, function(key, incident){
-              console.log(incident);
-              coords = incident.location;
-              console.log(coords)
-              lat = parseFloat(coords.substr(0, coords.indexOf(', ')))
-              lng = parseFloat(coords.substr(coords.indexOf(', ')+2, coords.length))
+            for (var i = 0; i < data.length; i++) {
+              $.each(data[i], function(key, incidents){
+                for (var j = 0; j < incidents.length; j++) {
+                  var incident = incidents[j]
+                  coords = incident.location;
+                  console.log(coords)
+                  lat = parseFloat(coords.substr(0, coords.indexOf(', ')))
+                  lng = parseFloat(coords.substr(coords.indexOf(', ')+2, coords.length))
 
-              var marker = new google.maps.Marker({
-                  position: new google.maps.LatLng(lat, lng),
-                  map: map,
-                  animation: google.maps.Animation.DROP,
-                  title: incident.user_name + " (" + incident.user_phone + ")",
-                  // icon: incident.user_photo
-              });
-              var infowindow = new google.maps.InfoWindow({
-                  content: "<div id='content'><table><tr><td><img src=" + incident.user_photo + "/><td>" + incident.user_name +
-                  "<br>Phone number: " + incident.user_phone + "<br>Estate: " + incident.house_name + "<br>House number: " + incident.house_number + "</td></tr></table></div>"
-              });
-              new Audio('assets/siren.mp3').play()
-              google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map,marker);
-              });
-            })
+                  var marker = new google.maps.Marker({
+                      position: new google.maps.LatLng(lat, lng),
+                      map: map,
+                      animation: google.maps.Animation.DROP,
+                      title: incident.user_name + " (" + incident.user_phone + ")",
+                      // icon: incident.user_photo
+                  });
+                  var infowindow = new google.maps.InfoWindow({
+                      content: "<div id='content'><table><tr><td><img src=" + incident.user_photo + "/><td>Name: " + incident.user_name +
+                      "<br>Phone number: " + incident.user_phone + "<br>Estate: " + incident.house_name + "<br>House number: " + incident.house_number + "</td></tr></table></div>"
+                  });
+                  google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.open(map,marker);
+                  });
+                }
+              })
+            };
+            // $.each(data, function(key, incident){
+            //   console.log(incident);
+            //   coords = incident.location;
+            //   console.log(coords)
+            //   lat = parseFloat(coords.substr(0, coords.indexOf(', ')))
+            //   lng = parseFloat(coords.substr(coords.indexOf(', ')+2, coords.length))
+
+            //   var marker = new google.maps.Marker({
+            //       position: new google.maps.LatLng(lat, lng),
+            //       map: map,
+            //       animation: google.maps.Animation.DROP,
+            //       title: incident.user_name + " (" + incident.user_phone + ")",
+            //       // icon: incident.user_photo
+            //   });
+            //   var infowindow = new google.maps.InfoWindow({
+            //       content: "<div id='content'><table><tr><td><img src=" + incident.user_photo + "/><td>" + incident.user_name +
+            //       "<br>Phone number: " + incident.user_phone + "<br>Estate: " + incident.house_name + "<br>House number: " + incident.house_number + "</td></tr></table></div>"
+            //   });
+            //   new Audio('assets/siren.mp3').play()
+            //   google.maps.event.addListener(marker, 'click', function() {
+            //     infowindow.open(map,marker);
+            //   });
+            // })
           }
         });
         setTimeout(executeQuery, 5000); // you could choose not to continue on failure...
