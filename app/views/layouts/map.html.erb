@@ -126,6 +126,7 @@
                       content: "<div id='content'><table><tr><td><img src=" + incident.user_photo + "/><td>Name: " + incident.user_name +
                       "<br>Phone number: " + incident.user_phone + "<br>Estate: " + incident.house_name + "<br>House number: " + incident.house_number + "</td></tr></table></div>"
                   });
+                  new Audio('assets/siren.mp3').play()
                   google.maps.event.addListener(marker, 'click', function() {
                     infowindow.open(map,marker);
                   });
