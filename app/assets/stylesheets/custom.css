@@ -60,7 +60,7 @@ h3.sectionTitle {
 	/**
 	background: url(../assets/80.png);
 	**/
-	background: #fff;
+	background: #2B4F81;
 	border: 0 none;
 	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
@@ -76,7 +76,7 @@ h3.sectionTitle {
 	font-weight: 700;
 }
 .navbar-inverse .navbar-brand {
-    color: #012842;
+    color: #2B4F81;
 }
 .navbar-inverse .navbar-brand .fa-stack {
 	font-size: 28px;
@@ -87,11 +87,12 @@ h3.sectionTitle {
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
     background: none;
-    color: #012842;
+    color: #ffa500;
 }
 .navbar > .container .navbar-brand,
 .navbar > .container-fluid .navbar-brand {
     margin-left: 0;
+    color: rgb(255, 165, 0);
 }
 .navbar-nav {
 	float: right;
@@ -104,10 +105,11 @@ h3.sectionTitle {
     font-weight: 400;
     padding: 30px 15px;
     text-shadow: none;
+    color: rgb(255, 165, 0);
 }
 .navbar .nav > li > a:hover,
 .navbar .nav > li > a:focus {
-    color: #bd1e2c;
+    color: #ffa500;
 }
 .navbar-inverse .navbar-toggle {
 	background: #FFFFFF;
@@ -433,6 +435,7 @@ footer .social a .fa-inverse {
 	.navbar-inverse .navbar-nav > li > a {
 		font-size: 16px;
 		padding: 25px 12px;
+		color: rgb(255, 165, 0);
 	}
 	.navbar > .container .navbar-brand,
 	.navbar > .container-fluid .navbar-brand {
