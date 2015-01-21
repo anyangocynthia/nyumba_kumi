@@ -129,7 +129,7 @@ h3.sectionTitle {
 /********************************************************************/
 
 .jumbotron {
-	background: url(../assets/nai.jpg) no-repeat center center scroll; 
+	background: url(../assets/nairobi.png) no-repeat center center scroll; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -181,6 +181,7 @@ h3.sectionTitle {
 #featureWrap {
 	padding-top: 60px;
 	padding-bottom: 60px;
+	background-color: #000000;
 }
 #featureWrap .icon {
 	-webkit-transition:All 0.2s linear;
@@ -221,6 +222,7 @@ h3.sectionTitle {
 #productWrap {
 	padding-top: 60px;
 	padding-bottom: 60px;
+	background-color: #000000;
 }
 #productWrap .productFeatures {
 	margin-top: 20px;
@@ -245,6 +247,7 @@ h3.sectionTitle {
 #pricingWrap {
 	padding-top: 60px;
 	padding-bottom: 60px;
+	background-color: #000000;
 }
 #pricingWrap .priceTable {
 	border: 1px solid #D9D9D9;
@@ -350,6 +353,7 @@ h3.sectionTitle {
 #contactWrap {
 	padding-top: 60px;
 	padding-bottom: 60px;
+	background-color: #00000;
 }
 #contactWrap .overlay {
     background: url("../assets/60.png");
