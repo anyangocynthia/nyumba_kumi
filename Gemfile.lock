@@ -103,14 +103,15 @@ GEM
       thor (~> 0.14)
     font-awesome-rails (4.1.0.0)
       railties (>= 3.2, < 5.0)
-    foundation-rails (5.3.0.1)
-      railties (>= 3.1.0)
-      sass (>= 3.2.0)
     gcm (0.0.9)
       httparty
       json
     geocoder (1.2.2)
-    gmaps4rails (2.1.2)
+    gon (5.2.3)
+      actionpack (>= 2.3.0)
+      json
+      multi_json
+      request_store (>= 1.0.5)
     google_places (0.22.0)
       httparty (~> 0.13.1)
     haml (4.0.5)
@@ -217,6 +218,7 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     remotipart (1.2.1)
+    request_store (1.1.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rspec-core (3.0.2)
@@ -251,8 +253,6 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0.4)
-    semantic-ui-sass (0.19.3.1)
-      sass (~> 3.2)
     slop (3.5.0)
     spring (1.1.3)
     sprockets (2.11.0)
@@ -307,10 +307,9 @@ DEPENDENCIES
   factory_girl_rails
   faker
   figaro (>= 1.0.0.rc1)
-  foundation-rails
   gcm
   geocoder
-  gmaps4rails
+  gon
   google_places
   high_voltage
   httparty
@@ -331,7 +330,6 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   selenium-webdriver
-  semantic-ui-sass
   spring
   sqlite3
   turbolinks

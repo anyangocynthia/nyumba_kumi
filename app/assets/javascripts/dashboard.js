@@ -2,25 +2,41 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require semantic-ui
+// require jquery.infinite-pages
+//= require jquery-1.11.1.min
+//= require jquery_ujs
+// require bootstrap.min
+//= require arjuna
+//= require tasks
+//= require moment.min
+//= require jquery-ui.custom.min
+//= require fullcalendar.min
+// require jquery.checkboxes
+// require jquery.datetimepicker
+// require dropzone
+//= require owl-carousel-plugin
+//= require owl-carousel
+//= require jquery.flot.min
+//= require jquery.dataTables
+//= require DT_bootstrap
+//= require jquery.flot.tooltip.min
+//= require jquery.flot.spline
+//= require jquery.flot.pie.min
+//= require jquery.flot.resize
+//= require jquery.flot.grow
+//= require xcharts.min
+//= require d3.v3.min
+// require cal-heatmap.min
+// require underscore.1.5.2.min
+//= require raphael-min
+//= require morris.min
+//= require morris-script
+//= require companies
+//= require incidents
+//= require_self
+// require_tree .
 
-
-
-var map;
-var ajaxRequest;
-var plotlist;
-var plotlayers=[];
-
-function initmap() {
-  // set up the map
-  map = new L.Map('map');
-
-  // create the tile layer with correct attribution
-  var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-  var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-  var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 12, attribution: osmAttrib});   
-
-  // start the map in South-East England
-  map.setView(new L.LatLng(51.3, 0.7),9);
-  map.addLayer(osm);
-}
+$(function() {
+	alert("u");
+	// $('#nav-link').html('<a href="#"><i class="fa fa-dashboard"></i> Map</a>');
+});

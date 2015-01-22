@@ -13,7 +13,7 @@ gem 'spring',        group: :development
 gem 'devise'
 # gem 'devise_invitable'
 gem 'figaro', '>= 1.0.0.rc1'
-gem 'foundation-rails'
+# gem 'foundation-rails'
 gem 'high_voltage'
 gem 'pundit'
 gem 'annotate'
@@ -25,8 +25,9 @@ gem 'phony_rails'
 gem "paperclip"#, :git => "git://github.com/thoughtbot/paperclip.git"
 # gem 'leaflet-rails'
 gem 'gcm'
-gem 'gmaps4rails'
-gem 'semantic-ui-sass'
+gem 'gon'
+# gem 'gmaps4rails'
+# gem 'semantic-ui-sass'
 
 group :development do
   gem 'better_errors'

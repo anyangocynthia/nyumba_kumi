@@ -12,11 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require bootstrap
 //= require flexslider
-//= require semantic-ui
+// require semantic-ui
 //= require leaflet
 //= require underscore
-//= require gmaps/google
+// require gmaps/google
 //= require_tree .

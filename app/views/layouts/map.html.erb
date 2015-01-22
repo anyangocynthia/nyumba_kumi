@@ -6,9 +6,10 @@
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ujirani App" %>">
     <%= stylesheet_link_tag 'dashboard', media: 'all', 'data-turbolinks-track' => false %>
     <%= javascript_include_tag 'dashboard', 'data-turbolinks-track' => false %>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <%= csrf_meta_tags %>
     <style type="text/css">
-      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+      html, body, #map-canvas { height: 100%; margin: 0; padding-top: 28px;}
     </style>
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4u6EYHG6OxEBHORkBbKXUm7OQBySIxr8">
@@ -16,6 +17,9 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
+      if (window.location.pathname == "/map") {
+        $('#nav-link').html('<a href="/dashboard/index"><i class="fa fa-dashboard"></i> Dashboard</a>').addClass("logo");
+      };
       // run the first time; all subsequent calls will take care of themselves
       setTimeout(executeQuery, 5000);
     });
@@ -27,26 +31,6 @@
         var myLatlng = new google.maps.LatLng(-1.2137278, 36.8928517);
         map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
-        var contentString = '<div id="content">'+
-              '<div id="siteNotice">'+
-              '</div>'+
-              '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-              '<div id="bodyContent">'+
-              '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-              'sandstone rock formation in the southern part of the '+
-              'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-              'south west of the nearest large town, Alice Springs; 450&#160;km '+
-              '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-              'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-              'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-              'Aboriginal people of the area. It has many springs, waterholes, '+
-              'rock caves and ancient paintings. Uluru is listed as a World '+
-              'Heritage Site.</p>'+
-              '<p>Attribution: Uluru, <a href="http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-              'http://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-              '(last visited June 22, 2009).</p>'+
-              '</div>'+
-              '</div>';
 
         $.get('/company_incidents', function(data) {
           for (var i = 0; i < data.length; i++) {
@@ -161,9 +145,10 @@
       }
     </script>
   </head>
-  <body>
+  <body class="cl-default fixed">
   	<%= render 'top_nav' %>
-    <div id="map-canvas"></div>
+    <div id="map-canvas" class="wrapper row-offcanvas row-offcanvas-left"></div>
     </div>
+    <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => false %>
   </body>
 </html>

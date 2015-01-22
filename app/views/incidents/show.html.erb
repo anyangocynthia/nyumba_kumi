@@ -1,34 +1,84 @@
-<p id="notice"><%= notice %></p>
+<section class="content">
+	<h1>
+			Incident
+			<small>#<%= @incident.id %></small>
+	</h1>
+	<!-- start:breadcrumb -->
+	<ol class="breadcrumb">
+			<li><a href="<%= user_path(@incident.user) %>"><i class="fa fa-user"></i> <%= @incident.user.name %></a></li>
+			<li><a href="#"><%= @incident.user.phone_number %></a></li>
+	</ol>
+	<!-- end:breadcrumb -->
 
-<p>
-  <strong>Type:</strong>
-  <%= @incident.type %>
-</p>
+	<!-- start:content -->
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="row">
+					<div class="col-md-4">
+					Type: <%= @incident.incident_type %>
+					</div>
+					<div class="col-md-4">
+					False Flag?: <%= @incident.false_flag %>
+					</div>
+					<div class="col-md-4">
+					Resolved: <%= @incident.resolved %>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-md-12">
+					<div id="incident-map"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-<p>
-  <strong>User:</strong>
-  <%= @incident.user %>
-</p>
+<%= javascript_tag do %>
+	alert(gon.incident)
+	var location = gon.incident
+  $("#incident-map").html(location)
+  <!-- function initialize() {
+  	coords = incident.location;
+  	lat = parseFloat(coords.substr(0, coords.indexOf(', ')))
+  	lng = parseFloat(coords.substr(coords.indexOf(', ')+2, coords.length))
+    var mapOptions = {
+      center: { lat: -1.288049, lng: 36.841828},
+      zoom: 12
+    };
+    var myLatlng = new google.maps.LatLng(-1.2137278, 36.8928517);
+    map = new google.maps.Map(document.getElementById('map-canvas'),
+        mapOptions);
 
-<p>
-  <strong>Notification:</strong>
-  <%= @incident.notification %>
-</p>
+    $.get('/company_incidents', function(data) {
+      for (var i = 0; i < data.length; i++) {
+        $.each(data[i], function(key, incidents){
+          for (var j = 0; j < incidents.length; j++) {
+            var incident = incidents[j]
+            coords = incident.location;
+            console.log(coords)
+            lat = parseFloat(coords.substr(0, coords.indexOf(', ')))
+            lng = parseFloat(coords.substr(coords.indexOf(', ')+2, coords.length))
 
-<p>
-  <strong>Location:</strong>
-  <%= @incident.location %>
-</p>
-
-<p>
-  <strong>Resolved:</strong>
-  <%= @incident.resolved %>
-</p>
-
-<p>
-  <strong>False flag:</strong>
-  <%= @incident.false_flag %>
-</p>
-
-<%= link_to 'Edit', edit_incident_path(@incident) %> |
-<%= link_to 'Back', incidents_path %>
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(lat, lng),
+                map: map,
+                animation: google.maps.Animation.DROP,
+                title: incident.user_name + " (" + incident.user_phone + ")",
+                // icon: incident.user_photo
+            });
+            var infowindow = new google.maps.InfoWindow({
+                content: "<div id='content'><table><tr><td><img src=" + incident.user_photo + "/><td>Name: " + incident.user_name +
+                "<br>Phone number: " + incident.user_phone + "<br>Estate: " + incident.house_name + "<br>House number: " + incident.house_number + "</td></tr></table></div>"
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.open(map,marker);
+            });
+          }
+        })
+      };
+    });
+  } -->
+<% end %>

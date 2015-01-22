@@ -1,6 +1,8 @@
 class IncidentsController < ApplicationController
   before_action :set_incident, only: [:show, :edit, :update, :destroy]
 
+  layout "dashboard"
+
   # GET /incidents
   # GET /incidents.json
   def index
@@ -19,6 +21,7 @@ class IncidentsController < ApplicationController
   # GET /incidents/new
   def new
     @incident = Incident.new
+    gon.incident = @incident
   end
 
   # GET /incidents/1/edit

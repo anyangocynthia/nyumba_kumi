@@ -1,6 +1,8 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy, :branches, :nearest_branch]
 
+  layout 'dashboard'
+
   # GET /companies
   # GET /companies.json
   def index

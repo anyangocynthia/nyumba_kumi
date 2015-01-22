@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Ujirani App" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ujirani App" %>">
-    <%= stylesheet_link_tag 'dashboard', media: 'all', 'data-turbolinks-track' => false %>
-    <%= javascript_include_tag 'dashboard', 'data-turbolinks-track' => false %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-  	<!-- <div class="ui menu">
-  	  <a class="item">
-  	    Ujirani
-  	  </a>
-  	  <div class="right menu">
-  	    <div class="item">
-  	      <div class="ui icon input">
-  	        <input type="text" placeholder="Search...">
-  	        <i class="search link icon"></i>
-  	      </div>
-  	    </div>
-  	    <div class="ui dropdown item">
-  	      <i class="dropdown icon"></i>
-  	      Language
-  	      <div class="menu">
-  	        <a class="item">English</a>
-  	        <a class="item">Russian</a>
-  	        <a class="item">Spanish</a>
-  	      </div>
-  	    </div>
-  	  </div>
-  	</div> -->
-  	<%= render 'top_nav' %>
-  	<div class="bg"></div>
-  	<div class="ui grid">
-  	<div class="six wide column">
-	  	<%= render 'side_nav' %>
-  	</div>
-  	<div class="ten wide column">
-    	<%= yield %>
-    </div>
-    </div>
-  </body>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title><%= content_for?(:title) ? yield(:title) : "Ujirani App" %></title>
+		<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ujirani App" %>">
+		<%= include_gon %>
+		<%= stylesheet_link_tag 'dashboard', media: 'all', 'data-turbolinks-track' => false %>
+		<%= javascript_include_tag 'dashboard', 'data-turbolinks-track' => false %>
+		<%= csrf_meta_tags %>
+
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<!-- start:style for this page -->
+	<!--<link href="plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet">-->
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+	<script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#example').dataTable( {
+                "aaSorting": [[ 4, "desc" ]]
+            } );
+        } );
+    </script>
+</head>
+<body class="cl-default fixed">
+
+	<!-- start:navbar top -->
+	<%= render 'dashboard/top_nav' %>
+	<!-- end:navbar top -->
+
+	<!-- start:wrapper body -->
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+		<!-- start:left sidebar -->
+		<%= render 'dashboard/left_side_menu' %>
+		<!-- end:left sidebar -->
+
+		<!-- start:right sidebar -->
+		<aside class="right-side">
+			<%= yield %>
+		</aside>
+		</div>
+		<%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => false %>
+		<%= javascript_include_tag 'incidents', 'data-turbolinks-track' => false %>
+	</body>
 </html>
