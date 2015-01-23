@@ -11,7 +11,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 p {
 	line-height: 1.6;
-	font-size: 16px;
+	font-size: 19px;
 }
 a:focus {
     outline: none;
@@ -30,7 +30,7 @@ a {
 	transition: 0.25s;
 }
 h2.sectionTitle {
-	color: #012842;
+	color: #faaf40;
     font-size: 50px;
     margin-top: 0;
     text-align: center;
@@ -92,7 +92,7 @@ h3.sectionTitle {
 .navbar > .container .navbar-brand,
 .navbar > .container-fluid .navbar-brand {
     margin-left: 0;
-    color: rgb(255, 165, 0);
+    color: #faaf40;
 }
 .navbar-nav {
 	float: right;
@@ -213,6 +213,7 @@ h3.sectionTitle {
 }
 #featureWrap h3 {
 	font-weight: 700;
+	color: #faaf40;
 }
 
 /**********************************************************************/
@@ -248,6 +249,7 @@ h3.sectionTitle {
 	padding-top: 60px;
 	padding-bottom: 60px;
 	background-color: #000000;
+
 }
 #pricingWrap .priceTable {
 	border: 1px solid #D9D9D9;
@@ -353,7 +355,7 @@ h3.sectionTitle {
 #contactWrap {
 	padding-top: 60px;
 	padding-bottom: 60px;
-	background-color: #00000;
+	background-color: #000000;
 }
 #contactWrap .overlay {
     background: url("../assets/60.png");
@@ -366,6 +368,7 @@ h3.sectionTitle {
     font-size: 24px;
     font-weight: 300;
     margin-bottom: 40px;
+    color: #faaf40;
 }
 #contactWrap label {
 
@@ -509,4 +512,19 @@ footer .social a .fa-inverse {
 	#pricingWrap .priceTable {
 		margin-bottom: 60px;
 	}
+}
+.btn-primary {
+color: #fff;
+background-color: #faaf40;
+border-color: #357ebd;
+}
+
+.lable {
+font-size: 0.875rem;
+color: #faaf40;
+cursor: pointer;
+display: block;
+font-weight: normal;
+line-height: 1.5;
+margin-bottom: 0;
 }
