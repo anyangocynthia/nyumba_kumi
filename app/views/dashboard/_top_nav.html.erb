@@ -28,8 +28,10 @@
                       <li><!-- Task item -->
                         <a href="<%= incident_path(incident) %>">
                           <h3>
-                            <%= incident.user.name %>
+                            <% if !incident.user.nil? %>
+                              <%= incident.user.name %>
                             |
+                            <% end %>
                             <%= incident.incident_type %>
                             <span class="pull-right">
                             <% if incident.resolved %>
