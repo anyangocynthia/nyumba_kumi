@@ -28,7 +28,7 @@
                           <% @companies.each do |company| %>
                             <tr class="gradeX">
                                 <td><%= company.name %></td>
-                                <td><%= company.service.name %></td>
+                                <td><%= company.service.name if !company.service.nil? %></td>
                                 <td><%= company.phone_number %></td>
                             </tr>
                           <% end %>
