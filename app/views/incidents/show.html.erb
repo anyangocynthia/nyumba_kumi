@@ -38,7 +38,6 @@
 
 <%= javascript_tag do %>
   window.incident = '<%= raw @incident.to_json %>'
-	alert(incident)
 
   function initialize() {
     var mapOptions = {
