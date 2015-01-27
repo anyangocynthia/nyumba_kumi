@@ -37,48 +37,17 @@
 </section>
 
 <%= javascript_tag do %>
-	alert(gon.incident)
-	var location = gon.incident
-  $("#incident-map").html(location)
-  <!-- function initialize() {
-  	coords = incident.location;
-  	lat = parseFloat(coords.substr(0, coords.indexOf(', ')))
-  	lng = parseFloat(coords.substr(coords.indexOf(', ')+2, coords.length))
+  window.incident = '<%= raw @incident.to_json %>'
+	alert(incident)
+
+  function initialize() {
     var mapOptions = {
       center: { lat: -1.288049, lng: 36.841828},
       zoom: 12
     };
     var myLatlng = new google.maps.LatLng(-1.2137278, 36.8928517);
-    map = new google.maps.Map(document.getElementById('map-canvas'),
+    map = new google.maps.Map(document.getElementById('incident-map'),
         mapOptions);
-
-    $.get('/company_incidents', function(data) {
-      for (var i = 0; i < data.length; i++) {
-        $.each(data[i], function(key, incidents){
-          for (var j = 0; j < incidents.length; j++) {
-            var incident = incidents[j]
-            coords = incident.location;
-            console.log(coords)
-            lat = parseFloat(coords.substr(0, coords.indexOf(', ')))
-            lng = parseFloat(coords.substr(coords.indexOf(', ')+2, coords.length))
-
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat, lng),
-                map: map,
-                animation: google.maps.Animation.DROP,
-                title: incident.user_name + " (" + incident.user_phone + ")",
-                // icon: incident.user_photo
-            });
-            var infowindow = new google.maps.InfoWindow({
-                content: "<div id='content'><table><tr><td><img src=" + incident.user_photo + "/><td>Name: " + incident.user_name +
-                "<br>Phone number: " + incident.user_phone + "<br>Estate: " + incident.house_name + "<br>House number: " + incident.house_number + "</td></tr></table></div>"
-            });
-            google.maps.event.addListener(marker, 'click', function() {
-              infowindow.open(map,marker);
-            });
-          }
-        })
-      };
-    });
-  } -->
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
 <% end %>
