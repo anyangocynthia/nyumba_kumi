@@ -1,3 +1,5 @@
-$('#example').dataTable( {
-    "aaSorting": [[ 4, "desc" ]]
-} );
+$(function() {
+	$('#example').dataTable( {
+	    "aaSorting": [[ 4, "desc" ]]
+	});
+});

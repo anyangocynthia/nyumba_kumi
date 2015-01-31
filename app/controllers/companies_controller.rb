@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy, :branches, :nearest_branch]
+  before_action :authenticate_account!
 
   layout 'dashboard'
 
@@ -29,6 +30,7 @@ class CompaniesController < ApplicationController
       all = []
       company.incidents.each do |incident|
         inc = {
+          :incident_id => incident.id,
           :incident_type => incident.incident_type,
           :location => incident.location,
           :user_name => !incident.user_id.nil?? incident.user.name : "",
@@ -52,6 +54,7 @@ class CompaniesController < ApplicationController
       all = []
       company.incidents.where(viewed: false).each do |incident|
         inc = {
+          :incident_id => incident.id,
           :incident_type => incident.incident_type,
           :location => incident.location,
           :user_name => !incident.user_id.nil?? incident.user.name : "",
