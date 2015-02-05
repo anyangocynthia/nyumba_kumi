@@ -36,14 +36,19 @@
 		<div class="col-md-12">
 			<div class="box">
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-3">
 					Type: <%= @incident.incident_type %>
 					</div>
-					<div class="col-md-4">
-					False Flag?: <%= @incident.false_flag %>
+					<div class="col-md-3">
+					False Flag?: <%= human_boolean @incident.false_flag %>
 					</div>
-					<div class="col-md-4">
-					Resolved: <%= @incident.resolved %>
+					<div class="col-md-3">
+					Resolved: <%= human_boolean @incident.resolved %>
+					</div>
+					<div class="col-md-3">
+						<i class="fa fa-calendar">
+						<%= time_formatter(@incident.created_at) %>
+						</i>
 					</div>
 				</div>
 				<hr>

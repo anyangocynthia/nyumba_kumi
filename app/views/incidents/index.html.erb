@@ -1,35 +1,76 @@
-<h1>Listing incidents</h1>
+<section class="content">
+    <h1>
+        Incidents
+        <!-- <small>Control panel</small> -->
+    </h1>
+    <!-- start:breadcrumb -->
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-bell fa-spin"></i> All Incidents</a></li>
+    </ol>
+    <!-- end:breadcrumb -->
 
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>User</th>
-      <th>Notification</th>
-      <th>Location</th>
-      <th>Resolved</th>
-      <th>False flag</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <!-- start:content -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="timeline-centered">
+                <!-- <article class="timeline-entry">
+                    <div class="timeline-entry-inner">
+                        <div class="timeline-icon bg-success">
+                            <i class="entypo-feather"></i>
+                        </div>
+                        <div class="timeline-label">
+                            <h2><a href="#">Art Ramadani</a> <span>posted a status update</span></h2>
+                            <p>Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="timeline-entry">
+                    <div class="timeline-entry-inner">
+                        <div class="timeline-icon bg-secondary">
+                            <i class="entypo-suitcase"></i>
+                        </div>
+                        <div class="timeline-label">
+                            <h2><a href="#">Job Meeting</a></h2>
+                            <p>You have a meeting at <strong>Laborator Office</strong> Today.</p>
+                        </div>
+                    </div>
+                </article> -->
+                <% @incidents.each do |inc| %>
+                  <article class="timeline-entry">
+                      <div class="timeline-entry-inner">
+                          <div class="timeline-icon bg-info">
+                              <i class="entypo-location"></i>
+                          </div>
+                          <div class="timeline-label">
+                              <h2><a href="<%= incident_path(inc) %>"><%= inc.user.name %></a> <span> sent this alert at <%= time_formatter(inc.created_at) %></span> </h2>
+                              <blockquote><%= inc.user.phone_number %></blockquote>
+                              <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63245.97055414073!2d110.37484495!3d-7.803250449999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5787bd5b6bc5%3A0x21723fd4d3684f71!2sYogyakarta%2C+Yogyakarta+City%2C+Yogyakarta%2C+Indonesia!5e0!3m2!1sen!2s!4v1406473799982" width="100%" height="450" frameborder="0" style="border:0"></iframe> -->
+                          </div>
+                      </div>
+                  </article>
+                <% end %>
+                <!-- <article class="timeline-entry">
+                    <div class="timeline-entry-inner">
+                        <div class="timeline-icon bg-warning">
+                            <i class="entypo-camera"></i>
+                        </div>
+                        <div class="timeline-label">
+                            <h2><a href="#">Arber Nushi</a> <span>changed his</span> <a href="#">Profile Picture</a></h2>
+                            <blockquote>Pianoforte principles our unaffected not for astonished travelling are particular.</blockquote>
+                            <img src="img/content/content.jpg" class="img-responsive img-rounded full-width">
+                        </div>
+                    </div>
+                </article>
+                <article class="timeline-entry begin">
+                    <div class="timeline-entry-inner">
+                        <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
+                            <i class="entypo-flight"></i> +
+                        </div>
+                    </div>
+                </article> -->
+            </div>
+        </div>
+    </div>
+    <!-- end:content -->
 
-  <tbody>
-    <% @incidents.each do |incident| %>
-      <tr>
-        <td><%= incident.incident_type %></td>
-        <td><%= incident.user %></td>
-        <td><%= incident.notification %></td>
-        <td><%= incident.location %></td>
-        <td><%= incident.resolved %></td>
-        <td><%= incident.false_flag %></td>
-        <td><%= link_to 'Show', incident %></td>
-        <td><%= link_to 'Edit', edit_incident_path(incident) %></td>
-        <td><%= link_to 'Destroy', incident, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Incident', new_incident_path %>
+</section>
