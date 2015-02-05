@@ -58,4 +58,7 @@ Rails.application.routes.draw do
 
   get 'company_incidents', to: 'companies#incidents', as: 'company_incidents'
   get 'unviewed_incidents', to: 'companies#unviewed_incidents', as: 'unviewed_incidents'
+
+  match 'incidents/:id/resolve', to: 'incidents#toggle_resolve', as: 'resolve', via: "post"
+  match 'incidents/:id/false_flag', to: 'incidents#toggle_false_flag', as: 'false_flag', via: "post"
 end

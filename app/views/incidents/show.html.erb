@@ -10,12 +10,12 @@
 			<div class="pull-right">
 				<div class="btn-toolbar" role="toolbar">
 					<div class="btn-group">
-						<button class="btn btn-default dropdown-toggle">
+						<button class="btn btn-default dropdown-toggle" id="false-flag" data-url = "<%= false_flag_path(@incident)%>">
 							<i class="fa fa-flag">
 							False Flag
 							</i>
 						</button>
-						<button class="btn btn-default dropdown-toggle">
+						<button class="btn btn-default dropdown-toggle" id="resolve" data-url = "<%= resolve_path(@incident)%>">
 							<% if !@incident.resolved %>
 							<i class="fa fa-check">
 							Mark as Resolved

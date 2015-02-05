@@ -2,6 +2,7 @@ function initialize() {
 	lat = parseFloat(incident.substr(0, incident.indexOf(', ')))
 	lng = parseFloat(incident.substr(incident.indexOf(', ')+2, incident.length))
   var mapOptions = {
+    scrollwheel: false,
     center: { lat: lat, lng: lng},
     zoom: 14
   };
@@ -13,6 +14,22 @@ function initialize() {
     map: map,
     animation: google.maps.Animation.DROP,
     // title: incident.user_name + " (" + incident.user_phone + ")"
+  });
+
+  $('#resolve').click(function() {        
+    url = $(this).data("url");
+    $.ajax({ url: url, type: 'post' })
+      .done(function() { 
+          window.location.reload();
+      });
+  });
+
+  $('#false-flag').click(function() {        
+    url = $(this).data("url");
+    $.ajax({ url: url, type: 'post' })
+      .done(function() { 
+          window.location.reload();
+      });
   });
 }
 $(function() {

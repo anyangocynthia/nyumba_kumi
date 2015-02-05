@@ -1,5 +1,5 @@
 class IncidentsController < ApplicationController
-  before_action :set_incident, only: [:show, :edit, :update, :destroy]
+  before_action :set_incident, only: [:show, :edit, :update, :destroy, :toggle_resolve, :toggle_false_flag]
 
   layout "dashboard"
 
@@ -66,6 +66,16 @@ class IncidentsController < ApplicationController
       format.html { redirect_to incidents_url, notice: 'Incident was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def toggle_resolve
+    @incident.update(resolved: !@incident.resolved)
+    render json: { resolved: @incident.resolved }
+  end
+
+  def toggle_false_flag
+    @incident.update(false_flag: !@incident.false_flag)
+    render json: { false_flag: @incident.false_flag }
   end
 
   private
