@@ -41,4 +41,29 @@ $(function() {
           window.location.reload();
       });
   });
+
+  $('#send-message').click(function(){
+    // if ($(".students_table input:checked").length < 1)
+    // {
+    //   alert("You have not selected any students to be deleted.");
+    //   return false;
+    // }
+    // else
+    // {
+    //   students_array = []
+    //   $(".students_table input:checked").each(function(){
+    //     students_array.push($(this).attr('value'))
+    //   });
+    //   $('#delete_students').val(students_array);
+    //   // contact_num = ("#students_table input:checked").length;
+    //   $('#delete_modal #lbl-msg').html('You are about to delete '+String(students_array.length)+' students');
+      $('#message_modal')
+      .modal('setting', {
+        onApprove: function(){
+          $(this).find('form').submit();
+        }
+      })
+      .modal('show');
+    // }
+  });
 });

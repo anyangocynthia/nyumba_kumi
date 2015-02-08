@@ -10,10 +10,21 @@
 			<div class="pull-right">
 				<div class="btn-toolbar" role="toolbar">
 					<div class="btn-group">
-						<button class="btn btn-default dropdown-toggle" id="false-flag" data-url = "<%= false_flag_path(@incident)%>">
-							<i class="fa fa-flag">
-							False Flag
+						<button class="btn btn-default dropdown-toggle" id="send-message" data-toggle = "modal" data-target = "#message_modal" data-url = "<%= false_flag_path(@incident)%>">
+							<i class="fa fa-envelope">
+							Send Message
 							</i>
+						</button>
+						<button class="btn btn-default dropdown-toggle" id="false-flag" data-url = "<%= false_flag_path(@incident)%>">
+							<% if !@incident.false_flag %>
+								<i class="fa fa-flag">
+								Mark as a false flag
+								</i>
+							<% else %>
+								<i class="fa fa-remove">
+								Unmark as a false flag
+								</i>
+							<% end %>
 						</button>
 						<button class="btn btn-default dropdown-toggle" id="resolve" data-url = "<%= resolve_path(@incident)%>">
 							<% if !@incident.resolved %>
@@ -25,6 +36,20 @@
 							<% end %>
 							</i>
 						</button>
+						<!-- <button class="btn btn-default dropdown-toggle" data-toggle = "dropdown" data-url = "<%= false_flag_path(@incident)%>">
+							<i class="fa fa-flag">
+							Mark As
+							</i>
+							<span class="caret"></span>
+							<ul class="dropdown-menu" role="menu">
+								<li>
+									False Flag
+								</li>
+								<li>
+									False Flag
+								</li>
+							</ul>
+						</button> -->
 					</div>
 				</div>
 			</div>
@@ -61,6 +86,37 @@
 		</div>
 	</div>
 </section>
+
+<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="message_modal" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Send Message</h4>
+      </div>
+      <%= form_tag "/send_message_to_user_path" do |f| %>
+        <div class="modal-body">
+          <label id="lbl-msg"></label>
+          <%= hidden_field_tag 'user' %>
+          <textarea class="form-control" name="message"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-default" data-dismiss="modal" type="button">
+            <i class="fa fa-times"></i>
+            Cancel
+          </button>
+          <button class="btn btn-success" type="submit">
+            <i class="fa fa-check"></i>
+            Send
+          </button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 
 <%= javascript_tag do %>
   window.incident = '<%= raw @incident.location %>'
