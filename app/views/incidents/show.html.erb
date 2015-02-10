@@ -96,7 +96,7 @@
         </button>
         <h4 class="modal-title" id="myModalLabel">Send Message</h4>
       </div>
-      <%= form_tag "/send_message_to_user_path" do |f| %>
+      <%= form_tag send_message_to_user_path do |f| %>
         <div class="modal-body">
           <label id="lbl-msg"></label>
           <%= hidden_field_tag 'user' %>

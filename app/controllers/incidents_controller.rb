@@ -1,5 +1,5 @@
 class IncidentsController < ApplicationController
-  before_action :set_incident, only: [:show, :edit, :update, :destroy, :toggle_resolve, :toggle_false_flag]
+  before_action :set_incident, only: [:show, :edit, :update, :destroy, :toggle_resolve, :toggle_false_flag, :send_message_to_user]
 
   layout "dashboard"
 
@@ -77,6 +77,10 @@ class IncidentsController < ApplicationController
   def toggle_false_flag
     @incident.update(false_flag: !@incident.false_flag)
     render json: { false_flag: @incident.false_flag }
+  end
+
+  def send_message_to_user
+    redirect_to @incident, notice: "Message sent"
   end
 
   private
