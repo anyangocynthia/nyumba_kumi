@@ -15,8 +15,5 @@
 // require turbolinks
 //= require bootstrap
 //= require flexslider
-// require semantic-ui
-//= require leaflet
 //= require underscore
-// require gmaps/google
 //= require_tree .
