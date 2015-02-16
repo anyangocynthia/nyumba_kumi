@@ -303,3 +303,77 @@
 			</div>
 		</div>
 	</div> <!-- /contactWrap -->
+
+	<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="signup_modal" role="dialog" tabindex="-1">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	        <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+	      </div>
+	      	<%= form_for(@account, :url => registration_path(@account), :html => { :role => 'form'}) do |f| %>
+	          <div class="modal-body">
+		          <div class="form-group">
+		            <%= f.label :email %>
+		            <%= f.email_field :email, class: 'form-control' %>
+		          </div>
+		          <div class="form-group">
+		            <%= f.label :password %>
+		            <%= f.password_field :password, class: 'form-control' %>
+		          </div>
+		          <div class="form-group">
+		            <%= f.label :password_confirmation %>
+		            <%= f.password_field :password_confirmation, class: 'form-control' %>
+		          </div>
+	          </div>
+	          <div class="modal-footer">
+	            <button class="btn btn-default" data-dismiss="modal" type="button">
+	              <i class="fa fa-times"></i>
+	              Cancel
+	            </button>
+	            <button class="btn btn-success" type="submit">
+	              <i class="fa fa-check"></i>
+	              Sign Up
+	            </button>
+	          </div>
+	        <% end %>
+	    </div>
+	  </div>
+	</div>
+
+	<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="signin_modal" role="dialog" tabindex="-1">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+	      </div>
+	      	<%= form_for(@account, :url => session_path(@account), :html => { :role => 'form'}) do |f| %>
+	          <div class="modal-body">
+		          <div class="form-group">
+		            <%= f.label :email %>
+		            <%= f.email_field :email, class: 'form-control' %>
+		          </div>
+		          <div class="form-group">
+		            <%= f.label :password %>
+		            <%= f.password_field :password, class: 'form-control' %>
+		          </div>
+	          </div>
+	          <div class="modal-footer">
+	            <button class="btn btn-default" data-dismiss="modal" type="button">
+	              <i class="fa fa-times"></i>
+	              Cancel
+	            </button>
+	            <button class="btn btn-success" type="submit">
+	              <i class="fa fa-check"></i>
+	              Sign In
+	            </button>
+	          </div>
+	        <% end %>
+	    </div>
+	  </div>
+	</div>

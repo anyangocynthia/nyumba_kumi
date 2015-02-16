@@ -28,6 +28,18 @@ class ApplicationController < ActionController::Base
     new_company_path
   end
 
+  # def resource_name
+  #   @resource_name = :account
+  # end
+
+  # def resource
+  #   @resource ||= Account.new
+  # end
+
+  # def devise_mapping
+  #  @devise_mapping ||= Devise.mappings[:account]
+  # end
+
   def send_verification_code user
     gateway = SMSGateway.new
     code = generate_verification_code
