@@ -1,35 +1,65 @@
-<div class="authform">
-<%= form_for(@branch) do |f| %>
-  <% if @branch.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@branch.errors.count, "error") %> prohibited this branch from being saved:</h2>
-
-      <ul>
-      <% @branch.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<section class="panel">
+  <%= form_for @branch do |f| %>
+    <div class="panel-body">
+      <% if @branch.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= "#{pluralize(@branch.errors.count, "error")} prohibited this company from being saved:" %>
+          </h2>
+          <ul>
+            <% @branch.errors.full_messages.each do |msg| %>
+              <li>
+                <%= msg %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+      <div class="form-group">
+        <%= f.label :form, "Company" %>
+        <select class="form-control" name="company[form_id]" type="text">
+          <% Company.all.each do |company| %>
+            <option value="<%= company.id %>">
+              <%= company.name %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+      <div class="form-group">
+        <%= f.label :phone_number %>
+        <div class="iconic-input">
+          <i class="fa fa-phone"></i>
+          <%= f.text_field :phone_number, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label "Location" %>
+        <div id="locamap">
+          <iframe width="100%" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=nairobi&key=AIzaSyB4u6EYHG6OxEBHORkBbKXUm7OQBySIxr8"></iframe>
+        </div>
+      </div>
+      <div class="form-group" hidden="">
+        <%= f.label :latitude %>
+        <div class="iconic-input">
+          <i class="fa fa-map-marker"></i>
+          <%= f.text_field :latitude, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group" hidden="">
+        <%= f.label :longitude %>
+        <div class="iconic-input">
+          <i class="fa fa-map-marker"></i>
+          <%= f.text_field :longitude, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <div class="actions pull-right">
+        <button class="btn btn-primary btn-rounded" type="submit">
+          <i class="fa fa-save"></i>
+          Save
+        </button>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :company_id %><br>
-    <%= f.select :company_id, current_account.companies.collect {|company| [ company.name, company.id] }, { include_blank: 'Select Company' } %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_number %><br>
-    <%= f.text_field :phone_number %>
-  </div>
-  <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Add Branch', :class => 'button right' %>
-  </div>
-<% end %>
-</div>
+</section>
