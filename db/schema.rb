@@ -11,25 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127081702) do
-
-  create_table "accounts", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true
-  add_index "accounts", ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
+ActiveRecord::Schema.define(version: 20150218141752) do
 
   create_table "appartment_residents", force: true do |t|
     t.integer  "appartment_id"
@@ -83,6 +65,27 @@ ActiveRecord::Schema.define(version: 20141127081702) do
 
   add_index "companies", ["account_id"], name: "index_companies_on_account_id"
   add_index "companies", ["service_id"], name: "index_companies_on_service_id"
+
+  create_table "contacts", force: true do |t|
+    t.string   "name"
+    t.string   "phone_number"
+    t.string   "id_number"
+    t.integer  "group_id"
+    t.string   "user_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "verification_code"
+    t.boolean  "verified"
+    t.integer  "house_id"
+    t.string   "house_number"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  add_index "contacts", ["group_id"], name: "index_contacts_on_group_id"
+  add_index "contacts", ["house_id"], name: "index_contacts_on_house_id"
 
   create_table "devices", force: true do |t|
     t.integer  "user_id"
@@ -200,24 +203,21 @@ ActiveRecord::Schema.define(version: 20141127081702) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "phone_number"
-    t.string   "id_number"
-    t.integer  "group_id"
-    t.string   "user_type"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "verification_code"
-    t.boolean  "verified"
-    t.integer  "house_id"
-    t.string   "house_number"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
   end
 
-  add_index "users", ["group_id"], name: "index_users_on_group_id"
-  add_index "users", ["house_id"], name: "index_users_on_house_id"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
