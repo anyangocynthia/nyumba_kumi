@@ -6,7 +6,7 @@ class IncidentsController < ApplicationController
   # GET /incidents
   # GET /incidents.json
   def index
-    # current_account.companies.
+    # current_user.companies.
     @incidents = Incident.all
   end
 

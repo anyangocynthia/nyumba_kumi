@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(arg)
-    new_account_session_path
+    new_user_session_path
   end
 
   def after_sign_up_path_for(resource)
@@ -29,15 +29,15 @@ class ApplicationController < ActionController::Base
   end
 
   # def resource_name
-  #   @resource_name = :account
+  #   @resource_name = :user
   # end
 
   # def resource
-  #   @resource ||= Account.new
+  #   @resource ||= User.new
   # end
 
   # def devise_mapping
-  #  @devise_mapping ||= Devise.mappings[:account]
+  #  @devise_mapping ||= Devise.mappings[:user]
   # end
 
   def send_verification_code contact

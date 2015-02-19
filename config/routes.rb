@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :accounts, :controllers => {:registrations => "accounts/registrations", sessions: "accounts/sessions" }
+  devise_for :users, :controllers => {:registrations => "users/registrations", sessions: "users/sessions" }
   resources :incidents
 
   get 'dashboard/index'

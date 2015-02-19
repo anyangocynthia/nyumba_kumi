@@ -2,7 +2,7 @@ require 'sms_gateway'
 class HomeController < ApplicationController
 
 	def index
-		@account = Account.new
+		@user = User.new
 	end
 
 	def sign_up

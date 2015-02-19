@@ -1,7 +1,7 @@
 <%# add navigation links to this file %>
 <li><%= link_to 'About', page_path('about') %></li>
 <% if contact_signed_in? %>
-  <li><%= link_to 'Edit account', edit_contact_registration_path %></li>
+  <li><%= link_to 'Edit user', edit_contact_registration_path %></li>
   <li><%= link_to 'Sign out', destroy_contact_session_path, :method=>'delete' %></li>
 <% else %>
   <li><%= link_to 'Sign in', new_contact_session_path %></li>

@@ -25,6 +25,7 @@ class Contact < ActiveRecord::Base
   belongs_to :group
   has_many :notifications
   has_many :devices
+  has_many :incidents
 
   has_attached_file :photo#, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
