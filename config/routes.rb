@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :group_companies
 
-  resources :users
+  resources :contacts
 
   resources :attendees
 
@@ -62,5 +62,5 @@ Rails.application.routes.draw do
   match 'incidents/:id/resolve', to: 'incidents#toggle_resolve', as: 'resolve', via: "post"
   match 'incidents/:id/false_flag', to: 'incidents#toggle_false_flag', as: 'false_flag', via: "post"
   
-  match 'incidents/:id/send_message_to_user', to: 'incidents#send_message_to_user', as: 'send_message_to_user', via: "post"
+  match 'incidents/:id/send_message_to_contact', to: 'incidents#send_message_to_contact', as: 'send_message_to_contact', via: "post"
 end
