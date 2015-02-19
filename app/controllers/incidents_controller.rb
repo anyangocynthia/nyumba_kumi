@@ -1,5 +1,5 @@
 class IncidentsController < ApplicationController
-  before_action :set_incident, only: [:show, :edit, :update, :destroy, :toggle_resolve, :toggle_false_flag, :send_message_to_user]
+  before_action :set_incident, only: [:show, :edit, :update, :destroy, :toggle_resolve, :toggle_false_flag, :send_message_to_contact]
 
   layout "dashboard"
 
@@ -79,7 +79,7 @@ class IncidentsController < ApplicationController
     render json: { false_flag: @incident.false_flag }
   end
 
-  def send_message_to_user
+  def send_message_to_contact
     redirect_to @incident, notice: "Message sent"
   end
 
@@ -91,6 +91,6 @@ class IncidentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def incident_params
-      params.require(:incident).permit(:incident_type, :user_id, :notification_id, :location, :resolved, :false_flag, :viewed)
+      params.require(:incident).permit(:incident_type, :contact_id, :notification_id, :location, :resolved, :false_flag, :viewed)
     end
 end

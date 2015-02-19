@@ -1,10 +1,10 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
+<%= form_for(@contact) do |f| %>
+  <% if @contact.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
 
       <ul>
-      <% @user.errors.full_messages.each do |message| %>
+      <% @contact.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -28,8 +28,8 @@
     <%= f.text_field :group_id %>
   </div>
   <div class="field">
-    <%= f.label :user_type %><br>
-    <%= f.text_field :user_type %>
+    <%= f.label :contact_type %><br>
+    <%= f.text_field :contact_type %>
   </div>
   <div class="actions">
     <%= f.submit %>

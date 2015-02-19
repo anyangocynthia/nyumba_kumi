@@ -69,6 +69,6 @@ class AttendeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def attendee_params
-      params.require(:attendee).permit(:event_id, :user_id)
+      params.require(:attendee).permit(:event_id, :contact_id)
     end
 end

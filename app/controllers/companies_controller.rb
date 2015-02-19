@@ -33,11 +33,11 @@ class CompaniesController < ApplicationController
           :incident_id => incident.id,
           :incident_type => incident.incident_type,
           :location => incident.location,
-          :user_name => !incident.user_id.nil?? incident.user.name : "",
-          :user_phone => !incident.user_id.nil?? incident.user.phone_number : "",
-          :user_photo => !incident.user_id.nil?? incident.user.photo.url : "",
-          :house_name => !incident.user.house_id.nil?? House.find(incident.user.house_id).house_name : nil,
-          :house_number => incident.user.house_number,
+          :contact_name => !incident.contact_id.nil?? incident.contact.name : "",
+          :contact_phone => !incident.contact_id.nil?? incident.contact.phone_number : "",
+          :contact_photo => !incident.contact_id.nil?? incident.contact.photo.url : "",
+          :house_name => !incident.contact.house_id.nil?? House.find(incident.contact.house_id).house_name : nil,
+          :house_number => incident.contact.house_number,
           :resolved => incident.resolved ? "YES" : "NO"
         }
         incident.update(viewed: true)
@@ -57,11 +57,11 @@ class CompaniesController < ApplicationController
           :incident_id => incident.id,
           :incident_type => incident.incident_type,
           :location => incident.location,
-          :user_name => !incident.user_id.nil?? incident.user.name : "",
-          :user_phone => !incident.user_id.nil?? incident.user.phone_number : "",
-          :user_photo => !incident.user_id.nil?? incident.user.photo.url : "",
-          :house_name => !incident.user.house_id.nil?? House.find(incident.user.house_id).house_name : nil,
-          :house_number => incident.user.house_number,
+          :contact_name => !incident.contact_id.nil?? incident.contact.name : "",
+          :contact_phone => !incident.contact_id.nil?? incident.contact.phone_number : "",
+          :contact_photo => !incident.contact_id.nil?? incident.contact.photo.url : "",
+          :house_name => !incident.contact.house_id.nil?? House.find(incident.contact.house_id).house_name : nil,
+          :house_number => incident.contact.house_number,
           :resolved => incident.resolved ? "YES" : "NO"
         }
         incident.update(viewed: true)
@@ -74,11 +74,11 @@ class CompaniesController < ApplicationController
     # current_account.companies.first.incidents.where(viewed: false).each do |incident|
     #   inc = {
     #     :location => incident.location,
-    #     :user_name => incident.user.name,
-    #     :user_phone => incident.user.phone_number,
-    #     :user_photo => incident.user.photo.url,
-    #     :house_name => !incident.user.house_id.nil?? House.find(incident.user.house_id).house_name : nil,
-    #     :house_number => incident.user.house_number,
+    #     :contact_name => incident.contact.name,
+    #     :contact_phone => incident.contact.phone_number,
+    #     :contact_photo => incident.contact.photo.url,
+    #     :house_name => !incident.contact.house_id.nil?? House.find(incident.contact.house_id).house_name : nil,
+    #     :house_number => incident.contact.house_number,
     #     :resolved => incident.resolved ? "YES" : "NO"
     #   }
     #   current_account.companies.first.incidents.update_all(viewed: true)

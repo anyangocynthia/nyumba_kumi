@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  house_name :string(255)
 #  location   :string(255)
-#  user_id    :integer
+#  contact_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
 #  latitude   :float
@@ -13,7 +13,7 @@
 #
 
 class House < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :contact
   has_many :appartments
   # reverse_geocoded_by :latitude, :longitude
 

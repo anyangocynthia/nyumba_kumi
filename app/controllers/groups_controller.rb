@@ -28,12 +28,12 @@ class GroupsController < ApplicationController
   def create
     grp = Group.find_by(group_name: group_params[:group_name])
     if grp.nil?
-      user = User.find(group_params[:user_id])
-      if user.group_id.nil?
+      contact = Contact.find(group_params[:contact_id])
+      if contact.group_id.nil?
         @group = Group.new(group_params)
         respond_to do |format|
           if @group.save
-            user.update(group_id: @group.id, user_type: "Admin")
+            contact.update(group_id: @group.id, contact_type: "Admin")
             format.html { redirect_to @group, notice: 'Group was successfully created.' }
             format.json { render json: { id: @group.id.to_i, status: "success" } }
           else
@@ -42,7 +42,7 @@ class GroupsController < ApplicationController
           end
         end
       else
-        render json: { error: "You already belong to #{user.group.group_name}." }
+        render json: { error: "You already belong to #{contact.group.group_name}." }
       end
     else
       render json: { id: grp.id.to_i, status: "Group already exists!" }
@@ -53,7 +53,7 @@ class GroupsController < ApplicationController
     notifications = []
     notification = {}
     @group.notifications.each do |n|
-      notification[:user_id] = n.user_id
+      notification[:contact_id] = n.contact_id
       notification[:group_id] = n.group_id
       notification[:message] = n.message
       notification[:time] = "#{n.created_at.strftime("%d/%m/%Y")} #{n.created_at.strftime("%I:%M%p")}"
@@ -64,19 +64,19 @@ class GroupsController < ApplicationController
 
   def members
     members = []
-    @group.users.each do |u|
-      user = {}
-      user[:id] = u.id
-      user[:name] = u.name
-      user[:phone_number] = u.phone_number
-      user[:group_id] = u.group_id
-      user[:in_a_group] = !u.group_id.nil?
-      user[:user_type] = u.user_type
-      user[:house_name] = (!u.house_id.nil?? House.find(u.house_id).house_name : nil)
-      user[:house_number] = u.house_number
-      user[:photo] = "#{ENV['ROOT_URL']}#{u.photo.url}"
-      user[:member_since] = "#{u.created_at.strftime("%d/%m/%Y")} #{u.created_at.strftime("%I:%M%p")}"
-      members << user
+    @group.contacts.each do |u|
+      contact = {}
+      contact[:id] = u.id
+      contact[:name] = u.name
+      contact[:phone_number] = u.phone_number
+      contact[:group_id] = u.group_id
+      contact[:in_a_group] = !u.group_id.nil?
+      contact[:contact_type] = u.contact_type
+      contact[:house_name] = (!u.house_id.nil?? House.find(u.house_id).house_name : nil)
+      contact[:house_number] = u.house_number
+      contact[:photo] = "#{ENV['ROOT_URL']}#{u.photo.url}"
+      contact[:member_since] = "#{u.created_at.strftime("%d/%m/%Y")} #{u.created_at.strftime("%I:%M%p")}"
+      members << contact
     end
     render json: members
   end
@@ -121,6 +121,6 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:group_name, :location, :user_id)
+      params.require(:group).permit(:group_name, :location, :contact_id)
     end
 end
