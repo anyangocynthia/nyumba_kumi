@@ -4,7 +4,7 @@
 #
 #  id              :integer          not null, primary key
 #  incident_type   :string(255)
-#  contact_id         :integer
+#  contact_id      :integer
 #  notification_id :integer
 #  location        :string(255)
 #  resolved        :boolean

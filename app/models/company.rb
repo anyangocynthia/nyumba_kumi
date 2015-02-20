@@ -9,7 +9,7 @@
 #  phone_number :string(255)
 #  created_at   :datetime
 #  updated_at   :datetime
-#  user_id   :integer
+#  user_id      :integer
 #
 
 class Company < ActiveRecord::Base

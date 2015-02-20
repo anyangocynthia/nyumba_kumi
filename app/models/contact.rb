@@ -7,7 +7,7 @@
 #  phone_number       :string(255)
 #  id_number          :string(255)
 #  group_id           :integer
-#  contact_type          :string(255)
+#  user_type          :string(255)
 #  created_at         :datetime
 #  updated_at         :datetime
 #  verification_code  :string(255)

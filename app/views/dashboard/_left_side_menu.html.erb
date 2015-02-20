@@ -6,7 +6,7 @@
             <%= image_tag "/assets/missing.jpg", class: "img-circle" %>
           </div>
           <div class="info">
-            <p>Hello, Muaad</p>
+            <p>Hello, <%= current_user.name.split(" ")[0] %></p>
             <small style="color: #eee;">Welcome Back</small>
           </div>
         </div>
