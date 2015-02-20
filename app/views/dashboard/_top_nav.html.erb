@@ -69,7 +69,7 @@
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= image_tag "/assets/missing.jpg", class: "img-circle", style: "width: 25px;" %>
+                <%= image_tag current_user.photo.url, class: "img-circle", style: "width: 25px;" %>
                 <strong>@<%= current_user.name.split(" ")[0] %></strong>
               </a>
               <ul class="dropdown-menu dropdown-login">

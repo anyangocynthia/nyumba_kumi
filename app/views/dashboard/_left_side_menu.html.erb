@@ -3,7 +3,7 @@
         <!-- Sidebar contact panel -->
         <div class="contact-panel">
           <div class="image">
-            <%= image_tag "/assets/missing.jpg", class: "img-circle" %>
+            <%= image_tag current_user.photo.url, class: "img-circle" %>
           </div>
           <div class="info">
             <p>Hello, <%= current_user.name.split(" ")[0] %></p>
