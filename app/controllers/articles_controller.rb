@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
+    render layout: 'blog'
     @articles = Article.all
   end
 
