@@ -1,31 +1,82 @@
-<h1>Listing articles</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Slug</th>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.body %></td>
-        <td><%= article.slug %></td>
-        <td><%= article.category %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Article', new_article_path %>
+      <!-- HEADER -->
+      <div id="header">
+        <div id="page-title">The blog</div>
+        <!-- Breadcrumb-->
+        <div id="breadcrumbs">
+          You are here: 
+          <a title="Home" href="blog.html#">Home</a> &raquo; 
+          <a title="Features" href="blog.html#">Blog</a>
+        </div>
+        <!-- ENDS Breadcrumb--> 
+      </div>
+      <!-- ENDS HEADER -->
+      
+      <!-- CONTENT -->
+      <div id="content">
+            
+        <!-- PAGE CONTENT -->
+        <div id="page-content">
+        
+          <!-- Posts -->
+          <div class="post">
+            <h1><a href="single.html">Lorem ipsum dolor amet</a></h1>
+            <!-- meta -->
+            <ul class="meta">
+              <li>By <a href="blog.html#">Ansimuz</a>&nbsp;</li> 
+              <li> on Dec 27th 2010 &nbsp;</li>
+              <li> with 47 comments &nbsp;</li>
+              <li> in <a href="blog.html#">Webdesign</a>&nbsp;</li>
+            </ul>
+            <!-- ENDS meta -->
+            <!-- feature image -->
+            <div class="feature-image">
+              <a href="single.html"><img src="img/dummies/584x300.jpg" alt="Feature image" /></a>
+            </div>
+            <!-- ENDS feature image -->
+            <div class="the-excerpt">
+              Pellentesque habitant morbi tristique senectus et netus et malesuada fames, Pellentesque habitant morbi tristique senectus et netus et malesuada fames Pellentesque habitant morbi tristique senectus et netus et malesuada fames.
+            </div>
+            <a href="single.html" class="link-button"><span>Read more</span></a>
+          </div>
+          
+          <div class="post">
+            <h1><a href="single.html">Lorem ipsum dolor amet</a></h1>
+            <!-- meta -->
+            <ul class="meta">
+              <li>By <a href="blog.html#">Ansimuz</a> &nbsp;</li> 
+              <li> on Dec 27th 2010 &nbsp;</li>
+              <li> with 47 comments &nbsp;</li>
+              <li> in <a href="blog.html#">Webdesign</a> &nbsp;</li>
+            </ul>
+            <!-- ENDS meta -->
+            <!-- feature image -->
+            <div class="feature-image">
+              <a href="single.html"><img src="img/dummies/584x300b.jpg" alt="Feature image" /></a>
+            </div>
+            <!-- ENDS feature image -->
+            <div class="the-excerpt">
+              Pellentesque habitant morbi tristique senectus et netus et malesuada fames, Pellentesque habitant morbi tristique senectus et netus et malesuada fames Pellentesque habitant morbi tristique senectus et netus et malesuada fames.
+            </div>
+            <a href="single.html" class="link-button"><span>Read more</span></a>
+          </div>
+          <!-- ENDS posts -->
+          
+          <!-- Pagination -->
+          <ul class='pager'>
+            <li class="first-child"><a href="blog.html#">prev</a></li>
+            <li class="active"><a href="blog.html#">1</a></li>
+            <li><a href="blog.html#">2</a></li>
+            <li><a href="blog.html#">3</a></li>
+            <li><a href="blog.html#">4</a></li>
+            <li><a href="blog.html#">5</a></li>
+            <li class="last-child"><a href="blog.html#">next</a></li>
+          </ul>
+          <!-- ENDS Pagination -->
+  
+          
+        </div>
+        <!-- ENDS PAGE-CONTENT -->
+      
+      </div>
+      <!-- ENDS CONTENT -->
+      

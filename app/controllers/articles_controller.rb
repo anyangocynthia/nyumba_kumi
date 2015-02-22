@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  layout 'blog'
 
   # GET /articles
   # GET /articles.json
