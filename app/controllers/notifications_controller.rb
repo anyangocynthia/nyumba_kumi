@@ -30,16 +30,16 @@ class NotificationsController < ApplicationController
 
     respond_to do |format|
       if @notification.save
-        # registration_ids = @notification.group.users.collect {|user| user.devices.collect {|device| device.registration_id}}[0]
+        # registration_ids = @notification.group.contacts.collect {|contact| contact.devices.collect {|device| device.registration_id}}[0]
         registration_ids = []
-        users = @notification.group.users - [@notification.user]
-        users.each do |u|
+        contacts = @notification.group.contacts - [@notification.contact]
+        contacts.each do |u|
          u.devices.each do |d|
            registration_ids << d.registration_id
          end
         end
 
-        data = {message: @notification.message, sender: @notification.user.name}
+        data = {message: @notification.message, sender: @notification.contact.name}
         gcm.send registration_ids, data, "New notification"
         format.html { redirect_to @notification, notice: 'Notification was successfully created.' }
         format.json { render json: { id: @notification.id.to_i, status: "success" } }
@@ -82,6 +82,6 @@ class NotificationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def notification_params
-      params.require(:notification).permit(:user_id, :group_id, :notification_type_id, :message)
+      params.require(:notification).permit(:contact_id, :group_id, :notification_type_id, :message)
     end
 end

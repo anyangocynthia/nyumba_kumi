@@ -18,6 +18,7 @@
 //= require owl-carousel
 //= require jquery.flot.min
 //= require jquery.dataTables
+//= require tinymce
 //= require DT_bootstrap
 //= require jquery.flot.tooltip.min
 //= require jquery.flot.spline

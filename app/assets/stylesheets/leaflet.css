@@ -25,10 +25,10 @@
 .leaflet-tile,
 .leaflet-marker-icon,
 .leaflet-marker-shadow {
-	-webkit-user-select: none;
-	   -moz-user-select: none;
-	        user-select: none;
-	-webkit-user-drag: none;
+	-webkit-contact-select: none;
+	   -moz-contact-select: none;
+	        contact-select: none;
+	-webkit-contact-drag: none;
 	}
 .leaflet-marker-icon,
 .leaflet-marker-shadow {
@@ -55,7 +55,7 @@
 	}
 /* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */
 .leaflet-overlay-pane svg {
-	-moz-user-select: none;
+	-moz-contact-select: none;
 	}
 
 .leaflet-tile-pane    { z-index: 2; }

@@ -5,8 +5,8 @@
 	</h1> -->
 	<!-- start:breadcrumb -->
 	<ol class="breadcrumb">
-			<li><a href="<%= user_path(@incident.user) %>"><i class="fa fa-user"></i> <%= @incident.user.name %></a></li>
-			<li><a href="#"><%= @incident.user.phone_number %></a></li>
+			<li><a href="<%= contact_path(@incident.contact) %>"><i class="fa fa-contact"></i> <%= @incident.contact.name %></a></li>
+			<li><a href="#"><%= @incident.contact.phone_number %></a></li>
 			<div class="pull-right">
 				<div class="btn-toolbar" role="toolbar">
 					<div class="btn-group">
@@ -96,10 +96,10 @@
         </button>
         <h4 class="modal-title" id="myModalLabel">Send Message</h4>
       </div>
-      <%= form_tag send_message_to_user_path do |f| %>
+      <%= form_tag send_message_to_contact_path do |f| %>
         <div class="modal-body">
           <label id="lbl-msg"></label>
-          <%= hidden_field_tag 'user' %>
+          <%= hidden_field_tag 'contact' %>
           <textarea class="form-control" name="message"></textarea>
         </div>
         <div class="modal-footer">

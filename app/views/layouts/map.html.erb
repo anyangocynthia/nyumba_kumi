@@ -47,13 +47,13 @@
                     position: new google.maps.LatLng(lat, lng),
                     map: map,
                     animation: google.maps.Animation.DROP,
-                    title: incident.user_name + " (" + incident.user_phone + ")",
-                    // icon: incident.user_photo
+                    title: incident.contact_name + " (" + incident.contact_phone + ")",
+                    // icon: incident.contact_photo
                 });
                 var infowindow = new google.maps.InfoWindow({
-                    content: "<div id='content'><table><tr><td><img src='" + incident.user_photo +
-                    "'/><td>Name: " + incident.user_name +
-                    "<br>Phone number: " + incident.user_phone + "<br>Estate: " + incident.house_name + "<br>House number: " + incident.house_number + "</td></tr><tr><td><br><h4><span class='label label-default'><a href='/incidents/" + incident.incident_id +"'><i class='fa fa-eye'> View</a></span></h4></td></tr></table></div>"
+                    content: "<div id='content'><table><tr><td><img src='" + incident.contact_photo +
+                    "'/><td>Name: " + incident.contact_name +
+                    "<br>Phone number: " + incident.contact_phone + "<br>Estate: " + incident.house_name + "<br>House number: " + incident.house_number + "</td></tr><tr><td><br><h4><span class='label label-default'><a href='/incidents/" + incident.incident_id +"'><i class='fa fa-eye'> View</a></span></h4></td></tr></table></div>"
                 });
                 google.maps.event.addListener(marker, 'click', function() {
                   infowindow.open(map,marker);
@@ -72,12 +72,12 @@
           //       position: new google.maps.LatLng(lat, lng),
           //       map: map,
           //       animation: google.maps.Animation.DROP,
-          //       title: incident.user_name + " (" + incident.user_phone + ")",
-          //       // icon: incident.user_photo
+          //       title: incident.contact_name + " (" + incident.contact_phone + ")",
+          //       // icon: incident.contact_photo
           //   });
           //   var infowindow = new google.maps.InfoWindow({
-          //       content: "<div id='content'><table><tr><td><img src=" + incident.user_photo + "/><td>Name: " + incident.user_name +
-          //       "<br>Phone number: " + incident.user_phone + "<br>Estate: " + incident.house_name + "<br>House number: " + incident.house_number + "</td></tr></table></div>"
+          //       content: "<div id='content'><table><tr><td><img src=" + incident.contact_photo + "/><td>Name: " + incident.contact_name +
+          //       "<br>Phone number: " + incident.contact_phone + "<br>Estate: " + incident.house_name + "<br>House number: " + incident.house_number + "</td></tr></table></div>"
           //   });
           //   google.maps.event.addListener(marker, 'click', function() {
           //     infowindow.open(map,marker);
@@ -105,12 +105,12 @@
                       position: new google.maps.LatLng(lat, lng),
                       map: map,
                       animation: google.maps.Animation.DROP,
-                      title: incident.user_name + " (" + incident.user_phone + ")",
-                      // icon: incident.user_photo
+                      title: incident.contact_name + " (" + incident.contact_phone + ")",
+                      // icon: incident.contact_photo
                   });
                   var infowindow = new google.maps.InfoWindow({
-                      content: "<div id='content'><table><tr><td><img src='#'/><td>Name: " + incident.user_name +
-                      "<br>Phone number: " + incident.user_phone + "<br>Estate: " + incident.house_name + "<br>House number: " + incident.house_number + "</td></tr><tr><td><br><span <h4>class='label label-default'><a href='/incidents/" + incident.incident_id +"'><i class='fa fa-eye'> View</a></span></h4></td></tr></table></div>"
+                      content: "<div id='content'><table><tr><td><img src='#'/><td>Name: " + incident.contact_name +
+                      "<br>Phone number: " + incident.contact_phone + "<br>Estate: " + incident.house_name + "<br>House number: " + incident.house_number + "</td></tr><tr><td><br><span <h4>class='label label-default'><a href='/incidents/" + incident.incident_id +"'><i class='fa fa-eye'> View</a></span></h4></td></tr></table></div>"
                   });
                   new Audio('assets/siren.mp3').play()
                   google.maps.event.addListener(marker, 'click', function() {
@@ -130,12 +130,12 @@
             //       position: new google.maps.LatLng(lat, lng),
             //       map: map,
             //       animation: google.maps.Animation.DROP,
-            //       title: incident.user_name + " (" + incident.user_phone + ")",
-            //       // icon: incident.user_photo
+            //       title: incident.contact_name + " (" + incident.contact_phone + ")",
+            //       // icon: incident.contact_photo
             //   });
             //   var infowindow = new google.maps.InfoWindow({
-            //       content: "<div id='content'><table><tr><td><img src=" + incident.user_photo + "/><td>" + incident.user_name +
-            //       "<br>Phone number: " + incident.user_phone + "<br>Estate: " + incident.house_name + "<br>House number: " + incident.house_number + "</td></tr></table></div>"
+            //       content: "<div id='content'><table><tr><td><img src=" + incident.contact_photo + "/><td>" + incident.contact_name +
+            //       "<br>Phone number: " + incident.contact_phone + "<br>Estate: " + incident.house_name + "<br>House number: " + incident.house_number + "</td></tr></table></div>"
             //   });
             //   new Audio('assets/siren.mp3').play()
             //   google.maps.event.addListener(marker, 'click', function() {

@@ -313,7 +313,7 @@
 	        </button>
 	        <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
 	      </div>
-	      	<%= form_for(@account, :url => registration_path(@account), :html => { :role => 'form'}) do |f| %>
+	      	<%= form_for(@user, :url => registration_path(@user), :html => { :role => 'form'}) do |f| %>
 	          <div class="modal-body">
 		          <div class="form-group">
 		            <%= f.label :email %>
@@ -352,7 +352,7 @@
 	        </button>
 	        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
 	      </div>
-	      	<%= form_for(@account, :url => session_path(@account), :html => { :role => 'form'}) do |f| %>
+	      	<%= form_for(@user, :url => session_path(@user), :html => { :role => 'form'}) do |f| %>
 	          <div class="modal-body">
 		          <div class="form-group">
 		            <%= f.label :email %>

@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Event</th>
-      <th>User</th>
+      <th>Contact</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,7 +13,7 @@
     <% @attendees.each do |attendee| %>
       <tr>
         <td><%= attendee.event %></td>
-        <td><%= attendee.user %></td>
+        <td><%= attendee.contact %></td>
         <td><%= link_to 'Show', attendee %></td>
         <td><%= link_to 'Edit', edit_attendee_path(attendee) %></td>
         <td><%= link_to 'Destroy', attendee, method: :delete, data: { confirm: 'Are you sure?' } %></td>

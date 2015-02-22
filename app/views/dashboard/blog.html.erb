@@ -1,0 +1,108 @@
+
+    <section class="content">
+        <h1>
+            Articles
+            <small>All</small>
+        </h1>
+        <!-- start:breadcrumb -->
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-book"></i> Blog</a></li>
+            <li><a href="#">All</a></li>
+            <div class="pull-right">
+                <div class="btn-toolbar" role="toolbar">
+                    <div class="btn-group">
+                      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+                        <i class="fa fa-cog"></i>
+                        Actions
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li>
+                          <a data-target="#assign_teacher_modal" data-toggle="modal" href="#" id="assign_teacher">
+                            <i class="fa fa-edit">
+                                
+                            </i>
+                            Edit
+                          </a>
+                        </li>
+                        <li>
+                          <a data-target="#assign_prefect_modal" data-toggle="modal" href="#" id="assign_prefect">
+                            <i class="fa fa-close">
+                                
+                            </i>
+                            Delete
+                          </a>
+                        </li>
+                        <li>
+                          <a data-target="#assign_prefect_modal" data-toggle="modal" href="#" id="assign_prefect">
+                            <i class="fa fa-check">
+                                
+                            </i>
+                            Publish
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="btn-group">
+                        <a href="<%= new_article_path %>" class="btn btn-default dropdown-toggle" id="create-article">
+                            <i class="fa fa-edit">
+                                New Article
+                            </i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </ol>
+        <!-- end:breadcrumb -->
+
+        <!-- start:content -->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- start:dynamic data table -->
+                <div class="adv-table">
+                    <table  class="display table table-bordered table-striped" id="example">
+                        <thead>
+                            <tr>
+                                <th><%= check_box_tag "toggle_articles" %></th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Created At</th>
+                                <!-- <th></th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <% @articles.each do |article| %>
+                            <tr class="gradeX">
+                                <td>
+                                  <%= check_box_tag "article[article.id]", article.id %>
+                                </td>
+                                <td><%= article.title %></td>
+                                <td><%= article.user.name if !article.user.nil? %></td>
+                                <td><%= time_formatter(article.created_at) %></td>
+                                </td>
+                                <!-- <td>
+                                    <%= link_to 'Show', article %> | 
+                                    <%= link_to 'Edit', edit_article_path(article) %> | 
+                                    <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                </td> -->
+                            </tr>
+                          <% end %>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <!-- <th>Rendering engine</th>
+                                <th>Browser</th>
+                                <th>Platform(s)</th>
+                                <th class="hidden-phone">Engine version</th>
+                                <th class="hidden-phone">CSS grade</th> -->
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- end:dynamic data table -->
+            </div>
+        </div>
+        <!-- end:content -->
+
+    </section>

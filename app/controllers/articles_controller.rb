@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  layout 'blog'
+  before_action :authenticate_user!, except: [:show, :index]
+  layout 'blog', only: [:index, :show]
+  layout 'dashboard', only: [:new, :edit]
 
   # GET /articles
   # GET /articles.json
@@ -26,10 +28,11 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
+    @article.user = current_user
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to dashboard_blog_path, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
@@ -70,6 +73,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :body, :slug, :category_id)
+      params.require(:article).permit(:title, :body, :slug, :category_id, :published)
     end
 end

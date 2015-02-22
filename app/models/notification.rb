@@ -3,7 +3,7 @@
 # Table name: notifications
 #
 #  id                   :integer          not null, primary key
-#  user_id              :integer
+#  contact_id           :integer
 #  group_id             :integer
 #  notification_type_id :integer
 #  created_at           :datetime
@@ -12,7 +12,7 @@
 #
 
 class Notification < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :contact
   belongs_to :group
   belongs_to :notification_type
 end

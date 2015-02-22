@@ -959,7 +959,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
 
     /**
-     * addTest allows the user to define their own feature tests
+     * addTest allows the contact to define their own feature tests
      * the result will be added onto the Modernizr object,
      * as well as an appropriate className set on the html element
      *

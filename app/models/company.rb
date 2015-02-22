@@ -9,12 +9,12 @@
 #  phone_number :string(255)
 #  created_at   :datetime
 #  updated_at   :datetime
-#  account_id   :integer
+#  user_id      :integer
 #
 
 class Company < ActiveRecord::Base
   belongs_to :service
-  belongs_to :account
+  belongs_to :user
   has_many :branches
   has_many :incidents
 
