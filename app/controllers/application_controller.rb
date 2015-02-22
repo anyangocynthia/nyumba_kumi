@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
   protect_from_forgery with: :null_session, :if => Proc.new { |c| c.request.format == 'application/json' }
 
-  helper_method :current_user
+  helper_method :current_contact
 
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  def current_contact
+    @current_contact ||= Contact.find(session[:contact_id]) if session[:contact_id]
   end
 
   def generate_verification_code
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(arg)
-    new_account_session_path
+    new_user_session_path
   end
 
   def after_sign_up_path_for(resource)
@@ -29,23 +29,23 @@ class ApplicationController < ActionController::Base
   end
 
   # def resource_name
-  #   @resource_name = :account
+  #   @resource_name = :user
   # end
 
   # def resource
-  #   @resource ||= Account.new
+  #   @resource ||= User.new
   # end
 
   # def devise_mapping
-  #  @devise_mapping ||= Devise.mappings[:account]
+  #  @devise_mapping ||= Devise.mappings[:user]
   # end
 
-  def send_verification_code user
+  def send_verification_code contact
     gateway = SMSGateway.new
     code = generate_verification_code
-    gateway.send user.phone_number, "Hi. Welcome to Ujirani app. Your verification code is #{code}. Go back to the app and enter it."
+    gateway.send contact.phone_number, "Hi. Welcome to Ujirani app. Your verification code is #{code}. Go back to the app and enter it."
 
-    user.verification_code = code
-    user.save!
+    contact.verification_code = code
+    contact.save!
   end
 end

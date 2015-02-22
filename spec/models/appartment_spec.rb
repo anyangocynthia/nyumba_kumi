@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  house_id   :string(255)
-#  user_id    :integer
+#  contact_id :integer
 #  created_at :datetime
 #  updated_at :datetime
 #

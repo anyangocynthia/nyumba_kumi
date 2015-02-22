@@ -2,22 +2,21 @@
 #
 # Table name: users
 #
-#  id                 :integer          not null, primary key
-#  name               :string(255)
-#  phone_number       :string(255)
-#  id_number          :string(255)
-#  group_id           :integer
-#  user_type          :string(255)
-#  created_at         :datetime
-#  updated_at         :datetime
-#  verification_code  :string(255)
-#  verified           :boolean
-#  house_id           :integer
-#  house_number       :string(255)
-#  photo_file_name    :string(255)
-#  photo_content_type :string(255)
-#  photo_file_size    :integer
-#  photo_updated_at   :datetime
+#  id                     :integer          not null, primary key
+#  email                  :string(255)      default(""), not null
+#  encrypted_password     :string(255)      default(""), not null
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
+#  created_at             :datetime
+#  updated_at             :datetime
+#  name                   :string(255)
+#  is_admin               :boolean
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

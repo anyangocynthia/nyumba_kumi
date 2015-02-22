@@ -28,8 +28,8 @@
                       <li><!-- Task item -->
                         <a href="<%= incident_path(incident) %>">
                           <h3>
-                            <% if !incident.user.nil? %>
-                              <%= incident.user.name %>
+                            <% if !incident.contact.nil? %>
+                              <%= incident.contact.name %>
                             |
                             <% end %>
                             <%= incident.incident_type %>
@@ -69,8 +69,8 @@
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= image_tag "/assets/missing.jpg", class: "img-circle", style: "width: 25px;" %>
-                <strong>@john</strong>
+                <%= image_tag current_user.photo.url, class: "img-circle", style: "width: 25px;" %>
+                <strong>@<%= current_user.name.split(" ")[0] %></strong>
               </a>
               <ul class="dropdown-menu dropdown-login">
                 <li>
@@ -78,18 +78,18 @@
                     <div class="row">
                       <div class="col-lg-3">
                         <p class="text-center">
-                          <img src="img/user.jpg" class="img-responsive img-circle">
+                          <img src="img/contact.jpg" class="img-responsive img-circle">
                         </p>
                       </div>
                       <div class="col-lg-9">
-                        <p class="text-left"><strong>John Doe</strong></p>
-                        <p class="text-left small">johndoe@email.com</p>
+                        <p class="text-left"><strong><%= current_user.name %></strong></p>
+                        <p class="text-left small"><%= current_user.email %></p>
                         <div class="row">
                           <div class="col-md-6">
-                            <small><a href="#">Edit Profile</a></small>
+                            <small><%= link_to 'Edit Profile', edit_user_registration_path %></small>
                           </div>
                           <div class="col-md-6">
-                            <small><a href="#">Notification</a></small>
+                            
                           </div>
                         </div>
                       </div>
@@ -99,7 +99,7 @@
                 <li class="divider"></li>
                 <li>
                   <div class="navbar-login navbar-login-session">
-                    <a href="#" class="btn btn-default btn-square btn-block">Logout</a>
+                    <%= link_to 'Logout', destroy_user_session_path, :method=>'delete', class: "btn btn-default btn-square btn-block" %>
                   </div>
                 </li>
               </ul>

@@ -1,4 +1,4 @@
-class Accounts::SessionsController < Devise::SessionsController
+class Users::SessionsController < Devise::SessionsController
 	# layout "security"
   # def new
   #   super

@@ -13,7 +13,7 @@ function initialize(lat, lang, container) {
     position: new google.maps.LatLng(lat, lang),
     map: map,
     animation: google.maps.Animation.DROP,
-    // title: incident.user_name + " (" + incident.user_phone + ")"
+    // title: incident.contact_name + " (" + incident.contact_phone + ")"
   });
 }
 
