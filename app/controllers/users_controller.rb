@@ -55,12 +55,18 @@ class UsersController < ApplicationController
     sms = SMSGateway.new
     code = params[:verification_code]
     user = User.find(params[:id])
+    matched = user.verification_code == code
     status = ""
     if user.verified.nil? || user.verified == false
-      user.verified = user.verification_code == code
+      user.verified = matched
       user.save!
-      status = user.verification_code == code ? "User verified successfully!" : "Wrong verification code! Please try again."
-      sms.send user.phone_number, "You have been successfully verified! Thank you."
+      if matched
+        status = "User verified successfully!"
+        sms.send user.phone_number, "You have been successfully verified! Thank you."
+      else
+        status = "Wrong verification code! Please try again."
+        # sms.send user.phone_number, "Sorry! The code you entered didn't match what we had sent you. Please try again."
+      end
     else
       status = "User has already been verified!"
     end
@@ -78,8 +84,8 @@ class UsersController < ApplicationController
         @user.photo = File.open(params[:photo].tempfile)
         @user.save!
       end
-      if params[:house_estate] && params[:house_number]
-        house_id = House.find_or_create_by!(house_name: params[:house_estate]).id
+      if params[:user][:house_name] && user_params[:house_number]
+        house_id = House.find_or_create_by!(house_name: params[:user][:house_name]).id
         @user.house_id = house_id
         @user.house_number = params[:house_number]
         @user.save!

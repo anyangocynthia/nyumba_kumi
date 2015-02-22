@@ -3,7 +3,7 @@
 # Table name: incidents
 #
 #  id              :integer          not null, primary key
-#  type            :string(255)
+#  incident_type   :string(255)
 #  user_id         :integer
 #  notification_id :integer
 #  location        :string(255)
@@ -11,6 +11,8 @@
 #  false_flag      :boolean
 #  created_at      :datetime
 #  updated_at      :datetime
+#  company_id      :integer
+#  viewed          :boolean          default(FALSE)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

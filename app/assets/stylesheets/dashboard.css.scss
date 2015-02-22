@@ -1,3 +1,35 @@
 // Place all the styles related to the dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*
+ *= require bootstrap.min
+ *= require font-awesome.min
+ *= require bootstrap-reset
+ *= require arjuna
+ *= require demo_page
+ *= require demo_table
+ * require dropzone
+ *= require tasks
+ *= require fullcalendar
+ *= require fullcalendar.print
+ *= require DT_bootstrap
+ * require jquery.datetimepicker
+ * require reports.custom
+ *= require owl.carousel
+ *= require owl.theme
+ *= require owl.transitions
+ * require xcharts
+ * require cal-heatmap.css
+ *= require morris
+ *= require_self
+ */
+
+
+.breadcrumb {
+	padding: 8px 8px 15px;
+}
+
+.panel-footer {
+	padding: 10px 10px 40px;
+}

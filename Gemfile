@@ -10,10 +10,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
-# gem 'devise'
+gem 'devise'
 # gem 'devise_invitable'
 gem 'figaro', '>= 1.0.0.rc1'
-gem 'foundation-rails'
+# gem 'foundation-rails'
 gem 'high_voltage'
 gem 'pundit'
 gem 'annotate'
@@ -23,9 +23,11 @@ gem 'google_places'
 gem 'httparty'
 gem 'phony_rails'
 gem "paperclip"#, :git => "git://github.com/thoughtbot/paperclip.git"
-gem 'leaflet-rails'
+# gem 'leaflet-rails'
 gem 'gcm'
-gem 'gmaps4rails'
+gem 'gon'
+# gem 'gmaps4rails'
+# gem 'semantic-ui-sass'
 
 group :development do
   gem 'better_errors'

@@ -1,10 +1,17 @@
 class IncidentsController < ApplicationController
-  before_action :set_incident, only: [:show, :edit, :update, :destroy]
+  before_action :set_incident, only: [:show, :edit, :update, :destroy, :toggle_resolve, :toggle_false_flag, :send_message_to_user]
+
+  layout "dashboard"
 
   # GET /incidents
   # GET /incidents.json
   def index
+    # current_account.companies.
     @incidents = Incident.all
+  end
+
+  def company_incidents
+    
   end
 
   # GET /incidents/1
@@ -15,6 +22,7 @@ class IncidentsController < ApplicationController
   # GET /incidents/new
   def new
     @incident = Incident.new
+    gon.incident = @incident
   end
 
   # GET /incidents/1/edit
@@ -61,6 +69,20 @@ class IncidentsController < ApplicationController
     end
   end
 
+  def toggle_resolve
+    @incident.update(resolved: !@incident.resolved)
+    render json: { resolved: @incident.resolved }
+  end
+
+  def toggle_false_flag
+    @incident.update(false_flag: !@incident.false_flag)
+    render json: { false_flag: @incident.false_flag }
+  end
+
+  def send_message_to_user
+    redirect_to @incident, notice: "Message sent"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_incident
@@ -69,6 +91,6 @@ class IncidentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def incident_params
-      params.require(:incident).permit(:incident_type, :user_id, :notification_id, :location, :resolved, :false_flag)
+      params.require(:incident).permit(:incident_type, :user_id, :notification_id, :location, :resolved, :false_flag, :viewed)
     end
 end

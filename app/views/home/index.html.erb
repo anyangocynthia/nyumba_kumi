@@ -4,34 +4,35 @@
 					<h1>Ujirani Mobile App</h1>
 					<h2>Digitizing the Nyumba Kumi initiative.</h2>
 					<!-- <a class="btn btn-lg btn-success actionBtn" href="#"><i class="fa fa-mobile fa-4x pull-left"></i><span class="line1">Available on the</span><br/><span class="line2">App Store</span></a> -->
-					<img src="assets/google_play.png">
+					<a href="https://play.google.com/store/apps/details?id=com.app.nyumbakumi"><img src="assets/google_play.png"></a>
 				</div>
-				<div class="col-md-6 col-md-pull-6 hidden-xs">
+				<!-- <div class="col-md-6 col-md-pull-6 hidden-xs">
 					<div class="mobile">
 						<div class="mobileSlider">
 							<ul class="slides">
 								<li>
-									<img src="assets/splash.jpg"/>
+									<img src="assets/dashboard.png"/>
 								</li>
 								<li>
-									<img src="assets/main-menu.jpg"/>
+									<img src="assets/menu.png"/>
 								</li>
 								<li>
-									<img src="assets/profile.jpg"/>
+									<img src="assets/create_group.png"/>
 								</li>
 								<li>
-									<img src="assets/panic-menu.jpg"/>
+									<img src="assets/panic.png"/>
 								</li>
 							</ul>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				
 			</div>
 			</div>
 
 	<div id="featureWrap">
 		<div class="container">
+			<h2 class="sectionTitle">Simple. Social. Secure</h2>
 			<div class="row">
 				<div class="col-sm-4 text-center feature">
 					<i class="fa fa-lock icon"></i>
@@ -59,7 +60,7 @@
 		</div>
 	</div> <!-- /featureWrap -->
 	
-	<div id="productWrap" class="altWrap">
+	<!-- <div id="productWrap" class="altWrap">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
@@ -70,7 +71,7 @@
 			<div class="row">
 				<div class="col-md-5 col-md-offset-1">
 					<div class="imgWrap">
-						<!-- <img class="img-responsive" src="assets/tablet.png"/> -->
+						<img class="img-responsive" src="assets/tablet.png"/>
 					</div>
 				</div>
 				<div class="col-md-5">
@@ -109,13 +110,13 @@
 				</div>
 			</div>
 		</div>
-	</div> <!-- /productWrap -->
+	</div> --> <!-- /productWrap -->
 	
-	<div id="pricingWrap">
+	<div id="productWrap">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
-					<h2 class="sectionTitle">Amaizing Design!</h2>
+					<h2 class="sectionTitle">Amazing Design!</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -229,7 +230,7 @@
 		</div>
 	</div> <!-- /pricingWrap -->
 	
-	<div id="testimonialsWrap" class="altWrap">
+	<!-- <div id="testimonialsWrap" class="altWrap">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
@@ -257,7 +258,7 @@
 				</div>
 			</div>
 		</div>
-	</div> <!-- /testimonialsWrap -->
+	</div> --> <!-- /testimonialsWrap -->
 	
 	<div id="contactWrap">
 		<div class="overlay">
@@ -275,28 +276,104 @@
 					</div>
 				</div>
 					<div class="row">
-						<div class="col-sm-4 col-sm-offset-2">
-							<div class="inputContainer">
-							<label>Name</label>
-								<input type="text" name="contactName" id="contactName" value="" class="form-control" autocomplete="off" />
+						<form action="//forms.brace.io/muadh24@gmail.com">
+							<div class="col-sm-4 col-sm-offset-2">
+								<div class="inputContainer">
+								<label class="lable">Name</label>
+									<input type="text" name="contactName" id="contactName" value="" class="form-control" autocomplete="off" />
+								</div>
 							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="inputContainer">
-							<label class="screen-reader-text">Email</label>
-								<input type="text" name="email" id="email" value="" class="form-control" autocomplete="off"  />
+							<div class="col-sm-4">
+								<div class="inputContainer">
+								<label class="screen-reader-text lable">Email</label>
+									<input type="text" name="email" id="email" value="" class="form-control" autocomplete="off"  />
+								</div>
 							</div>
-						</div>
-						<div class="col-sm-8 col-sm-offset-2">
-							<div class="inputContainer">
-							<label class="screen-reader-text">Message</label>
-								<textarea name="comments" id="commentsText" class="form-control" autocomplete="off"></textarea>
+							<div class="col-sm-8 col-sm-offset-2">
+								<div class="inputContainer">
+								<label class="screen-reader-text lable">Message</label>
+									<textarea name="comments" id="commentsText" class="form-control" autocomplete="off"></textarea>
+								</div>
 							</div>
-						</div>
-						<div class="col-sm-8 col-sm-offset-2">
-							<button name="submit" type="button" class="btn btn-primary btn-lg">Send</button>
-						</div>
+							<div class="col-sm-8 col-sm-offset-2">
+								<button name="submit" type="button" class="btn btn-primary btn-lg">Send</button>
+							</div>
+						</form>
 					</div>
 			</div>
 		</div>
 	</div> <!-- /contactWrap -->
+
+	<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="signup_modal" role="dialog" tabindex="-1">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	        <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+	      </div>
+	      	<%= form_for(@account, :url => registration_path(@account), :html => { :role => 'form'}) do |f| %>
+	          <div class="modal-body">
+		          <div class="form-group">
+		            <%= f.label :email %>
+		            <%= f.email_field :email, class: 'form-control' %>
+		          </div>
+		          <div class="form-group">
+		            <%= f.label :password %>
+		            <%= f.password_field :password, class: 'form-control' %>
+		          </div>
+		          <div class="form-group">
+		            <%= f.label :password_confirmation %>
+		            <%= f.password_field :password_confirmation, class: 'form-control' %>
+		          </div>
+	          </div>
+	          <div class="modal-footer">
+	            <button class="btn btn-default" data-dismiss="modal" type="button">
+	              <i class="fa fa-times"></i>
+	              Cancel
+	            </button>
+	            <button class="btn btn-success" type="submit">
+	              <i class="fa fa-check"></i>
+	              Sign Up
+	            </button>
+	          </div>
+	        <% end %>
+	    </div>
+	  </div>
+	</div>
+
+	<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="signin_modal" role="dialog" tabindex="-1">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+	      </div>
+	      	<%= form_for(@account, :url => session_path(@account), :html => { :role => 'form'}) do |f| %>
+	          <div class="modal-body">
+		          <div class="form-group">
+		            <%= f.label :email %>
+		            <%= f.email_field :email, class: 'form-control' %>
+		          </div>
+		          <div class="form-group">
+		            <%= f.label :password %>
+		            <%= f.password_field :password, class: 'form-control' %>
+		          </div>
+	          </div>
+	          <div class="modal-footer">
+	            <button class="btn btn-default" data-dismiss="modal" type="button">
+	              <i class="fa fa-times"></i>
+	              Cancel
+	            </button>
+	            <button class="btn btn-success" type="submit">
+	              <i class="fa fa-check"></i>
+	              Sign In
+	            </button>
+	          </div>
+	        <% end %>
+	    </div>
+	  </div>
+	</div>

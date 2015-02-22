@@ -1,34 +1,123 @@
-<p id="notice"><%= notice %></p>
+<section class="content">
+	<!-- <h1>
+			Incident
+			<small>#<%= @incident.id %></small>
+	</h1> -->
+	<!-- start:breadcrumb -->
+	<ol class="breadcrumb">
+			<li><a href="<%= user_path(@incident.user) %>"><i class="fa fa-user"></i> <%= @incident.user.name %></a></li>
+			<li><a href="#"><%= @incident.user.phone_number %></a></li>
+			<div class="pull-right">
+				<div class="btn-toolbar" role="toolbar">
+					<div class="btn-group">
+						<button class="btn btn-default dropdown-toggle" id="send-message" data-toggle = "modal" data-target = "#message_modal" data-url = "<%= false_flag_path(@incident)%>">
+							<i class="fa fa-envelope">
+							Send Message
+							</i>
+						</button>
+						<button class="btn btn-default dropdown-toggle" id="false-flag" data-url = "<%= false_flag_path(@incident)%>">
+							<% if !@incident.false_flag %>
+								<i class="fa fa-flag">
+								Mark as a false flag
+								</i>
+							<% else %>
+								<i class="fa fa-remove">
+								Unmark as a false flag
+								</i>
+							<% end %>
+						</button>
+						<button class="btn btn-default dropdown-toggle" id="resolve" data-url = "<%= resolve_path(@incident)%>">
+							<% if !@incident.resolved %>
+							<i class="fa fa-check">
+							Mark as Resolved
+							<% else %>
+								<i class="fa fa-remove">
+								Mark as Unresolved
+							<% end %>
+							</i>
+						</button>
+						<!-- <button class="btn btn-default dropdown-toggle" data-toggle = "dropdown" data-url = "<%= false_flag_path(@incident)%>">
+							<i class="fa fa-flag">
+							Mark As
+							</i>
+							<span class="caret"></span>
+							<ul class="dropdown-menu" role="menu">
+								<li>
+									False Flag
+								</li>
+								<li>
+									False Flag
+								</li>
+							</ul>
+						</button> -->
+					</div>
+				</div>
+			</div>
+	</ol>
+	<!-- end:breadcrumb -->
 
-<p>
-  <strong>Type:</strong>
-  <%= @incident.type %>
-</p>
+	<!-- start:content -->
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="row">
+					<div class="col-md-3">
+					Type: <%= @incident.incident_type %>
+					</div>
+					<div class="col-md-3">
+					False Flag?: <%= human_boolean @incident.false_flag %>
+					</div>
+					<div class="col-md-3">
+					Resolved: <%= human_boolean @incident.resolved %>
+					</div>
+					<div class="col-md-3">
+						<i class="fa fa-calendar">
+						<%= time_formatter(@incident.created_at) %>
+						</i>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-md-12">
+					<div id="incident-map" style="width: 100%; height: 600px;"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-<p>
-  <strong>User:</strong>
-  <%= @incident.user %>
-</p>
+<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="message_modal" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Send Message</h4>
+      </div>
+      <%= form_tag send_message_to_user_path do |f| %>
+        <div class="modal-body">
+          <label id="lbl-msg"></label>
+          <%= hidden_field_tag 'user' %>
+          <textarea class="form-control" name="message"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-default" data-dismiss="modal" type="button">
+            <i class="fa fa-times"></i>
+            Cancel
+          </button>
+          <button class="btn btn-success" type="submit">
+            <i class="fa fa-check"></i>
+            Send
+          </button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Notification:</strong>
-  <%= @incident.notification %>
-</p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @incident.location %>
-</p>
-
-<p>
-  <strong>Resolved:</strong>
-  <%= @incident.resolved %>
-</p>
-
-<p>
-  <strong>False flag:</strong>
-  <%= @incident.false_flag %>
-</p>
-
-<%= link_to 'Edit', edit_incident_path(@incident) %> |
-<%= link_to 'Back', incidents_path %>
+<%= javascript_tag do %>
+  window.incident = '<%= raw @incident.location %>'
+<% end %>

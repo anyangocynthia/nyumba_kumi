@@ -9,11 +9,14 @@
 #  phone_number :string(255)
 #  created_at   :datetime
 #  updated_at   :datetime
+#  account_id   :integer
 #
 
 class Company < ActiveRecord::Base
   belongs_to :service
+  belongs_to :account
   has_many :branches
+  has_many :incidents
 
   has_many :group_companies
   has_many :groups, through: :group_companies

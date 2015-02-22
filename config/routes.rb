@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   resources :articles
 
+  devise_for :accounts, :controllers => {:registrations => "accounts/registrations", sessions: "accounts/sessions" }
   resources :incidents
 
   get 'dashboard/index'
 
-  get 'dashbord/index'
+  get 'map', to: 'dashboard#map', as: 'map'
 
   resources :devices
 
@@ -56,4 +57,12 @@ Rails.application.routes.draw do
   match 'add_services', to: 'home#add_services', as: 'add_services', via: "post"
   
   match 'panic_menu_actions', to: 'home#panic_menu_actions', as: 'panic_menu_actions', via: "post"
+
+  get 'company_incidents', to: 'companies#incidents', as: 'company_incidents'
+  get 'unviewed_incidents', to: 'companies#unviewed_incidents', as: 'unviewed_incidents'
+
+  match 'incidents/:id/resolve', to: 'incidents#toggle_resolve', as: 'resolve', via: "post"
+  match 'incidents/:id/false_flag', to: 'incidents#toggle_false_flag', as: 'false_flag', via: "post"
+  
+  match 'incidents/:id/send_message_to_user', to: 'incidents#send_message_to_user', as: 'send_message_to_user', via: "post"
 end

@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#topWrap">
+      <a class="navbar-brand" href="<%= root_path %>">
         <span class="fa-stack fa-lg">
           <i class="fa fa-circle fa-stack-2x"></i>
           <i class="fa fa-home fa-stack-1x fa-inverse"></i>
@@ -19,9 +19,13 @@
       <ul class="nav navbar-nav">
         <li><a href="#featureWrap">Features</a></li>
         <li><a href="#productWrap">The App</a></li>
-        <li><a href="#pricingWrap">Design</a></li>
-        <li><a href="#testimonialsWrap">Testimonials</a></li>
         <li><a href="#contactWrap">Contact Us</a></li>
+        <% if !account_signed_in? %>
+          <li><a href="#" id="signup-link" data-toggle = "modal" data-target = "#signup_modal">Sign Up</a></li>
+          <li><a href="#" id="signin-link" data-toggle = "modal" data-target = "#signin_modal">Sign In</a></li>
+        <% else %>
+          <li><%= link_to "Map", map_path %></li>
+        <% end %>
       </ul>
     </div><!--/.nav-collapse -->
   </div>

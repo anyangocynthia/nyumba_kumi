@@ -2,17 +2,19 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Nyumba Kumi" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Nyumba Kumi" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Ujirani App" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ujirani App" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false %>
-    <%# Modernizr is required for Zurb Foundation %>
-    <%= javascript_include_tag 'vendor/modernizr' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <%= render 'layouts/navigation' %>
     <%= yield %>
     <%= render 'layouts/footer' %>
+    <script type="text/javascript" src="skrollr.min.js"></script>
+    <script type="text/javascript">
+    var s = skrollr.init();
+    </script>
   </body>
 </html>

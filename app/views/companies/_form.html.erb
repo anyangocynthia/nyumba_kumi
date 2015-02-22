@@ -1,33 +1,59 @@
-<%= form_for(@company) do |f| %>
-  <% if @company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
-
-      <ul>
-      <% @company.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<section class="panel">
+  <%= form_for @company do |f| %>
+    <div class="panel-body">
+      <% if @company.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:" %>
+          </h2>
+          <ul>
+            <% @company.errors.full_messages.each do |msg| %>
+              <li>
+                <%= msg %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+      <div class="form-group">
+        <%= f.label :name %>
+        <div class="iconic-input">
+          <i class="fa fa-home"></i>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :form, "Service" %>
+        <select class="form-control" name="company[form_id]" type="text">
+          <% Service.all.each do |service| %>
+            <option value="<%= service.id %>">
+              <%= service.name %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+      <div class="form-group">
+        <%= f.label :location %>
+        <div class="iconic-input">
+          <i class="fa fa-map-marker"></i>
+          <%= f.text_field :location, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :phone_number %>
+        <div class="iconic-input">
+          <i class="fa fa-phone"></i>
+          <%= f.text_field :phone_number, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <div class="actions pull-right">
+        <button class="btn btn-primary btn-rounded" type="submit">
+          <i class="fa fa-save"></i>
+          Save
+        </button>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :service_id %><br>
-    <%= f.text_field :service_id %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_number %><br>
-    <%= f.text_field :phone_number %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</section>
