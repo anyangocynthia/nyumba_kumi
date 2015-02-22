@@ -75,6 +75,11 @@ class ArticlesController < ApplicationController
     redirect_to dashboard_blog_path, notice: "You have deleted #{deleted} articles."
   end
 
+  def add_category
+    Category.create! name: params[:name]
+    redirect_to dashboard_blog_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article

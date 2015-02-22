@@ -69,4 +69,5 @@ Rails.application.routes.draw do
   match 'incidents/:id/send_message_to_contact', to: 'incidents#send_message_to_contact', as: 'send_message_to_contact', via: "post"
 
   post "/articles/delete_multiple" => "articles#delete_multiple", as: "delete_multiple_articles"
+  post "/articles/add_category" => "articles#add_category", as: "add_category"
 end

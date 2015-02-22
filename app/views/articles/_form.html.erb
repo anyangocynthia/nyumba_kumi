@@ -37,10 +37,10 @@
             Article Settings
           </h3>
           <label>Category</label>
-          <select class="form-control">
+          <select class="form-control" name="article[category_id]">
             <% Category.all.each do |c| %>
-              <option name="article[category]" value="<%= c.id %>">
-
+              <option value="<%= c.id %>">
+              <%= c.name %>
               </option>
             <% end %>
           </select>
