@@ -11,4 +11,5 @@
 // about supported directives.
 //
 //= require tinymce
+//= require jquery.checkboxes
 //= require_tree ./blog

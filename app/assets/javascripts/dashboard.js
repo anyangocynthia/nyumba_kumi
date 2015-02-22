@@ -11,7 +11,7 @@
 //= require moment.min
 //= require jquery-ui.custom.min
 //= require fullcalendar.min
-// require jquery.checkboxes
+//= require jquery.checkboxes
 // require jquery.datetimepicker
 // require dropzone
 //= require owl-carousel-plugin

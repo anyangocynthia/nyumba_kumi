@@ -26,7 +26,7 @@
                           </a>
                         </li>
                         <li>
-                          <a data-target="#assign_prefect_modal" data-toggle="modal" href="#" id="assign_prefect">
+                          <a data-target="#delete_modal" data-toggle="modal" href="#" id="delete-articles">
                             <i class="fa fa-close">
                                 
                             </i>
@@ -71,7 +71,7 @@
                                 <!-- <th></th> -->
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="articles_table">
                           <% @articles.each do |article| %>
                             <tr class="gradeX">
                                 <td>
@@ -106,3 +106,32 @@
         <!-- end:content -->
 
     </section>
+
+    <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="delete_modal" role="dialog" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Delete Articles?</h4>
+          </div>
+          <%= form_tag delete_multiple_articles_path do |f| %>
+            <div class="modal-body">
+              <label id="lbl-msg"></label>
+              <%= hidden_field_tag 'delete_articles' %>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-default" data-dismiss="modal" type="button">
+                <i class="fa fa-times"></i>
+                Cancel
+              </button>
+              <button class="btn btn-danger" type="submit">
+                <i class="fa fa-trash-o"></i>
+                Delete
+              </button>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
