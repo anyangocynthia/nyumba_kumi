@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
     elsif params[:query]
         @articles = Article.where(title: params[:query])
     else
-      @articles = Article.all
+      @articles = Article.all.page(params[:page], 2)
     end
     render layout: 'blog'
   end
