@@ -4,10 +4,10 @@
         <div id="page-title">The blog</div>
         <!-- Breadcrumb-->
         <div id="breadcrumbs">
-          You are here: 
-          <a title="Home" href="single.html#">Home</a> &raquo; 
-          <a title="Features" href="single.html#">Blog</a> &raquo; 
-          <a title="Features" href="single.html#">Lorem ipsum dolor</a>
+          <!-- You are here:  -->
+          <!-- <a title="Home" href="single.html#">Home</a> &raquo; 
+          <a title="Features" href="single.html#">Blog</a> &raquo;  -->
+          <!-- <a title="Features" href="single.html#">Lorem ipsum dolor</a> -->
         </div>
         <!-- ENDS Breadcrumb--> 
       </div>
@@ -21,49 +21,40 @@
         
           <!-- Single post -->
           <div class="post single">
-            <h1>Lorem ipsum dolor amet</h1>
+            <h1><%= @article.title %></h1>
             <!-- meta -->
             <ul class="meta">
-              <li>By <a href="single.html#">Ansimuz</a>&nbsp;</li> 
-              <li> on Dec 27th 2010 &nbsp;</li>
-              <li> with 47 comments &nbsp;</li>
-              <li> in <a href="single.html#">Webdesign</a>&nbsp;</li>
+              <li>By <%= @article.author %>&nbsp;</li> 
+              <li> on <%= time_formatter(@article.created_at) %> &nbsp;</li>
+              <!-- <li> with 47 comments &nbsp;</li> -->
+              <% if @article.category %>
+                <li> in <%= link_to @article.category.name, "/blog?category=#{@article.category.name}" %>&nbsp;</li>
+              <% end %>
             </ul>
             <!-- ENDS meta -->
             <!-- feature image -->
             <div class="feature-image">
-              <img src="img/dummies/584x300.jpg" alt="Feature image" />
+              <img src="<%= @article.image %>" alt="Feature image" />
             </div>
             <!-- ENDS feature image -->
             <div class="the-content">
-              <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-              <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+              <%= raw(@article.body) %>
             </div>
           </div>
           <!-- ENDS single post -->
           
           <!-- tags -->
           <ul class="tags">
-            <li>Tags: </li>
-            <li><a href="single.html#">Web design</a></li>
-            <li><a href="single.html#">Code</a></li>
-            <li><a href="single.html#">Photo</a></li>
-            <li><a href="single.html#">Clothing</a></li>
-            <li><a href="single.html#">Video</a></li>
-            <li><a href="single.html#">Web design</a></li>
-            <li><a href="single.html#">Code</a></li>
-            <li><a href="single.html#">Photo</a></li>
-            <li><a href="single.html#">Clothing</a></li>
-            <li><a href="single.html#">Video</a></li><li>
-            <li><a href="single.html#">Code</a></li>
-            <li><a href="single.html#">Photo</a></li>
-            <li><a href="single.html#">Video</a></li><li>
+            <% if @article.category %>
+              <li>Tags: </li>
+              <li><%= link_to @article.category.name, "/blog?category=#{@article.category.name}" %></li>
+            <% end %>
           </ul>
           <!-- ENDS tags -->
           
           
           <!-- comments list -->
-          <div class="comments-header"><span class="n-comments">25</span><h6 class="text">COMMENTS</h6></div>
+          <!-- <div class="comments-header"><span class="n-comments">25</span><h6 class="text">COMMENTS</h6></div>
           <ol class="comments-list">
             <li>
               <div class="comment-wrap">
@@ -125,11 +116,11 @@
                 </div>
               </div>
             </li>
-          </ol>
+          </ol> -->
           <!-- ENDS comments list -->
 
           <!-- comments form -->
-          <div class="leave-comment">
+          <!-- <div class="leave-comment">
             <h3>LEAVE A COMMENT</h3>  
             <form action="single.html#" method="post" id="commentform">
               <fieldset>
@@ -153,7 +144,7 @@
                 <p><input type="hidden" name="comment_post_ID" value="51" /></p>
               </fieldset>
             </form>
-          </div>
+          </div> -->
           <!-- ENDS comments form -->   
           
         </div>

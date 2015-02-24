@@ -23,12 +23,12 @@
     <!-- SIDEBAR -->
     <div id="sidebar">
       <!-- logo -->
-      <a href="index.html"><img src="assets/blog/logo.png" alt="Left template" id="logo" /></a>
+      <a href="index.html"><img src="/assets/logo.png" width="250" alt="Left template" id="logo" /></a>
             
       <!-- search -->
-      <form  method="get" id="searchform" action="single.html#">
+      <form  method="get" id="searchform" action="/blog">
         <div>
-          <input type="text" value="Search..." name="s" id="s" onfocus="defaultInput(this)" onblur="clearInput(this)" />
+          <input type="text" value="Search..." name="query" id="s" onfocus="defaultInput(this)" onblur="clearInput(this)" />
           <input type="submit" id="searchsubmit" value=" " />
         </div>
       </form>
@@ -36,43 +36,15 @@
             
       <!-- Navigation -->
       <ul id="nav" class="sf-menu sf-vertical">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="features.html">FEATURES</a>
-          <ul>
-            <li><a href="features.html">Columns layout</a>
-            <li><a href="features-typography.html">Typography</a>
-            <li><a href="features-icons.html">General icons</a>
-            <li><a href="features-social-icons.html">Social icons</a>
-            <li><a href="features-accordion.html">Accordion boxes</a>
-            <li><a href="features-toggle.html">Toggle boxes</a>
-            <li><a href="features-tabs.html">Tabbed content</a>
-          </ul>
-        </li>
-        <li><a href="skins.html">SKINS</a></li>
-        <li><a href="gallery.html">GALLERY</a>
-          <ul>
-            <li><a href="gallery.html">Image gallery</a>
-              <ul>
-                <li><a href="gallery.html">Two columns layout</a></li>
-                <li><a href="gallery-fourcols.html">Four columns layout</a></li>
-              </ul>
-            </li>
-            <li><a href="gallery-video.html">Video gallery</a></li>
-          </ul>
-        </li>
-        <li class="current-menu-item"><a href="blog.html">BLOG</a>
-          <ul>
-            <li><a href="blog.html">Full blog</a></li>
-            <li><a href="blog-compact.html">Compact blog</a></li>
-          </ul>
-        </li>
-        <li><a href="portfolio.html">PORTFOLIO</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
+        <li><%= link_to "HOME", "/blog" %></li>
+        <% Category.all.each do |c| %>
+          <li><%= link_to c.name, "/blog?category=#{c.name}" %></li>
+        <% end %>
       </ul>
       <!-- Navigation --> 
           
       <!-- categories -->
-      <ul class="cat-list">
+      <!-- <ul class="cat-list">
         <li><h6>Categories</h6></li>
         <li><a href="single.html#" title="View posts">Design (11)</a></li>
         <li><a href="single.html#" title="View all posts">Web (6)</a></li> 
@@ -82,7 +54,7 @@
         <li><a href="single.html#" title="View all posts">Web (6)</a></li> 
         <li><a href="single.html#" title="View all posts">Photo (5)</a></li> 
         <li><a href="single.html#" title="View all posts">Coding (23)</a></li>
-      </ul>
+      </ul> -->
       <!-- categories --> 
       
       <!-- latest tweets -->
@@ -115,37 +87,12 @@
     <!-- FOOTER-WRAPPER -->
     <div id="footer-wrapper">
       <!-- footer-cols -->
-      <ul id="footer-cols">
-        <li class="col clear-col">
-          <h6>About the theme</h6>
-          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.
-        </li>
-        <li class="col">
-          <h6>Categories</h6>
-          <ul>
-            <li><a href="single.html#">Webdesign</a></li>
-            <li><a href="single.html#/">Wordpress</a></li>
-            <li><a href="single.html#">Photo</a></li>
-            <li><a href="single.html#">Code</a></li>
-            <li><a href="single.html#">Web design</a></li>
-            <li><a href="single.html#/">Marketplace</a></li>
-            <li><a href="single.html#">Writting</a></li>
-            <li><a href="single.html#">Drawings</a></li>
-          </ul>
-        </li>
-        <!-- Flickr -->
-        <li class="col">
-          <h6>Flickr stream</h6>
-          <ul id="flickr-stream" class="thumbs">
-          </ul>
-        </li>
-      <!-- ENDS Flickr -->
-      </ul>
+      
       <!-- ENDS footer-cols -->
       <!-- footer-bottom -->
       <div id="footer-bottom">
         <div id="bottom-left">
-          &copy; 2011 Ansimuz. All Rights Reserved.  <a href="http://themeforest.net/user/Ansimuz?ref=ansimuz">View portfolio</a>
+          &copy; <%= Time.now.year %> <%= link_to "Ujirani", root_path %>. All Rights Reserved.
         </div>
         <div id="bottom-right">To top</div>
       </div>

@@ -7,13 +7,20 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
+    if params[:category]
+      @articles = Article.where(category_id: Category.find_by(name: params[:category]))
+    elsif params[:query]
+        @articles = Article.where(title: params[:query])
+    else
+      @articles = Article.all
+    end
     render layout: 'blog'
-    @articles = Article.all
   end
 
   # GET /articles/1
   # GET /articles/1.json
   def show
+    render layout: 'blog'
   end
 
   # GET /articles/new

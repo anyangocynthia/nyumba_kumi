@@ -17,7 +17,7 @@
         <!-- PAGE CONTENT -->
         <div id="page-content">
           <!-- Posts -->
-          <% Article.all.each do |article| %>
+          <% @articles.each do |article| %>
             <div class="post">
               <h1><%= link_to article.title, article_path(article) %></h1>
               <!-- meta -->

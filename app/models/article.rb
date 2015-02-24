@@ -12,4 +12,8 @@ class Article < ActiveRecord::Base
   def author
   	user.name if !user.nil?
   end
+
+  def image
+  	self.feature_image.url if self.feature_image.url
+  end
 end
