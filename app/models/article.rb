@@ -10,6 +10,6 @@ class Article < ActiveRecord::Base
   end
 
   def author
-  	user.name
+  	user.name if !user.nil?
   end
 end

@@ -16,49 +16,29 @@
             
         <!-- PAGE CONTENT -->
         <div id="page-content">
-        
           <!-- Posts -->
-          <div class="post">
-            <h1><a href="single.html">Lorem ipsum dolor amet</a></h1>
-            <!-- meta -->
-            <ul class="meta">
-              <li>By <a href="blog.html#">Ansimuz</a>&nbsp;</li> 
-              <li> on Dec 27th 2010 &nbsp;</li>
-              <li> with 47 comments &nbsp;</li>
-              <li> in <a href="blog.html#">Webdesign</a>&nbsp;</li>
-            </ul>
-            <!-- ENDS meta -->
-            <!-- feature image -->
-            <div class="feature-image">
-              <a href="single.html"><img src="img/dummies/584x300.jpg" alt="Feature image" /></a>
+          <% Article.all.each do |article| %>
+            <div class="post">
+              <h1><%= link_to article.title, article_path(article) %></h1>
+              <!-- meta -->
+              <ul class="meta">
+                <li>By <%= article.author %>&nbsp;</li> 
+                <li> on <%= time_formatter(article.created_at) %>&nbsp;</li>
+                <!-- <li> with 47 comments &nbsp;</li> -->
+                <li> in <a href="blog.html#"><%= article.category.name if !article.category.nil? %></a>&nbsp;</li>
+              </ul>
+              <!-- ENDS meta -->
+              <!-- feature image -->
+              <div class="feature-image">
+                <a href="<%= article_path(article) %>"><img src="<%= article.feature_image.url %>" alt="Feature image" /></a>
+              </div>
+              <!-- ENDS feature image -->
+              <div class="the-excerpt">
+                <%= raw article.summary %>
+              </div>
+              <a href="<%= article_path(article) %>" class="link-button"><span>Read more</span></a>
             </div>
-            <!-- ENDS feature image -->
-            <div class="the-excerpt">
-              Pellentesque habitant morbi tristique senectus et netus et malesuada fames, Pellentesque habitant morbi tristique senectus et netus et malesuada fames Pellentesque habitant morbi tristique senectus et netus et malesuada fames.
-            </div>
-            <a href="single.html" class="link-button"><span>Read more</span></a>
-          </div>
-          
-          <div class="post">
-            <h1><a href="single.html">Lorem ipsum dolor amet</a></h1>
-            <!-- meta -->
-            <ul class="meta">
-              <li>By <a href="blog.html#">Ansimuz</a> &nbsp;</li> 
-              <li> on Dec 27th 2010 &nbsp;</li>
-              <li> with 47 comments &nbsp;</li>
-              <li> in <a href="blog.html#">Webdesign</a> &nbsp;</li>
-            </ul>
-            <!-- ENDS meta -->
-            <!-- feature image -->
-            <div class="feature-image">
-              <a href="single.html"><img src="img/dummies/584x300b.jpg" alt="Feature image" /></a>
-            </div>
-            <!-- ENDS feature image -->
-            <div class="the-excerpt">
-              Pellentesque habitant morbi tristique senectus et netus et malesuada fames, Pellentesque habitant morbi tristique senectus et netus et malesuada fames Pellentesque habitant morbi tristique senectus et netus et malesuada fames.
-            </div>
-            <a href="single.html" class="link-button"><span>Read more</span></a>
-          </div>
+          <% end %>
           <!-- ENDS posts -->
           
           <!-- Pagination -->
