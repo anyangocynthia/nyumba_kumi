@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150222163952) do
+ActiveRecord::Schema.define(version: 20150224120145) do
 
   create_table "appartment_residents", force: true do |t|
     t.integer  "appartment_id"
@@ -40,7 +40,11 @@ ActiveRecord::Schema.define(version: 20150222163952) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.boolean  "published",   default: false
+    t.boolean  "published",                  default: false
+    t.string   "feature_image_file_name"
+    t.string   "feature_image_content_type"
+    t.integer  "feature_image_file_size"
+    t.datetime "feature_image_updated_at"
   end
 
   add_index "articles", ["category_id"], name: "index_articles_on_category_id"
