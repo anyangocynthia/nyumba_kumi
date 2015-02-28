@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224120145) do
+ActiveRecord::Schema.define(version: 20150228135919) do
+
+  create_table "accounts", force: true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.boolean  "setup",      default: false
+    t.string   "api_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accounts", ["user_id"], name: "index_accounts_on_user_id"
 
   create_table "appartment_residents", force: true do |t|
     t.integer  "appartment_id"
@@ -67,8 +78,10 @@ ActiveRecord::Schema.define(version: 20150224120145) do
     t.string   "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
 
+  add_index "branches", ["account_id"], name: "index_branches_on_account_id"
   add_index "branches", ["company_id"], name: "index_branches_on_company_id"
 
   create_table "categories", force: true do |t|
@@ -85,8 +98,10 @@ ActiveRecord::Schema.define(version: 20150224120145) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "account_id"
   end
 
+  add_index "companies", ["account_id"], name: "index_companies_on_account_id"
   add_index "companies", ["service_id"], name: "index_companies_on_service_id"
   add_index "companies", ["user_id"], name: "index_companies_on_user_id"
 
@@ -177,8 +192,10 @@ ActiveRecord::Schema.define(version: 20150224120145) do
     t.datetime "updated_at"
     t.integer  "company_id"
     t.boolean  "viewed",          default: false
+    t.integer  "account_id"
   end
 
+  add_index "incidents", ["account_id"], name: "index_incidents_on_account_id"
   add_index "incidents", ["company_id"], name: "index_incidents_on_company_id"
   add_index "incidents", ["contact_id"], name: "index_incidents_on_contact_id"
   add_index "incidents", ["notification_id"], name: "index_incidents_on_notification_id"
@@ -225,6 +242,17 @@ ActiveRecord::Schema.define(version: 20150224120145) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "user_accounts", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "account_id"
+    t.boolean  "is_preferred", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_accounts", ["account_id"], name: "index_user_accounts_on_account_id"
+  add_index "user_accounts", ["user_id"], name: "index_user_accounts_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
