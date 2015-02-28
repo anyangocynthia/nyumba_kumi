@@ -30,4 +30,18 @@ class User < ActiveRecord::Base
 
   has_many :companies
   has_many :articles
+  has_many :accounts
+
+  def main_account
+		# accounts.first
+		if accounts.count > 1
+			if user_accounts.where(is_preferred: true).count > 0
+				user_accounts.where(is_preferred: true).first.account
+			else
+				accounts.first
+			end
+		else
+			accounts.first
+		end
+	end
 end

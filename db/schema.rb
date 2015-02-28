@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20150228135919) do
 
   create_table "accounts", force: true do |t|
+    t.string   "email"
     t.string   "name"
     t.integer  "user_id"
     t.boolean  "setup",      default: false
