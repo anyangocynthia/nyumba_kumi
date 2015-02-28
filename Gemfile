@@ -27,6 +27,7 @@ gem "paperclip"#, :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'gcm'
 gem 'gon'
 gem 'tinymce-rails'
+gem 'acts_as_tenant'
 # gem 'gmaps4rails'
 # gem 'semantic-ui-sass'
 
