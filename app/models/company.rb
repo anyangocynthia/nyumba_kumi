@@ -13,6 +13,8 @@
 #
 
 class Company < ActiveRecord::Base
+	belongs_to :account
+  acts_as_tenant(:account)
   belongs_to :service
   belongs_to :user
   has_many :branches

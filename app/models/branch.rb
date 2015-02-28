@@ -12,6 +12,8 @@
 #
 
 class Branch < ActiveRecord::Base
+	belongs_to :account
+  acts_as_tenant(:account)
   belongs_to :company
 
   has_many :group_companies

@@ -16,6 +16,8 @@
 #
 
 class Incident < ActiveRecord::Base
+	belongs_to :account
+  acts_as_tenant(:account)
   belongs_to :contact
   belongs_to :notification
   belongs_to :company
