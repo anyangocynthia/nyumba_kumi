@@ -5,6 +5,29 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
   protect_from_forgery with: :null_session, :if => Proc.new { |c| c.request.format == 'application/json' }
 
+  set_current_tenant_through_filter
+  before_filter :filter_tenant_via_devise_or_params
+
+  def filter_tenant_via_devise_or_params 
+    if user_signed_in?
+      account = current_user.main_account
+      set_current_tenant(account)
+    elsif params[:account].present?
+      account = Account.find_by_email(params[:account])
+      set_current_tenant(account)
+    elsif params[:token].present?
+      # possibly an API client
+      account = Account.find_by_api_token(params[:token])
+      set_current_tenant(account)
+    else
+      # token authentication via API
+      authenticate_with_http_token do |token|        
+        account = Account.find_by_api_token(token)
+        set_current_tenant(account)
+      end
+    end
+  end
+
   helper_method :current_contact
 
   def current_contact
@@ -26,6 +49,10 @@ class ApplicationController < ActionController::Base
 
   def after_sign_up_path_for(resource)
     new_company_path
+  end
+
+  def account
+    ActsAsTenant.current_tenant
   end
 
   # def resource_name
