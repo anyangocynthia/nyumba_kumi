@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :accounts
+
   get 'blog', to: 'articles#index', as: 'blog'
   resources :articles
 
