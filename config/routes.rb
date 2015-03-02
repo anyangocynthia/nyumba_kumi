@@ -55,7 +55,7 @@ Rails.application.routes.draw do
       get 'services_and_companies', to:'services#services_and_companies',as:'services_and_companies'
       get 'group_services', to:'groups#group_services',as:'group_services'
       get 'group_notifications', to:'groups#notifications',as:'group_notifications'
-      match 'verify', to: 'users#verify', as: 'verify', via: "post"
+      match 'verify', to: 'contacts#verify', as: 'verify', via: "post"
       match 'add_services', to: 'home#add_services', as: 'add_services', via: "post"
       match 'panic_menu_actions', to: 'home#panic_menu_actions', as: 'panic_menu_actions', via: "post"
     end
@@ -76,7 +76,7 @@ Rails.application.routes.draw do
   # get 'group_services', to:'groups#group_services',as:'group_services'
   # get 'group_notifications', to:'groups#notifications',as:'group_notifications'
   
-  # match 'verify', to: 'users#verify', as: 'verify', via: "post"
+  # match 'verify', to: 'contacts#verify', as: 'verify', via: "post"
   # match 'add_services', to: 'home#add_services', as: 'add_services', via: "post"
   
   # match 'panic_menu_actions', to: 'home#panic_menu_actions', as: 'panic_menu_actions', via: "post"
