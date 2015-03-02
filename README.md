@@ -3,7 +3,9 @@
 
 ## Overview
 
-The URL is: http://41.242.2.154:3001/
+The URL is: http://ujiraniapp.com/api/v1
+
+Every request must unclude an API token: `token`
 
 ### First Screen (Sign Up)
     
