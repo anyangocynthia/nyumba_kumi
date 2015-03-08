@@ -16,4 +16,4 @@
 //= require bootstrap
 //= require flexslider
 //= require underscore
-// require_tree .
+//= require_tree .
