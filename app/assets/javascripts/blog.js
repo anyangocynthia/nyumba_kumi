@@ -12,4 +12,4 @@
 //
 //= require tinymce
 //= require jquery.checkboxes
-//= require_tree ./blog
+// require_tree ./blog
