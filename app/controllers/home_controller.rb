@@ -78,4 +78,8 @@ class HomeController < ApplicationController
 			render json: {error: "Unknown request!"}
 		end
 	end
+
+	def verifyforzoho
+		render layout: 'zoho'
+	end
 end

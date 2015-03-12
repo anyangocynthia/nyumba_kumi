@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#index', as: 'dashboard_index'
   get '/dashboard/blog', to: 'dashboard#blog'
 
+  get '/zohoverify/verifyforzoho', to: 'home#verifyforzoho'
+
   get 'map', to: 'dashboard#map', as: 'map'
 
   resources :devices
