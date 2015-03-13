@@ -1,118 +1,245 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Ujirani App" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ujirani App" %>">
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4u6EYHG6OxEBHORkBbKXUm7OQBySIxr8">
-    </script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <%= stylesheet_link_tag 'blog', media: 'all', 'data-turbolinks-track' => false %>
-    <%= javascript_include_tag 'blog', 'data-turbolinks-track' => false %>
-    <%= csrf_meta_tags %>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-  <![endif]-->
+  <title>Let&#x27;s Ongair</title>
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta name="description" content="Insights for Instant messaging.">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Let&#x27;s Ongair">
+  <meta name="twitter:description" content="Insights for Instant messaging.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Let&#x27;s Ongair">
+  <meta property="og:description" content="Insights for Instant messaging.">
+
+
+  <link rel="shortcut icon" href="assets/img/favicon.ico">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="msapplication-TileImage" content="/assets/img/mstile-144x144.png">
+  <meta name="msapplication-config" content="/assets/img/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <%= stylesheet_link_tag 'blog', media: 'all', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'blog', 'data-turbolinks-track' => false %>
+
 </head>
-<body>
-  <div id="wrapper">
-    <!-- SIDEBAR -->
-    <div id="sidebar">
-      <!-- logo -->
-      <a href="index.html"><img src="/assets/logo.png" width="250" alt="Left template" id="logo" /></a>
-            
-      <!-- search -->
-      <form  method="get" id="searchform" action="/blog">
-        <div>
-          <input type="text" value="Search..." name="query" id="s" onfocus="defaultInput(this)" onblur="clearInput(this)" />
-          <input type="submit" id="searchsubmit" value=" " />
-        </div>
-      </form>
-      <!-- ENDS search -->
-            
-      <!-- Navigation -->
-      <ul id="nav" class="sf-menu sf-vertical">
-        <li><%= link_to "HOME", "/blog" %></li>
-        <% Category.all.each do |c| %>
-          <li><%= link_to c.name, "/blog?category=#{c.name}" %></li>
-        <% end %>
-      </ul>
-      <!-- Navigation --> 
-          
-      <!-- categories -->
-      <!-- <ul class="cat-list">
-        <li><h6>Categories</h6></li>
-        <li><a href="single.html#" title="View posts">Design (11)</a></li>
-        <li><a href="single.html#" title="View all posts">Web (6)</a></li> 
-        <li><a href="single.html#" title="View all posts">Photo (3)</a></li>
-        <li><a href="single.html#" title="View all posts">Coding (16)</a></li>
-        <li><a href="single.html#" title="View all posts">Design (41)</a></li>
-        <li><a href="single.html#" title="View all posts">Web (6)</a></li> 
-        <li><a href="single.html#" title="View all posts">Photo (5)</a></li> 
-        <li><a href="single.html#" title="View all posts">Coding (23)</a></li>
-      </ul> -->
-      <!-- categories --> 
-      
-      <!-- latest tweets -->
-      <div class="tweet"><h6>Tweets</h6></div> 
-      <!-- ENDS latest tweets -->
-      
-      <!-- Social -->
-      <ul class="social">
-        <li><h6>Follow us</h6>
-        <li><a href="http://www.facebook.com" class="facebook" title="Become a fan"></a></li>
-        <li><a href="http://www.twitter.com" class="twitter" title="Follow our tweets"></a></li>
-        <li><a href="http://www.dribbble.com" class="dribbble" title="View our work"></a></li>
-        <li><a href="http://www.addthis.com" class="addthis" title="Tell everybody"></a></li>
-        <li><a href="http://www.vimeo.com" class="vimeo" title="View our videos"></a></li>
-        <li><a href="http://www.youtube.com" class="youtube" title="View our videos"></a></li>
-      </ul>
-      <!-- ENDS Social -->
+<body class="home-template no-js">
 
-    </div>
-    <!-- ENDS SIDEBAR -->
+  <span class="mobile btn-mobile-menu">
+    <i class="icon icon-list btn-mobile-menu__icon"></i>
+    <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+  </span>
 
-    <!-- MAIN -->
-    <div id="main">
-      <%= yield %>
-    </div>
-    <!-- ENDS MAIN -->
-  </div>
-  <!-- FOOTER -->
-  <div id="footer">
-    <!-- FOOTER-WRAPPER -->
-    <div id="footer-wrapper">
-      <!-- footer-cols -->
-      
-      <!-- ENDS footer-cols -->
-      <!-- footer-bottom -->
-      <div id="footer-bottom">
-        <div id="bottom-left">
-          &copy; <%= Time.now.year %> <%= link_to "Ujirani", root_path %>. All Rights Reserved.
+  <header class="panel-cover">
+    <div class="panel-main">
+  
+      <div class="panel-main__inner panel-inverted">
+      <div class="panel-main__content">
+  
+          <a href="index.html#open" title="link to homepage for Ujirani"><%= image_tag '/assets/ujirani_logo.png', width: "80", alt: "Ujirani logo", class: "panel-cover__logo logo" %></a>
+          <h1 class="panel-cover__title panel-title"><a href="index.html" title="link to homepage for Let&#x27;s Ongair">Let's Ongair</a></h1>
+          <hr class="panel-cover__divider" />
+          <p class="panel-cover__description">Insights for Instant messaging.</p>
+  
+          <hr class="panel-cover__divider panel-cover__divider--secondary" />
+  
+          <div class="navigation-wrapper">
+  
+            <form id="search">
+              <i class="icon icon-search"></i>
+              <input type="text", name="search", placeholder="WhatsApp, Wechat..." id="search-field" />
+              <hr class="panel-cover__divider panel-cover__divider--secondary" />
+            </form>
+  
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="http://app.ongair.im/" target="_blank" title="Sign up today" class="blog-button">Sign up Today</a></li>
+                <li class="navigation__item"><a href="index.html#open" title="Let's Ongair" class="blog-button">Blog</a></li>
+              </ul>
+            </nav>
+  
+            
+            <nav class="cover-navigation navigation--social">
+              <ul class="navigation">
+            
+              <!-- Twitter -->
+              <li class="navigation__item ">
+                <a target="blank" href="http://twitter.com/ongair_" title="Follow us on Twitter">
+                  <i class='icon icon-social-twitter'></i>
+                  <span class="label">Twitter</span>
+                </a>
+              </li>
+            
+              <!-- Linkedin -->
+              <li class="navigation__item ">
+                <a target="blank" href="https://www.linkedin.com/company/ongair" title="Lets Connect">
+                  <i class='icon icon-social-linkedin'></i>
+                  <span class="label">Linkedin</span>
+                </a>
+              </li>
+            
+               <!-- Facebook -->
+              <li class="navigation__item ">
+                <a target="blank" href="https://www.facebook.com/letsOngair" title="Like us on Facebook">
+                  <i class='icon icon-social-facebook'></i>
+                  <span class="label">Facebook</span>
+                </a>
+              </li>
+            
+              <!-- Github -->
+            
+              <!-- Email -->
+              <li class="navigation__item ">
+                <a target="blank" href="mailto:hello@ongair.im" title="Get in touch">
+                  <i class='icon icon-mail'></i>
+                  <span class="label">Email</span>
+                </a>
+              </li>
+            
+              <!-- RSS -->
+            
+              </ul>
+            </nav>
+  
+          </div>
+  
         </div>
-        <div id="bottom-right">To top</div>
+  
       </div>
-      <!-- ENDS footer-bottom -->
     </div>
-    <!-- ENDS FOOTER-WRAPPER -->
+  </header>
+
+  <div class="content-wrapper">
+    <div id="results"></div>
+    <div class="content-wrapper__inner">
+      <div class="main-post-list">
+  <ol class="post-list">
+    <li>
+      <h2 class="post-list__post-title post-title">
+        <a href="the-fun-thing-about-hard-things/index.html" title="link to The fun thing about hard things">The fun thing about hard things</a>
+      </h2>
+      <img class="post-list__post-image" src="content/images/2015/02/ben_horowitz_hand_signed_copy_of_the_hard_thing_about_hard_things_ifonly_714x470_1.png" alt="">
+      <p class="excerpt">Building a company - a tech startup specifically - is one of those hard things Ben Horowitz expounds in detail in his great book 'The hard thing about hard things'. But this challenge can also be very satisfying, especially when you find a solution to a hard problem. Well, today&hellip;</p>
+      <div class="post-list__meta">
+        <time datetime="19 Feb 2015" class="post-list__meta--date date">19 Feb 2015
+        </time>
+        <span class="post-list__meta--tags tags">
+          on <a href="tag/techcorner/index.html">techcorner</a>
+        </span>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    <li>
+      <h2 class="post-list__post-title post-title">
+        <a href="location-location-location/index.html" title="link to Location! Location! Location!">Location! Location! Location!</a>
+      </h2>
+      <img class="post-list__post-image" src="content/images/2015/02/locations-1-1.png" alt="">
+      <p class="excerpt">'Location! Location! Location! goes the old real estate mantra - The short way of saying that value of land is greatly determined by the quality of its location and its surrounding areas. In a similar way, the value of a lead in terms of Marketing &amp; Sales is greatly determined&hellip;</p>
+      <div class="post-list__meta">
+        <time datetime="03 Jun 2014" class="post-list__meta--date date">03 Jun 2014
+        </time>
+        <span class="post-list__meta--tags tags">
+          on <a href="tag/features/index.html">Features</a>
+        </span>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    <li>
+      <h2 class="post-list__post-title post-title">
+        <a href="easily-manage-your-whatsapp-group-chat/index.html" title="link to Easily Manage your WhatsApp Group Chat">Easily Manage your WhatsApp Group Chat</a>
+      </h2>
+      <p class="excerpt">Chase Bank Kenya was the first bank to use WhatsApp for customer service. They recently upped their interaction on this platform by inviting people in financials groups to add their bank to their group for the purposes of getting investment advice. Source There are an estimated 300,000 investment groups&hellip;</p>
+      <div class="post-list__meta">
+        <time datetime="03 Jun 2014" class="post-list__meta--date date">03 Jun 2014
+        </time>
+        <span class="post-list__meta--tags tags">
+          on <a href="tag/examples/index.html">Examples</a>, <a href="tag/groups/index.html">Groups</a>
+        </span>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    <li>
+      <h2 class="post-list__post-title post-title">
+        <a href="hourly-message-summary-on-ongair/index.html" title="link to Receive your WhatsApp messages via Email">Receive your WhatsApp messages via Email</a>
+      </h2>
+      <img class="post-list__post-image" src="content/images/2015/02/message_digest-1.png" alt="">
+      <p class="excerpt">WhatsApp users on average receive about 2.2K messages per month. Sounds manageable for an individual. But what happens when you're a company doing customer care on WhatsApp, or running a marketing campaign or perhaps you're a socialite...   We received over 1000 messages from about 90 contacts last weekend. Is&hellip;</p>
+      <div class="post-list__meta">
+        <time datetime="21 May 2014" class="post-list__meta--date date">21 May 2014
+        </time>
+        <span class="post-list__meta--tags tags">
+          on <a href="tag/features/index.html">Features</a>, <a href="tag/productivity/index.html">Productivity</a>
+        </span>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    <li>
+      <h2 class="post-list__post-title post-title">
+        <a href="whatsapp-accounts-23-of-econet-zimbabwes-network-usage/index.html" title="link to WhatsApp accounts 23% of Econet Zimbabwe’s network usage">WhatsApp accounts 23% of Econet Zimbabwe’s network usage</a>
+      </h2>
+      <img class="post-list__post-image" src="content/images/2015/02/2014_02_21_Usage.jpg" alt="">
+      <p class="excerpt">Almost a quarter of all network usage on Econet Zimbabwe’s mobile network is attributed to instant messaging service WhatsApp Source This was after Econet introduced unlimited WhatsApp bundles. Econet is Zimbabwe's largest mobile network with about 8.8 million subscribers.  Its safe to assume that the users in Zimbabwe&hellip;</p>
+      <div class="post-list__meta">
+        <time datetime="21 May 2014" class="post-list__meta--date date">21 May 2014
+        </time>
+        <span class="post-list__meta--tags tags">
+          on <a href="tag/stats/index.html">Stats</a>
+        </span>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    <li>
+      <h2 class="post-list__post-title post-title">
+        <a href="indian-street-food-vendor-taking-orders-via-whatsapp/index.html" title="link to Indian Street Food vendor taking orders via WhatsApp">Indian Street Food vendor taking orders via WhatsApp</a>
+      </h2>
+      <p class="excerpt">WhatsApp was being touted as the New Facebook of India as early as September 2013 and who can disagree when even small roadside food vendors use it to take orders. (Source: http://www.socialsamosa.com/2013/09/whatsapp-new-facebook-india/)&hellip;</p>
+      <div class="post-list__meta">
+        <time datetime="13 May 2014" class="post-list__meta--date date">13 May 2014
+        </time>
+        <span class="post-list__meta--tags tags">
+          on <a href="tag/examples/index.html">Examples</a>
+        </span>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+  </ol>
+  <hr class="post-list__divider " />
+<nav class="pagination" role="navigation">
+  <span class="pagination__page-number">Page 1 of 2</span>
+  <a class="older-posts pagination__older btn btn-small" href="page/2/index.html#open">Older Posts &rarr;</a>
+</nav>
+
+</div>
+
+      <footer class="footer">
+        <span class="footer__copyright">&copy; 2015. All rights reserved.</span>
+      </footer>
+    </div>
   </div>
-  <!-- ENDS FOOTER -->
 
-  <!-- Google Analytics -->
-
+  <script type="text/javascript">
+    $(function() {
+      Uno.cover.collapsed();
+    });
+  </script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-60370140-1', 'auto');
+  
+    ga('create', 'UA-59878696-1', 'auto');
     ga('send', 'pageview');
-
-  </script>
-  </body>
+  
+  </script></body>
 </html>
