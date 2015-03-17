@@ -12,13 +12,13 @@ module Api::V2
 			# is_in_a_group = !contact.group_id.nil?
 			# verified = contact.verified == true
 
-			if verified == false
-				if contact.verification_code.nil?
-					send_verification_code contact
-				else
-					gateway.send(contact.phone_number, "We had already sent you the verification code. Here it is again: #{contact.verification_code}.")
-				end
-			end
+			# if verified == false
+			# 	if contact.verification_code.nil?
+			# 		send_verification_code contact
+			# 	else
+			# 		gateway.send(contact.phone_number, "We had already sent you the verification code. Here it is again: #{contact.verification_code}.")
+			# 	end
+			# end
 			# render json: { contact_id: contact.id, is_in_a_group: is_in_a_group, profile_setup: profile_setup, verified: verified, verification_code: contact.verification_code }
 			# 
 			contact = Contact.find_or_create_by! email: params[:email], name: params[:name]

@@ -12,13 +12,13 @@
 #  longitude  :float
 #
 
-class House < ActiveRecord::Base
+class Estate < ActiveRecord::Base
   belongs_to :contact
   has_many :appartments
   # reverse_geocoded_by :latitude, :longitude
 
   # def self.find_nearest location
-  # 	house = House.near([location.latitude, location.longitude], 20, :units => :km).first
+  # 	house = Estate.near([location.latitude, location.longitude], 20, :units => :km).first
   # 	return house
   # end
 end

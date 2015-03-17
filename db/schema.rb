@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150301180428) do
+ActiveRecord::Schema.define(version: 20150317122040) do
 
   create_table "accounts", force: true do |t|
     t.string   "email"
@@ -136,6 +136,18 @@ ActiveRecord::Schema.define(version: 20150301180428) do
 
   add_index "devices", ["contact_id"], name: "index_devices_on_contact_id"
 
+  create_table "estates", force: true do |t|
+    t.string   "house_name"
+    t.string   "location"
+    t.integer  "contact_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
+  end
+
+  add_index "estates", ["contact_id"], name: "index_estates_on_contact_id"
+
   create_table "events", force: true do |t|
     t.string   "title"
     t.datetime "time_of_event"
@@ -169,18 +181,6 @@ ActiveRecord::Schema.define(version: 20150301180428) do
   end
 
   add_index "groups", ["contact_id"], name: "index_groups_on_contact_id"
-
-  create_table "houses", force: true do |t|
-    t.string   "house_name"
-    t.string   "location"
-    t.integer  "contact_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.float    "latitude"
-    t.float    "longitude"
-  end
-
-  add_index "houses", ["contact_id"], name: "index_houses_on_contact_id"
 
   create_table "incidents", force: true do |t|
     t.string   "incident_type"

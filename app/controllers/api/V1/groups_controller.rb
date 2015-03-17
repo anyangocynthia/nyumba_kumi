@@ -73,8 +73,8 @@ module Api::V1
 	      contact[:group_id] = u.group_id
 	      contact[:in_a_group] = !u.group_id.nil?
 	      contact[:contact_type] = u.contact_type
-	      contact[:house_name] = (!u.house_id.nil?? House.find(u.house_id).house_name : nil)
-	      contact[:house_number] = u.house_number
+	      contact[:estate_name] = (!u.estate_id.nil?? Estate.find(u.estate_id).estate_name : nil)
+	      contact[:estate_number] = u.estate_number
 	      contact[:photo] = "#{ENV['ROOT_URL']}#{u.photo.url}"
 	      contact[:member_since] = "#{u.created_at.strftime("%d/%m/%Y")} #{u.created_at.strftime("%I:%M%p")}"
 	      members << contact

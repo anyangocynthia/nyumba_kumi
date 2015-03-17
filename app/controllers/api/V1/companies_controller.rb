@@ -34,8 +34,8 @@ module Api::V1
 	          :contact_name => !incident.contact_id.nil?? incident.contact.name : "",
 	          :contact_phone => !incident.contact_id.nil?? incident.contact.phone_number : "",
 	          :contact_photo => !incident.contact_id.nil?? incident.contact.photo.url : "",
-	          :house_name => !incident.contact.house_id.nil?? House.find(incident.contact.house_id).house_name : nil,
-	          :house_number => incident.contact.house_number,
+	          :estate_name => !incident.contact.estate_id.nil?? Estate.find(incident.contact.estate_id).estate_name : nil,
+	          :estate_number => incident.contact.estate_number,
 	          :resolved => incident.resolved ? "YES" : "NO"
 	        }
 	        incident.update(viewed: true)
@@ -58,8 +58,8 @@ module Api::V1
 	          :contact_name => !incident.contact_id.nil?? incident.contact.name : "",
 	          :contact_phone => !incident.contact_id.nil?? incident.contact.phone_number : "",
 	          :contact_photo => !incident.contact_id.nil?? incident.contact.photo.url : "",
-	          :house_name => !incident.contact.house_id.nil?? House.find(incident.contact.house_id).house_name : nil,
-	          :house_number => incident.contact.house_number,
+	          :estate_name => !incident.contact.estate_id.nil?? Estate.find(incident.contact.estate_id).estate_name : nil,
+	          :estate_number => incident.contact.estate_number,
 	          :resolved => incident.resolved ? "YES" : "NO"
 	        }
 	        incident.update(viewed: true)
@@ -75,8 +75,8 @@ module Api::V1
 	    #     :contact_name => incident.contact.name,
 	    #     :contact_phone => incident.contact.phone_number,
 	    #     :contact_photo => incident.contact.photo.url,
-	    #     :house_name => !incident.contact.house_id.nil?? House.find(incident.contact.house_id).house_name : nil,
-	    #     :house_number => incident.contact.house_number,
+	    #     :estate_name => !incident.contact.estate_id.nil?? Estate.find(incident.contact.estate_id).estate_name : nil,
+	    #     :estate_number => incident.contact.estate_number,
 	    #     :resolved => incident.resolved ? "YES" : "NO"
 	    #   }
 	    #   current_user.companies.first.incidents.update_all(viewed: true)

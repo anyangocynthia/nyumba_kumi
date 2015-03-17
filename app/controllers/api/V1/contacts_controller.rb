@@ -18,8 +18,8 @@ module Api::V1
 	    contact[:group_id] = @contact.group_id
 	    contact[:in_a_group] = !@contact.group_id.nil?
 	    contact[:contact_type] = @contact.contact_type
-	    contact[:house_name] = (!@contact.house_id.nil?? House.find(@contact.house_id).house_name : nil)
-	    contact[:house_number] = @contact.house_number
+	    contact[:estate_name] = (!@contact.estate_id.nil?? Estate.find(@contact.estate_id).estate_name : nil)
+	    contact[:estate_number] = @contact.estate_number
 	    contact[:photo] = "#{ENV['ROOT_URL']}#{@contact.photo.url}"
 	    contact[:member_since] = "#{@contact.created_at.strftime("%d/%m/%Y")} #{@contact.created_at.strftime("%I:%M%p")}"
 
@@ -85,10 +85,10 @@ module Api::V1
 	        @contact.photo = File.open(params[:photo].tempfile)
 	        @contact.save!
 	      end
-	      if params[:contact][:house_name] && contact_params[:house_number]
-	        house_id = House.find_or_create_by!(house_name: params[:contact][:house_name]).id
-	        @contact.house_id = house_id
-	        @contact.house_number = params[:house_number]
+	      if params[:contact][:estate_name] && contact_params[:estate_number]
+	        estate_id = Estate.find_or_create_by!(estate_name: params[:contact][:estate_name]).id
+	        @contact.estate_id = estate_id
+	        @contact.estate_number = params[:estate_number]
 	        @contact.save!
 	      end
 	      if @contact.update(contact_params.except(:phone_number).except(:photo))
@@ -124,7 +124,7 @@ module Api::V1
 
 	    # Never trust parameters from the scary internet, only allow the white list through.
 	    def contact_params
-	      params.require(:contact).permit(:name, :phone_number, :id_number, :group_id, :contact_type, :verified, :verification_code, :house_id, :house_number)
+	      params.require(:contact).permit(:name, :phone_number, :id_number, :group_id, :contact_type, :verified, :verification_code, :estate_id, :estate_number)
 	    end
 	end
 end
