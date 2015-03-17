@@ -62,7 +62,7 @@ Every request must unclude an API token: `token`
 
     If profile_setup is false, the user should be given a way to update their profile
 
-    The URL is PUT {URL}/users/{:id}.json
+    The URL is PUT {URL}/contacts/{:id}.json
 
     Where id is returned as part of the previous response
 
@@ -91,7 +91,7 @@ If is_in_a_group is true, the completing profile  screen is shown else, the crea
 
 #### Request
 
-    GET {URL}/users/{id}.json
+    GET {URL}/contacts/{id}.json
 
 #### Response
 
