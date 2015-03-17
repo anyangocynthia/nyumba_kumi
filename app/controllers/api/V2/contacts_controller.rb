@@ -67,6 +67,9 @@ module Api::V2
 	      contact.photo = File.open(params[:photo].tempfile)
 	      contact.save!
 	    end
+	    if contact.group.nil?
+	    	contact.update(group: Group.create!(name: "Group##{Group.count + 1}"))
+	    end
 	    if contact.verified != true
 				if contact.verification_code.nil?
 					send_verification_code contact
@@ -96,6 +99,34 @@ module Api::V2
 	  # 		render json: {error: "Check the phone number and try again"}
 	  # 	end
 	  # end
+
+	  def invite_contacts
+	  	# contacts = [{name: "John Doe", phone_number: "254722772838"}, {name: "Jane Doe", phone_number: "254722772832"}]
+	  	# params = {"inviter" => contact_id, contacts => contacts}
+	  	gateway = SMSGateway.new
+	  	group = Contact.find(params[:inviter]).group
+	  	inviter = Contact.find(params[:inviter]).name
+	  	contacts = params[:contacts]
+	  	in_a_group = []
+	  	not_in_a_group = []
+	  	contacts.each do |u|
+	  		name = u[:name]
+	  		phone_number = PhonyRails.normalize_number PhonyRails.normalize_number(u[:phone_number]), country_number: "254"
+	  		contact = Contact.find_or_create_by! phone_number: phone_number, name: name
+	  		is_in_a_group = !contact.group_id.nil?
+	  		if is_in_a_group
+	  			in_a_group << phone_number
+	  		else
+	  			contact.group = group
+	  			contact.contact_type = "Member"
+	  			contact.save!
+
+	  			gateway.send contact.phone_number, "Hi. You have been invited to Ujirani app by #{inviter}. Please click http://goo.gl/XeBk2c to download the app."
+	  			not_in_a_group << phone_number
+	  		end
+	  	end
+	  	render json: { in_a_group: in_a_group, not_in_a_group: not_in_a_group }
+	  end
 
 	  def verify
 	    sms = SMSGateway.new
