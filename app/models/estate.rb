@@ -15,10 +15,12 @@
 class Estate < ActiveRecord::Base
   belongs_to :contact
   has_many :appartments
-  # reverse_geocoded_by :latitude, :longitude
 
-  # def self.find_nearest location
-  # 	house = Estate.near([location.latitude, location.longitude], 20, :units => :km).first
-  # 	return house
-  # end
+  geocoded_by :location
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :geocode, :if => :location_changed?
+
+  def self.find_nearest lat, long, radius
+  	 Estate.near([lat, long], radius, :units => :km)
+  end
 end
