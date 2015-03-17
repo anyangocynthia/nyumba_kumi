@@ -13,6 +13,7 @@
 #  updated_at      :datetime
 #  company_id      :integer
 #  viewed          :boolean          default(FALSE)
+#  account_id      :integer
 #
 
 class Incident < ActiveRecord::Base

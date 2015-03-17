@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: houses
+# Table name: estates
 #
 #  id         :integer          not null, primary key
 #  house_name :string(255)

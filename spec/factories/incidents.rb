@@ -13,6 +13,7 @@
 #  updated_at      :datetime
 #  company_id      :integer
 #  viewed          :boolean          default(FALSE)
+#  account_id      :integer
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

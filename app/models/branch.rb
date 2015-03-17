@@ -9,6 +9,7 @@
 #  longitude    :string(255)
 #  created_at   :datetime
 #  updated_at   :datetime
+#  account_id   :integer
 #
 
 class Branch < ActiveRecord::Base

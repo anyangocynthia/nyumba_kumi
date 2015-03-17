@@ -11,7 +11,7 @@
 
 class Appartment < ActiveRecord::Base
   belongs_to :contact
-  belongs_to :house
+  belongs_to :estate
 
   has_many :appartment_residents
   has_many :contacts, through: :appartment_residents

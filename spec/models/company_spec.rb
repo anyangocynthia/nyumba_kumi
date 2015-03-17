@@ -10,6 +10,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  user_id      :integer
+#  account_id   :integer
 #
 
 require 'rails_helper'
