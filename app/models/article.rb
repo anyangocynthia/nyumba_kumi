@@ -6,7 +6,6 @@ class Article < ActiveRecord::Base
   validates_attachment_content_type :feature_image, :content_type => /\Aimage\/.*\Z/
 
   scope :page, (lambda do |page_no, per_page|
-    # {:conditions => ["lower(vendor) like ? and active = 't' and lower(model) like ?", "#{!vendor.nil? ? vendor.downcase : '%'}", "#{!model.nil? ? model.downcase : '%'}"] }
     where("").in_groups_of(per_page)[page_no.to_i - 1]
   end )
 

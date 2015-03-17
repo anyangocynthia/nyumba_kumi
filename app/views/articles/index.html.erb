@@ -1,62 +1,35 @@
-      <!-- HEADER -->
-      <div id="header">
-        <div id="page-title">The blog</div>
-        <!-- Breadcrumb-->
-        <div id="breadcrumbs">
-          You are here: 
-          <a title="Home" href="blog.html#">Home</a> &raquo; 
-          <a title="Features" href="blog.html#">Blog</a>
-        </div>
-        <!-- ENDS Breadcrumb--> 
+<div class="content-wrapper__inner">
+      <div class="main-post-list">
+  <ol class="post-list">
+    <% @articles.each do |article| %>
+    <li>
+      <h2 class="post-list__post-title post-title">
+        <%= link_to article.title, article_path(article), title: article.title %>
+      </h2>
+      <%= image_tag article.image, class: "post-list__post-image" %>
+      <p class="excerpt">
+        <%= article.summary %>
+        &hellip;
+      </p>
+      <div class="post-list__meta">
+        <time datetime="19 Feb 2015" class="post-list__meta--date date">
+          <%= time_formatter(article.created_at) %>
+        </time>
+        <span class="post-list__meta--tags tags">
+          on <%= link_to article.category.name, "#{articles_path}?category=#{article.category.name}" %>
+        </span>
       </div>
-      <!-- ENDS HEADER -->
+      <hr class="post-list__divider" />
+    </li>
+    <% end %>
+  </ol>
+  <hr class="post-list__divider " />
+<nav class="pagination" role="navigation">
+  <span class="pagination__page-number">Page 1 of 2</span>
+  <a class="older-posts pagination__older btn btn-small" href="page/2/index.html#open">Older Posts &rarr;</a>
+</nav>
+
+</div>
+
       
-      <!-- CONTENT -->
-      <div id="content">
-            
-        <!-- PAGE CONTENT -->
-        <div id="page-content">
-          <!-- Posts -->
-          <% @articles.each do |article| %>
-            <div class="post">
-              <h1><%= link_to article.title, article_path(article) %></h1>
-              <!-- meta -->
-              <ul class="meta">
-                <li>By <%= article.author %>&nbsp;</li> 
-                <li> on <%= time_formatter(article.created_at) %>&nbsp;</li>
-                <!-- <li> with 47 comments &nbsp;</li> -->
-                <li> in <a href="blog.html#"><%= article.category.name if !article.category.nil? %></a>&nbsp;</li>
-              </ul>
-              <!-- ENDS meta -->
-              <!-- feature image -->
-              <div class="feature-image">
-                <a href="<%= article_path(article) %>"><img src="<%= article.feature_image.url %>" alt="Feature image" /></a>
-              </div>
-              <!-- ENDS feature image -->
-              <div class="the-excerpt">
-                <%= raw article.summary %>
-              </div>
-              <a href="<%= article_path(article) %>" class="link-button"><span>Read more</span></a>
-            </div>
-          <% end %>
-          <!-- ENDS posts -->
-          
-          <!-- Pagination -->
-          <ul class='pager'>
-            <li class="first-child"><a href="blog.html#">prev</a></li>
-            <li class="active"><a href="blog.html#">1</a></li>
-            <li><a href="blog.html#">2</a></li>
-            <li><a href="blog.html#">3</a></li>
-            <li><a href="blog.html#">4</a></li>
-            <li><a href="blog.html#">5</a></li>
-            <li class="last-child"><a href="blog.html#">next</a></li>
-          </ul>
-          <!-- ENDS Pagination -->
-  
-          
-        </div>
-        <!-- ENDS PAGE-CONTENT -->
-      
-      </div>
-      <!-- ENDS CONTENT -->
-      
+    </div>
