@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   resources :services
 
-  resources :houses
+  # resources :houses
 
   resources :groups
 
@@ -46,6 +46,9 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   # Begining of API routes
+
+  # V1
+
   namespace :api do
     namespace :v1 do
       match 'sign_up', to: 'home#sign_up', as: 'sign_up', via: "post"
@@ -60,6 +63,17 @@ Rails.application.routes.draw do
       match 'verify', to: 'contacts#verify', as: 'verify', via: "post"
       match 'add_services', to: 'home#add_services', as: 'add_services', via: "post"
       match 'panic_menu_actions', to: 'home#panic_menu_actions', as: 'panic_menu_actions', via: "post"
+    end
+  end
+
+  # V2
+
+  namespace :api do
+    namespace :v2 do
+      match 'sign_up', to: 'contacts#create', as: 'sign_up_v2', via: "post"
+      match 'invite', to: 'contacts#invite_contacts', as: 'invite_contacts', via: "post"
+      get 'nearby_estates', to:'estates#nearby_estates',as:'nearby_estates'
+      get 'estates', to:'estates#index',as:'estates'
     end
   end
   # End of API routes
