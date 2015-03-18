@@ -1932,7 +1932,7 @@ input[type="tel"] {
   .content-wrapper {
     background-color: #ffffff;
     left: 30%;
-    padding: 0px 0px; }
+    padding: 0px 30px; }
 
   .panel-main__inner {
     padding: 0 0; }
