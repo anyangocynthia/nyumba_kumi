@@ -351,7 +351,7 @@ pre:hover {
   right: 0;
   bottom: 0;
   left: 400px;
-  padding: 40px 5%; }
+  padding: 0px 0px; }
 
 .content-wrapper__inner {
   padding: 50px 0;
@@ -1284,7 +1284,6 @@ hr {
   -webkit-font-smoothing: antialiased; }
 
 .panel-cover {
-  position: fixed;
   z-index: 900;
   display: block;
   width: 100%;
@@ -1320,7 +1319,7 @@ hr {
   height: 100%; }
 
 .no-js .panel-main {
-  width: 40%;
+  width: 30%;
   max-width: 530px; }
 
 .panel-main__inner {
@@ -1931,8 +1930,9 @@ input[type="tel"] {
 
 @media only screen and (max-width: 1428px) {
   .content-wrapper {
+    background-color: #ffffff;
     left: 30%;
-    padding: 40px 9%; }
+    padding: 0px 0px; }
 
   .panel-main__inner {
     padding: 0 0; }
