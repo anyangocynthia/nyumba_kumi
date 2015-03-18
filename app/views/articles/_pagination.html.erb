@@ -1,0 +1,6 @@
+<% pages.times do |p| %>
+	<nav class="pagination" role="navigation">
+	  <span class="pagination__page-number">Page <%= "#{params[:page]} of #{pages}" %></span>
+	  <a class="older-posts pagination__older btn btn-small" href="page/2/index.html#open">Older Posts &rarr;</a>
+	</nav>
+<% end %>

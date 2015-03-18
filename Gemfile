@@ -28,6 +28,7 @@ gem 'gcm'
 gem 'gon'
 gem 'tinymce-rails'
 gem 'acts_as_tenant'
+gem 'will_paginate', '~> 3.0.6'
 # gem 'gmaps4rails'
 # gem 'semantic-ui-sass'
 

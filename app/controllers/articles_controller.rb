@@ -8,11 +8,13 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     if params[:category]
-      @articles = Article.where(category_id: Category.find_by(name: params[:category]))
+      @articles = Article.where(category_id: Category.find_by(name: params[:category])).paginate(:page => params[:page], :per_page => 2).order('id DESC')
     elsif params[:query]
-        @articles = Article.where(title: params[:query])
+        @articles = Article.where(title: params[:query]).paginate(:page => params[:page], :per_page => 2).order('id DESC')
+    # elsif params[:page]
+    #   @articles = Article.all.page(params[:page], 5)
     else
-      @articles = Article.all#.page(params[:page], 2)
+      @articles = Article.all.paginate(:page => params[:page], :per_page => 2).order('id DESC')
     end
     render layout: 'blog'
   end
