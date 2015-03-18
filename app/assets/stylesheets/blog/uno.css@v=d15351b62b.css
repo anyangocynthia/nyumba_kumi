@@ -395,8 +395,8 @@ hr {
   font-family: "foundation-icons";
   font-style: normal;
   font-weight: normal;
-  src: url("../../../fonts/foundation-icons/foundation-icons.eot");
-  src: url("../../../fonts/foundation-icons/foundation-icons.eot@") format("embedded-opentype"), url("../fonts/foundation-icons/foundation-icons.woff") format("woff"), url("../fonts/foundation-icons/foundation-icons.ttf") format("truetype"), url("../fonts/foundation-icons/foundation-icons.svg") format("svg"); }
+  src: url("/Users/gaagaalee/Projects/Rails/nyumba_kumi/app/assets/fonts/foundation-icons/foundation-icons.eot");
+  src: url("/Users/gaagaalee/Projects/Rails/nyumba_kumi/app/assets/fonts/foundation-icons/foundation-icons.eot@") format("embedded-opentype"), url("/Users/gaagaalee/Projects/Rails/nyumba_kumi/app/assets/fonts/foundation-icons/foundation-icons.woff") format("woff"), url("/Users/gaagaalee/Projects/Rails/nyumba_kumi/app/assets/fonts/foundation-icons/foundation-icons.ttf") format("truetype"), url("/Users/gaagaalee/Projects/Rails/nyumba_kumi/app/assets/fonts/foundation-icons/foundation-icons.svg") format("svg"); }
 .icon:before {
   display: inline-block;
   font-family: "foundation-icons";
