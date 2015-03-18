@@ -1,155 +1,46 @@
+<div class="content-wrapper__inner">
+<article class="post-container post-container--single">
 
-      <!-- HEADER -->
-      <div id="header">
-        <div id="page-title">The blog</div>
-        <!-- Breadcrumb-->
-        <div id="breadcrumbs">
-          <!-- You are here:  -->
-          <!-- <a title="Home" href="single.html#">Home</a> &raquo; 
-          <a title="Features" href="single.html#">Blog</a> &raquo;  -->
-          <!-- <a title="Features" href="single.html#">Lorem ipsum dolor</a> -->
-        </div>
-        <!-- ENDS Breadcrumb--> 
-      </div>
-      <!-- ENDS HEADER -->
-      
-      <!-- CONTENT -->
-      <div id="content">
-            
-        <!-- PAGE CONTENT -->
-        <div id="page-content">
+    <header class="post-header">
+      <div class="post-meta">
         
-          <!-- Single post -->
-          <div class="post single">
-            <h1><%= @article.title %></h1>
-            <!-- meta -->
-            <ul class="meta">
-              <li>By <%= @article.author %>&nbsp;</li> 
-              <li> on <%= time_formatter(@article.created_at) %> &nbsp;</li>
-              <!-- <li> with 47 comments &nbsp;</li> -->
-              <% if @article.category %>
-                <li> in <%= link_to @article.category.name, "/blog?category=#{@article.category.name}" %>&nbsp;</li>
-              <% end %>
-            </ul>
-            <!-- ENDS meta -->
-            <!-- feature image -->
-            <div class="feature-image">
-              <img src="<%= @article.image %>" alt="Feature image" />
-            </div>
-            <!-- ENDS feature image -->
-            <div class="the-content">
-              <%= raw(@article.body) %>
-            </div>
-          </div>
-          <!-- ENDS single post -->
-          
-          <!-- tags -->
-          <ul class="tags">
-            <% if @article.category %>
-              <li>Tags: </li>
-              <li><%= link_to @article.category.name, "/blog?category=#{@article.category.name}" %></li>
-            <% end %>
-          </ul>
-          <!-- ENDS tags -->
-          
-          
-          <!-- comments list -->
-          <!-- <div class="comments-header"><span class="n-comments">25</span><h6 class="text">COMMENTS</h6></div>
-          <ol class="comments-list">
-            <li>
-              <div class="comment-wrap">
-                <img alt='avatar' src='img/dummies/avatar.jpg' class='avatar' />
-                <div class="comments-right">
-                  <div class="meta-date">May 05, 2010 @ 08:19 pm</div>
-                  <div><a href='single.html#' class='url'><strong>Admin</strong></a></div>
-                  <div class="brief"><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p></div>
-                  <a href="single.html#" class="edit-comment">Edit</a>
-                </div>
-              </div>
-                <ul class="children">
-                  <li>
-                    <div class="comment-wrap">
-                      <img alt='avatar' src='img/dummies/avatar.jpg' class='avatar' />
-                      <div class="comments-right">
-                        <div class="meta-date">May 05, 2010 @ 08:19 pm</div>
-                        <div><a href='single.html#' class='url'><strong>Admin</strong></a></div>
-                        <div class="brief"><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p></div>
-                        <a href="single.html#" class="edit-comment">Edit</a>
-                      </div>
-                    </div>
-                    <ul class="children">
-                      <li>
-                        <div class="comment-wrap">
-                          <img alt='avatar' src='img/dummies/avatar.jpg' class='avatar' />
-                          <div class="comments-right">
-                            <div class="meta-date">May 05, 2010 @ 08:19 pm</div>
-                            <div><a href='single.html#' class='url'><strong>Admin</strong></a></div>
-                            <div class="brief"><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p></div>
-                            <a href="single.html#" class="edit-comment">Edit</a>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </li>
-                  
-                </ul>
-            </li>
-            <li>
-              <div class="comment-wrap">
-                <img alt='avatar' src='img/dummies/avatar.jpg' class='avatar' />
-                <div class="comments-right">
-                  <div class="meta-date">May 05, 2010 @ 08:19 pm</div>
-                  <div><a href='single.html#' class='url'><strong>Admin</strong></a></div>
-                  <div class="brief"><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p></div>
-                  <a href="single.html#" class="edit-comment">Edit</a>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="comment-wrap">
-                <img alt='avatar' src='img/dummies/avatar.jpg' class='avatar' />
-                <div class="comments-right">
-                  <div class="meta-date">May 05, 2010 @ 08:19 pm</div>
-                  <div><a href='single.html#' class='url'><strong>Admin</strong></a></div>
-                  <div class="brief"><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p></div>
-                  <a href="single.html#" class="edit-comment">Edit</a>
-                </div>
-              </div>
-            </li>
-          </ol> -->
-          <!-- ENDS comments list -->
+        <a id="back-button" class="post-button btn square btn-small" href="javascript:history.back()">« Back</a>
+        
+        <!-- <span class="post-meta__read"> – <span class="post-reading-time"></span> read.</span> -->
 
-          <!-- comments form -->
-          <!-- <div class="leave-comment">
-            <h3>LEAVE A COMMENT</h3>  
-            <form action="single.html#" method="post" id="commentform">
-              <fieldset>
-                <div>
-                  <label>Name</label>
-                  <input type="text"  value="" tabindex="1" class="form-poshytip" title="Enter your name" />
-                </div>
-                <div>
-                  <label for="email">Email</label>
-                  <input type="text" name="email" id="email" value="" tabindex="2" class="form-poshytip" title="Enter your Email" />
-                </div>
-                <div>
-                  <label for="url">Website</label>
-                  <input type="text" name="url" id="url" value="" tabindex="3" class="form-poshytip" title="Enter your website" />
-                </div>
-                <div>
-                  <label for="comment">Comments</label>
-                  <textarea name="comment" id="comment" cols="100" rows="10" tabindex="4" class="form-poshytip" title="Enter your comments"></textarea>
-                </div>
-                <p><input type="submit" name="submit" id="submit" tabindex="5" value="SEND" /></p>
-                <p><input type="hidden" name="comment_post_ID" value="51" /></p>
-              </fieldset>
-            </form>
-          </div> -->
-          <!-- ENDS comments form -->   
-          
-        </div>
-        <!-- ENDS PAGE-CONTENT -->
-      
       </div>
-      <!-- ENDS CONTENT -->
-      
+
+      <a href="<%= article_path(@article) %>"><h1 id="feature-title" class="post-title"><%= @article.title %></h1></a>
+      <!-- <time datetime="Published at: <%= time_formatter(@article.created_at) %>" class="post-meta__date date"><%= time_formatter(@article.created_at) %></time> -->
+
+    </header>
+
+    <section class="post">
+      <%= raw(@article.body) %>
+    </section>
+
+  </article>
+
+  <p>
+    <% if @article.category %>
+      <span class="post-meta__tags tags">in <%= link_to @article.category.name, "/blog?category=#{@article.category.name}" %>&nbsp;</span>
+    <% end %>
+  </p>
+
+  <section class="post-comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'ujiraniapp'; // required: replace example with your forum shortname
+        var disqus_identifier = '<%= @article.id %>';
+     
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+</div>

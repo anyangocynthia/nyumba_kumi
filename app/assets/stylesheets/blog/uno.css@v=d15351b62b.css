@@ -351,7 +351,7 @@ pre:hover {
   right: 0;
   bottom: 0;
   left: 400px;
-  padding: 40px 5%; }
+  padding: 0px 0px; }
 
 .content-wrapper__inner {
   padding: 50px 0;
@@ -395,8 +395,8 @@ hr {
   font-family: "foundation-icons";
   font-style: normal;
   font-weight: normal;
-  src: url("../fonts/foundation-icons/foundation-icons.eot");
-  src: url("../fonts/foundation-icons/foundation-icons.eot@") format("embedded-opentype"), url("../fonts/foundation-icons/foundation-icons.woff") format("woff"), url("../fonts/foundation-icons/foundation-icons.ttf") format("truetype"), url("../fonts/foundation-icons/foundation-icons.svg") format("svg"); }
+  src: url("../../../fonts/foundation-icons/foundation-icons.eot");
+  src: url("../../../fonts/foundation-icons/foundation-icons.eot@") format("embedded-opentype"), url("../fonts/foundation-icons/foundation-icons.woff") format("woff"), url("../fonts/foundation-icons/foundation-icons.ttf") format("truetype"), url("../fonts/foundation-icons/foundation-icons.svg") format("svg"); }
 .icon:before {
   display: inline-block;
   font-family: "foundation-icons";
@@ -1284,7 +1284,6 @@ hr {
   -webkit-font-smoothing: antialiased; }
 
 .panel-cover {
-  position: fixed;
   z-index: 900;
   display: block;
   width: 100%;
@@ -1320,8 +1319,10 @@ hr {
   height: 100%; }
 
 .no-js .panel-main {
-  width: 40%;
-  max-width: 530px; }
+  width: 30%;
+  max-width: 530px;
+  position: fixed;
+   }
 
 .panel-main__inner {
   position: relative;
@@ -1931,8 +1932,9 @@ input[type="tel"] {
 
 @media only screen and (max-width: 1428px) {
   .content-wrapper {
+    background-color: #ffffff;
     left: 30%;
-    padding: 40px 9%; }
+    padding: 0px 30px; }
 
   .panel-main__inner {
     padding: 0 0; }

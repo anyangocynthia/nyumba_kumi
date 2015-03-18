@@ -31,6 +31,7 @@
 
   <%= stylesheet_link_tag 'blog', media: 'all', 'data-turbolinks-track' => false %>
   <%= javascript_include_tag 'blog', 'data-turbolinks-track' => false %>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 </head>
 <body class="home-template no-js">
@@ -41,12 +42,12 @@
   </span>
 
   <header class="panel-cover">
-    <div class="panel-main">
+    <div class="panel-main" style="background-image: url('/assets/blog/screen.png');">
   
       <div class="panel-main__inner panel-inverted">
       <div class="panel-main__content">
   
-          <a href="index.html#open" title="link to homepage for Ujirani"><%= image_tag '/assets/blog/ujirani_logo.png', width: "80", alt: "Ujirani logo", class: "panel-cover__logo logo" %></a>
+          <a href="<%= root_path %>" title="link to homepage for Ujirani"><%= image_tag '/assets/blog/ujirani_logo.png', width: "80", alt: "Ujirani logo", class: "panel-cover__logo logo" %></a>
           <h1 class="panel-cover__title panel-title"><a href="index.html" title="link to homepage for Ujirani">Ujirani</a></h1>
           <hr class="panel-cover__divider" />
           <p class="panel-cover__description">Great software for great neighborliness.</p>
@@ -64,7 +65,7 @@
             <nav class="cover-navigation cover-navigation--primary">
               <ul class="navigation">
                 <li class="navigation__item"><a href="http://ujiraniapp.com/" target="_blank" title="Sign up today" class="blog-button">Sign up Today</a></li>
-                <li class="navigation__item"><a href="index.html#open" title="Ujirani" class="blog-button">Blog</a></li>
+                <li class="navigation__item"><a href="<%= blog_path %>" title="Ujirani" class="blog-button">Blog</a></li>
               </ul>
             </nav>
   
