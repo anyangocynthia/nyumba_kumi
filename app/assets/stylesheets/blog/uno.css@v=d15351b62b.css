@@ -395,8 +395,8 @@ hr {
   font-family: "foundation-icons";
   font-style: normal;
   font-weight: normal;
-  src: url("../fonts/foundation-icons/foundation-icons.eot");
-  src: url("../fonts/foundation-icons/foundation-icons.eot@") format("embedded-opentype"), url("../fonts/foundation-icons/foundation-icons.woff") format("woff"), url("../fonts/foundation-icons/foundation-icons.ttf") format("truetype"), url("../fonts/foundation-icons/foundation-icons.svg") format("svg"); }
+  src: url("../../../fonts/foundation-icons/foundation-icons.eot");
+  src: url("../../../fonts/foundation-icons/foundation-icons.eot@") format("embedded-opentype"), url("../fonts/foundation-icons/foundation-icons.woff") format("woff"), url("../fonts/foundation-icons/foundation-icons.ttf") format("truetype"), url("../fonts/foundation-icons/foundation-icons.svg") format("svg"); }
 .icon:before {
   display: inline-block;
   font-family: "foundation-icons";
@@ -1320,7 +1320,9 @@ hr {
 
 .no-js .panel-main {
   width: 30%;
-  max-width: 530px; }
+  max-width: 530px;
+  position: fixed;
+   }
 
 .panel-main__inner {
   position: relative;
