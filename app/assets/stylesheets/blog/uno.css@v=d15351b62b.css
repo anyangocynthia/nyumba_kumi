@@ -1289,7 +1289,6 @@ hr {
   width: 100%;
   max-width: none;
   height: 100%;
-  background: linear-gradient(150deg, rgba(19, 106, 138, 0.65) 30%, rgba(38, 120, 113, 0.44) 70%), url(../img/cover.jpg) no-repeat center;
   background-attachment: fixed;
   background-size: cover; }
 
@@ -2072,3 +2071,10 @@ input[type="tel"] {
       line-height: 25px; } }
 
 /*# sourceMappingURL=uno.css.map */
+.barsicon {
+  position: absolute;
+  top: 3px;
+  right: 20px;
+  font-size: 36px;
+  color: #cc6eb7
+}
