@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317124922) do
+ActiveRecord::Schema.define(version: 20150320225433) do
 
   create_table "accounts", force: true do |t|
     t.string   "email"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20150317124922) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string   "email"
   end
 
   add_index "contacts", ["group_id"], name: "index_contacts_on_group_id"
