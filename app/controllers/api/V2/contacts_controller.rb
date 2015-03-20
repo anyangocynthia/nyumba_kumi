@@ -71,12 +71,13 @@ module Api::V2
 	    	contact.update(group: Group.create!(name: "Group##{Group.count + 1}"))
 	    end
 	    if contact.verified != true
-				if contact.verification_code.nil?
-					send_verification_code contact
-				else
-					gateway.send(contact.phone_number, "We had already sent you the verification code. Here it is again: #{contact.verification_code}.")
-				end
+			if contact.verification_code.nil?
+				send_verification_code contact
+			else
+				gateway.send(contact.phone_number, "We had already sent you the verification code. Here it is again: #{contact.verification_code}.")
 			end
+		end
+		render json: { id: contact.id.to_i, status: "success" }
 	  end
 
 	  # def save_number

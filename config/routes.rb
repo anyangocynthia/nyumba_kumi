@@ -74,6 +74,7 @@ Rails.application.routes.draw do
       match 'invite', to: 'contacts#invite_contacts', as: 'invite_contacts', via: "post"
       get 'nearby_estates', to:'estates#nearby_estates',as:'nearby_estates'
       get 'estates', to:'estates#index',as:'estates'
+      match 'verify', to: 'contacts#verify', as: 'verify', via: "post"
     end
   end
   # End of API routes
