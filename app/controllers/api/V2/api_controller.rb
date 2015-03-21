@@ -1,7 +1,7 @@
 module Api::V2
   class ApiController < ApplicationController
     include SecureAccess    
-    before_filter :restrict_access
+    # before_filter :restrict_access
     protect_from_forgery with: :null_session
 
     private
