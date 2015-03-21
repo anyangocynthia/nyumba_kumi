@@ -3,9 +3,11 @@
 
 ## Overview
 
-The URL is: http://ujiraniapp.com/api/v1
+The URL is: http://ujiraniapp.com/api/v2
 
 Every request must unclude an API token: `token`
+
+## Version 2
 
 ### First Screen (Sign Up)
     
@@ -13,13 +15,13 @@ Every request must unclude an API token: `token`
     
 #### Request
 
-    post :sign_up, { number: "254722123456", registration_id: "123456" }
+    post :sign_up, { name: "John", email: "john@doe.com", number: "254722123456", registration_id: "123456" }
 
 
 #### Response    
 
     
-    { user_id: 1, is_in_a_group: true/false, profile_setup: true/false, verified: true/false }
+    { id: 1, status: "success" }
     
     
 ### User verification
@@ -57,6 +59,9 @@ Every request must unclude an API token: `token`
         "verified": false,
         "status": "Wrong verification code! Please try again."
     }
+
+
+## Version 1
 
 ### Setting up a Profile
 
