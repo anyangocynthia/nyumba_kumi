@@ -50,17 +50,31 @@ module Api::V2
 	    end
 	  end
 
+	  # def notifications
+	  #   notifications = []
+	  #   notification = {}
+	  #   @group.notifications.each do |n|
+	  #     notification[:sender] = {id: n.contact.id, name: n.contact.name, photo: "#{ENV['ROOT_URL']}#{n.contact.photo.url}"}
+	  #     notification[:group_id] = n.group_id
+	  #     notification[:message] = n.message
+	  #     notification[:time] = "#{n.created_at.strftime("%d/%m/%Y")} #{n.created_at.strftime("%I:%M%p")}"
+	  #     notifications << notification
+	  #   end
+	  #   render json: notifications
+	  # end
+
 	  def notifications
 	    notifications = []
 	    notification = {}
 	    @group.notifications.each do |n|
-	      notification[:sender] = n.contact
-	      notification[:group_id] = n.group_id
-	      notification[:message] = n.message
-	      notification[:time] = "#{n.created_at.strftime("%d/%m/%Y")} #{n.created_at.strftime("%I:%M%p")}"
+	    	notification[:id] = n.id
+	    	notification[:name] = n.contact.name
+	      notification[:status] = n.message
+	      notification[:profilePic] = "#{ENV['ROOT_URL']}#{n.contact.photo.url}"
+	      notification[:timeStamp] = n.created_at.to_i
 	      notifications << notification
 	    end
-	    render json: notifications
+	    render json: {feed: notifications}
 	  end
 
 	  def members
