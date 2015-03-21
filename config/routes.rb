@@ -76,6 +76,7 @@ Rails.application.routes.draw do
       get 'nearby_estates', to:'estates#nearby_estates',as:'nearby_estates'
       get 'estates', to:'estates#index',as:'estates'
       match 'verify', to: 'contacts#verify', as: 'verify', via: "post"
+      get 'groups/:id/members', to:'groups#members',as:'group_members'
       get 'group_notifications', to:'groups#notifications',as:'group_notifications_v2'
       get 'group_services', to:'groups#group_services',as:'group_services_v2'
       match 'panic_menu_actions', to: 'home#panic_menu_actions', as: 'panic_menu_actions_v2', via: "post"
