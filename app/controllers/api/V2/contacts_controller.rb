@@ -67,11 +67,9 @@ module Api::V2
 	      contact.photo = File.open(params[:photo].tempfile)
 	      contact.save!
 	    end
-	    if params[:registration_id]
-	    	Device.find_or_create_by! registration_id: params[:registration_id], contact_id: contact.id
-	    end
+
 	    if contact.group.nil?
-	    	contact.update(group: Group.create!(name: "Group##{Group.count + 1}"))
+	    	contact.update(group: Group.create!(group_name: "Group##{Group.count + 1}"))
 	    end
 	    if contact.verified != true
 			if contact.verification_code.nil?
