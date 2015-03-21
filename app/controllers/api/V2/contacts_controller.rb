@@ -7,6 +7,7 @@ module Api::V2
 	  # GET /contacts.json
 	  def index
 	    @contacts = Contact.all
+	    render json: @contacts
 	  end
 
 	  # GET /contacts/1
@@ -69,7 +70,7 @@ module Api::V2
 	    end
 
 	    if contact.group.nil?
-	    	contact.update(group: Group.create!(group_name: "Group##{Group.count + 1}"))
+	    	contact.update(group: Group.create!(group_name: "Group##{Group.count + 1}", contact: contact))
 	    end
 	    if contact.verified != true
 			if contact.verification_code.nil?

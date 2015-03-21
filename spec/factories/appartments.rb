@@ -3,7 +3,7 @@
 # Table name: appartments
 #
 #  id         :integer          not null, primary key
-#  house_id   :string(255)
+#  estate_id  :string(255)
 #  contact_id :integer
 #  created_at :datetime
 #  updated_at :datetime
