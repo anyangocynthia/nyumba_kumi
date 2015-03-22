@@ -63,7 +63,6 @@ Rails.application.routes.draw do
       match 'verify', to: 'contacts#verify', as: 'verify', via: "post"
       match 'add_services', to: 'home#add_services', as: 'add_services', via: "post"
       match 'panic_menu_actions', to: 'home#panic_menu_actions', as: 'panic_menu_actions', via: "post"
-      match 'save_house_details', to: 'contacts#save_house_details', as: 'save_house_details', via: "post"
     end
   end
 
@@ -72,16 +71,19 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v2 do
       match 'sign_up', to: 'contacts#create', as: 'sign_up_v2', via: "post"
+      match 'verify', to: 'contacts#verify', as: 'verify', via: "post"
       match 'invite', to: 'contacts#invite_contacts', as: 'invite_contacts', via: "post"
-      get 'contacts', to:'contacts#index',as:'contacts_v2'
       get 'nearby_estates', to:'estates#nearby_estates',as:'nearby_estates'
       get 'estates', to:'estates#index',as:'estates'
-      match 'verify', to: 'contacts#verify', as: 'verify', via: "post"
+      match 'save_house_details', to: 'contacts#save_house_details', as: 'save_house_details', via: "post"
+      match 'add_services', to: 'home#add_services', as: 'add_services', via: "post"
       get 'groups/:id/members', to:'groups#members',as:'group_members'
+      match 'notifications', to: 'notifications#create', as: 'create_notification', via: "post"
       get 'group_notifications', to:'groups#notifications',as:'group_notifications_v2'
       get 'group_services', to:'groups#group_services',as:'group_services_v2'
       match 'panic_menu_actions', to: 'home#panic_menu_actions', as: 'panic_menu_actions_v2', via: "post"
-      match 'notifications', to: 'notifications#create', as: 'create_notification', via: "post"
+      get 'contacts', to:'contacts#index',as:'contacts_v2'
+      get 'contacts/:id', to:'contacts#show',as:'contact_v2'
     end
   end
   # End of API routes
