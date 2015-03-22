@@ -133,7 +133,7 @@ module Api::V2
 
 	  def save_house_details
 	  	# {estate_id: 1, contact_id: 1, appartment_name: "43A"}
-	  	appartment = Appartment.create! estate_id: params[:estate_id], contact_id: params[:contact_id]
+	  	appartment = Appartment.create! estate_id: params[:estate_id], contact_id: params[:contact_id], name: params[:appartment_name]
 	  	render json: {contact_id: params[:contact_id], estate_id: params[:estate_id], appartment_id: appartment.id}
 	  end
 
