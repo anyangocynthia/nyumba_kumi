@@ -26,8 +26,6 @@ Every request must unclude an API token: `token`
     
 ### User verification
 
-    If, from the previous response, verified is false, the user should be taken to the verification screen.
-
 #### Request
 
     The URL is POST {URL}/verify
@@ -130,7 +128,7 @@ Every request must unclude an API token: `token`
 
 ### User Details (Profile)
 
-    GET {URL}/contacts/{id}.json
+    GET {URL}/contacts/{id}
 
 #### Response
 
@@ -162,7 +160,7 @@ Every request must unclude an API token: `token`
 			"id_number":1233435343,
       "in_a_group":true,
 			"group_id":134,
-			"user_type":"Admin"
+			"contact_type":"Admin"
 		},
 		{
 			"id":102,
@@ -180,7 +178,7 @@ Every request must unclude an API token: `token`
     
     The Url is POST {URL}/notifications.json
     
-    {"user_id" => "1", "group_id" => 1, "message" => "Hello"}
+    {"notification[contact_id]" => "1", "notification[group_id]" => 1, "notification[message]" => "Hello"}
     
 #### Response
 
@@ -199,13 +197,13 @@ Every request must unclude an API token: `token`
 
     [
      {
-      "user_id": 1,
+      "contact_id": 1,
       "group_id": 1,
       "message": "Hi",
       "time": "08/09/2014 04:24PM"
      },
      {
-      "user_id": 2,
+      "contact_id": 2,
       "group_id": 1,
       "message": "Hi",
       "time": "08/09/2014 04:30PM"
@@ -269,7 +267,7 @@ This will happen when a user chooses one of the items in the panic menu
     
     The Url is POST {URL}/panic_menu_actions
 
-    {"user_id" => "1", "service" => "Security", "location" => "2134353435,123243642"}
+    {"contact_id" => "1", "service" => "Security", "location" => "2134353435,123243642"}
 
 #### Response
 
