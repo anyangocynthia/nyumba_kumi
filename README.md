@@ -15,7 +15,7 @@ Every request must unclude an API token: `token`
     
 #### Request
 
-    post :sign_up, { name: "John", email: "john@doe.com", number: "254722123456", registration_id: "123456" }
+    post :sign_up, { name: "John", email: "john@doe.com", number: "254722123456", registration_id: "123456", photo: "path/to/file.jpg" }
 
 
 #### Response    
@@ -60,41 +60,75 @@ Every request must unclude an API token: `token`
         "status": "Wrong verification code! Please try again."
     }
 
+### Invite people
 
-## Version 1
+    The URL is POST {URL}/invite
 
-### Setting up a Profile
+    post : { inviter: 1, [{name: "John Doe", phone_number: "254722772838"}, {name: "Jane Doe", phone_number: "254722772832"}]}
 
-    If profile_setup is false, the user should be given a way to update their profile
-
-    The URL is PUT {URL}/contacts/{:id}.json
-
-    Where id is returned as part of the previous response
-
-#### Request
-    
-    put { name: "John Doe", id_number: "12345687989", house_id: "1", house_number: "200", photo: 'path/to/file.jpg/png..' }
-    
-NB: If you are using postman to test, you will need to wrap the resource name around the parameters e.g. 
-user[name], user[phone_number], etc. Especially when you are doing a PUT/PATCH request. The same will 
-apply for the other resources.
+    where inviter is current user id
 
 #### Response
 
+    { in_a_group: 3, not_in_a_group: 2 }
+
+### Saving house details
+
+#### List of nearby estates
+
+    The URL is POST {URL}/nearby_estates
+
+    post : { latitude: "12.223456", longitude: "-31.2524532" }
+
+##### Response
+
+    [
+        {
+            "id": 1,
+            "house_name": "Barsha",
+            "location": "Nairobi",
+            "contact_id": 1,
+            "created_at": "2014-11-11T15:14:19.031Z",
+            "updated_at": "2014-11-11T15:14:19.031Z",
+            "latitude": 12.3532523,
+            "longitude": 12.3532523
+        }
+    ]
+
+#### List of all estates
+
+    The URL is POST {URL}/estates
+
+##### Response
+
+    [
+        {
+            "id": 1,
+            "house_name": "Barsha",
+            "location": "Nairobi",
+            "contact_id": 1,
+            "created_at": "2014-11-11T15:14:19.031Z",
+            "updated_at": "2014-11-11T15:14:19.031Z",
+            "latitude": 12.3532523,
+            "longitude": 12.3532523
+        }
+    ]
+
+#### Save house details
+
+    The URL is POST {URL}/save_house_details
+
+    post : { estate_id: 1, contact_id: 1, appartment_name: "43A" }
+
+##### Response
+
     {
-        "id": 4,
-        "name": "Mohaa",
-        "phone_number": "254722123456",
-        "group_id": 1,
-        "user_type": "Admin",
-        "member_since": "19/08/2014 09:15PM"
+        "contact_id": "1",
+        "estate_id": "1",
+        "appartment_id": 4
     }
 
-If is_in_a_group is true, the completing profile  screen is shown else, the create group screen is shown
-
 ### User Details (Profile)
-
-#### Request
 
     GET {URL}/contacts/{id}.json
 
@@ -105,54 +139,12 @@ If is_in_a_group is true, the completing profile  screen is shown else, the crea
         "name": "Mohaa",
         "phone_number": "254722123456",
         "group_id": 1,
-        "user_type": "Admin",
+        "contact_type": "Admin",
         "house_name": "My House",
         "house_number": "40",
         "photo": "41.242.2.154:3001/system/users/photos/000/000/476/original/RackMultipart20141111-21067-1xpy3vr?1415719508",
         "member_since": "19/08/2014 09:15PM"
     }
-
-### Creating a group
-    
-
-#### Request    
-    
-    The Url is POST  {URL}/groups.json
-
-    post {"group_name" => "Group 1", "location" => "Some location", "user_id" => "Group admin id"}
-    
-
-#### Response
-    
-    If group doesn't exist in the database: (ie group_name should be unique)
-    
-    {
-        "id": 3
-        "status" : "success"
-    }
-    
-    else
-
-    {
-        "id": 8,
-        "status": "Group already exists!"
-    }
-
-    If a user who is already in a group tries to create another group, response is:
-
-    {
-        "error": "You already belong to group_name."
-    }
-
-### Adding contacts to group
-    
-#### Request    
-    
-    The Url is POST  {URL}/add_members
-
-    post :add_members, {"group" => group_id, users => [{name: "John Doe", phone_number: "254722772838"}, {name: "Jane Doe", phone_number: "254722772832"}]}
-
-group_id comes from the previous response when creating the group
 
 ### Group Members
 
