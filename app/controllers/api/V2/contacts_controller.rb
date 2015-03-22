@@ -20,8 +20,8 @@ module Api::V2
 	    contact[:group_id] = @contact.group_id
 	    contact[:in_a_group] = !@contact.group_id.nil?
 	    contact[:contact_type] = @contact.contact_type
-	    contact[:estate_name] = (!@contact.estate_id.nil?? Estate.find(@contact.estate_id).estate_name : nil)
-	    contact[:estate_number] = @contact.estate_number
+	    contact[:estate_name] = (!@contact.estate_id.nil?? Estate.find(@contact.estate_id).house_name : nil)
+	    contact[:estate_number] = @contact.house_number
 	    contact[:photo] = "#{ENV['ROOT_URL']}#{@contact.photo.url}"
 	    contact[:member_since] = "#{@contact.created_at.strftime("%d/%m/%Y")} #{@contact.created_at.strftime("%I:%M%p")}"
 
@@ -133,7 +133,8 @@ module Api::V2
 
 	  def save_house_details
 	  	# {estate_id: 1, contact_id: 1, appartment_name: "43A"}
-	  	appartment = Appartment.create! estate_id: params[:estate_id], contact_id: params[:contact_id], name: params[:appartment_name]
+	  	appartment = Appartment.create! estate_id: params[:estate_id], contact_id: params[:contact_id]
+	  	Contact.find(params[:contact_id]).update(house_number: params[:appartment_name])
 	  	render json: {contact_id: params[:contact_id], estate_id: params[:estate_id], appartment_id: appartment.id}
 	  end
 
