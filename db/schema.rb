@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322111702) do
+ActiveRecord::Schema.define(version: 20150322120534) do
 
   create_table "accounts", force: true do |t|
     t.string   "email"
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20150322111702) do
     t.datetime "updated_at"
     t.string   "verification_code"
     t.boolean  "verified"
-    t.integer  "house_id"
+    t.integer  "estate_id"
     t.string   "house_number"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
@@ -127,8 +127,8 @@ ActiveRecord::Schema.define(version: 20150322111702) do
     t.string   "email"
   end
 
+  add_index "contacts", ["estate_id"], name: "index_contacts_on_estate_id"
   add_index "contacts", ["group_id"], name: "index_contacts_on_group_id"
-  add_index "contacts", ["house_id"], name: "index_contacts_on_house_id"
 
   create_table "devices", force: true do |t|
     t.integer  "contact_id"
