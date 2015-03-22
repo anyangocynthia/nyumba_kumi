@@ -10,13 +10,17 @@ Every request must unclude an API token: `token`
 ## Version 2
 
 ### First Screen (Sign Up)
+
+Here, the response from the Facebook or Google+ sing up i.e. `email`, `name` and `photo` is not sent immediately.
+Instead, it is sent along with the `phone_number` when the user submits it.
     
     The URL is POST {URL}/sign_up
     
 #### Request
 
-    post :sign_up, { name: "John", email: "john@doe.com", number: "254722123456", registration_id: "123456", photo: "path/to/file.jpg" }
-
+    post :sign_up, { name: "John", email: "john@doe.com", phone_number: "254722123456", registration_id: "123456", photo: "path/to/file.jpg" }
+    
+`registration_id` is the registration id of the device.
 
 #### Response    
 
