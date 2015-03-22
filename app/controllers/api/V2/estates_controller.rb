@@ -5,7 +5,7 @@ module Api::V2
 		end
 
 		def index
-			rendor json: Estate.all
+			render json: Estate.all
 		end
 	end
 end
