@@ -131,6 +131,12 @@ module Api::V2
 	  	render json: { in_a_group: in_a_group, not_in_a_group: not_in_a_group }
 	  end
 
+	  def save_house_details
+	  	# {estate_id: 1, contact_id: 1, appartment_name: "43A"}
+	  	appartment = Appartment.create! estate_id: params[:estate_id], contact_id: params[:contact_id]
+	  	render json: {contact_id: params[:contact_id], estate_id: params[:estate_id], appartment_id: appartment.id}
+	  end
+
 	  def verify
 	    sms = SMSGateway.new
 	    code = params[:verification_code]

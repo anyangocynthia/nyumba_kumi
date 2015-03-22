@@ -63,6 +63,7 @@ Rails.application.routes.draw do
       match 'verify', to: 'contacts#verify', as: 'verify', via: "post"
       match 'add_services', to: 'home#add_services', as: 'add_services', via: "post"
       match 'panic_menu_actions', to: 'home#panic_menu_actions', as: 'panic_menu_actions', via: "post"
+      match 'save_house_details', to: 'contacts#save_house_details', as: 'save_house_details', via: "post"
     end
   end
 
