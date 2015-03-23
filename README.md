@@ -78,9 +78,7 @@ Instead, it is sent along with the `phone_number` when the user submits it.
 
 #### List of nearby estates
 
-    The URL is POST {URL}/nearby_estates
-
-    post : { latitude: "12.223456", longitude: "-31.2524532" }
+    The URL is GET {URL}/nearby_estates?latitude=-1.2988742&longitude=36.7895526
 
 ##### Response
 
@@ -99,7 +97,7 @@ Instead, it is sent along with the `phone_number` when the user submits it.
 
 #### List of all estates
 
-    The URL is POST {URL}/estates
+    The URL is GET {URL}/estates
 
 ##### Response
 
