@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317124922) do
+ActiveRecord::Schema.define(version: 20150322120534) do
 
   create_table "accounts", force: true do |t|
     t.string   "email"
@@ -36,13 +36,15 @@ ActiveRecord::Schema.define(version: 20150317124922) do
   add_index "appartment_residents", ["contact_id"], name: "index_appartment_residents_on_contact_id"
 
   create_table "appartments", force: true do |t|
-    t.string   "estate_id"
     t.integer  "contact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.integer  "estate_id"
   end
 
   add_index "appartments", ["contact_id"], name: "index_appartments_on_contact_id"
+  add_index "appartments", ["estate_id"], name: "index_appartments_on_estate_id"
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -111,21 +113,22 @@ ActiveRecord::Schema.define(version: 20150317124922) do
     t.string   "phone_number"
     t.string   "id_number"
     t.integer  "group_id"
-    t.string   "user_type"
+    t.string   "contact_type"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "verification_code"
     t.boolean  "verified"
-    t.integer  "house_id"
+    t.integer  "estate_id"
     t.string   "house_number"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string   "email"
   end
 
+  add_index "contacts", ["estate_id"], name: "index_contacts_on_estate_id"
   add_index "contacts", ["group_id"], name: "index_contacts_on_group_id"
-  add_index "contacts", ["house_id"], name: "index_contacts_on_house_id"
 
   create_table "devices", force: true do |t|
     t.integer  "contact_id"

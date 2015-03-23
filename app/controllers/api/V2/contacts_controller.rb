@@ -7,6 +7,7 @@ module Api::V2
 	  # GET /contacts.json
 	  def index
 	    @contacts = Contact.all
+	    render json: @contacts
 	  end
 
 	  # GET /contacts/1
@@ -19,8 +20,8 @@ module Api::V2
 	    contact[:group_id] = @contact.group_id
 	    contact[:in_a_group] = !@contact.group_id.nil?
 	    contact[:contact_type] = @contact.contact_type
-	    contact[:estate_name] = (!@contact.estate_id.nil?? Estate.find(@contact.estate_id).estate_name : nil)
-	    contact[:estate_number] = @contact.estate_number
+	    contact[:estate_name] = (!@contact.estate_id.nil?? Estate.find(@contact.estate_id).house_name : nil)
+	    contact[:estate_number] = @contact.house_number
 	    contact[:photo] = "#{ENV['ROOT_URL']}#{@contact.photo.url}"
 	    contact[:member_since] = "#{@contact.created_at.strftime("%d/%m/%Y")} #{@contact.created_at.strftime("%I:%M%p")}"
 
@@ -67,16 +68,18 @@ module Api::V2
 	      contact.photo = File.open(params[:photo].tempfile)
 	      contact.save!
 	    end
+
 	    if contact.group.nil?
-	    	contact.update(group: Group.create!(name: "Group##{Group.count + 1}"))
+	    	contact.update(group: Group.create!(group_name: "Group##{Group.count + 1}", contact: contact))
 	    end
 	    if contact.verified != true
-				if contact.verification_code.nil?
-					send_verification_code contact
-				else
-					gateway.send(contact.phone_number, "We had already sent you the verification code. Here it is again: #{contact.verification_code}.")
-				end
+			if contact.verification_code.nil?
+				send_verification_code contact
+			else
+				gateway.send(contact.phone_number, "We had already sent you the verification code. Here it is again: #{contact.verification_code}.")
 			end
+		end
+		render json: { id: contact.id.to_i, status: "success" }
 	  end
 
 	  # def save_number
@@ -126,6 +129,13 @@ module Api::V2
 	  		end
 	  	end
 	  	render json: { in_a_group: in_a_group, not_in_a_group: not_in_a_group }
+	  end
+
+	  def save_house_details
+	  	# {estate_id: 1, contact_id: 1, appartment_name: "43A"}
+	  	appartment = Appartment.create! estate_id: params[:estate_id], contact_id: params[:contact_id]
+	  	Contact.find(params[:contact_id]).update(house_number: params[:appartment_name])
+	  	render json: {contact_id: params[:contact_id], estate_id: params[:estate_id], appartment_id: appartment.id}
 	  end
 
 	  def verify

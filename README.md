@@ -3,28 +3,32 @@
 
 ## Overview
 
-The URL is: http://ujiraniapp.com/api/v1
+The URL is: http://ujiraniapp.com/api/v2
 
 Every request must unclude an API token: `token`
 
+## Version 2
+
 ### First Screen (Sign Up)
+
+Here, the response from the Facebook or Google+ sing up i.e. `email`, `name` and `photo` is not sent immediately.
+Instead, it is sent along with the `phone_number` when the user submits it.
     
     The URL is POST {URL}/sign_up
     
 #### Request
 
-    post :sign_up, { number: "254722123456", registration_id: "123456" }
-
+    post :sign_up, { name: "John", email: "john@doe.com", phone_number: "254722123456", registration_id: "123456", photo: "path/to/file.jpg" }
+    
+`registration_id` is the registration id of the device.
 
 #### Response    
 
     
-    { user_id: 1, is_in_a_group: true/false, profile_setup: true/false, verified: true/false }
+    { id: 1, status: "success" }
     
     
 ### User verification
-
-    If, from the previous response, verified is false, the user should be taken to the verification screen.
 
 #### Request
 
@@ -58,40 +62,75 @@ Every request must unclude an API token: `token`
         "status": "Wrong verification code! Please try again."
     }
 
-### Setting up a Profile
+### Invite people
 
-    If profile_setup is false, the user should be given a way to update their profile
+    The URL is POST {URL}/invite
 
-    The URL is PUT {URL}/contacts/{:id}.json
+    post : { inviter: 1, [{name: "John Doe", phone_number: "254722772838"}, {name: "Jane Doe", phone_number: "254722772832"}]}
 
-    Where id is returned as part of the previous response
-
-#### Request
-    
-    put { name: "John Doe", id_number: "12345687989", house_id: "1", house_number: "200", photo: 'path/to/file.jpg/png..' }
-    
-NB: If you are using postman to test, you will need to wrap the resource name around the parameters e.g. 
-user[name], user[phone_number], etc. Especially when you are doing a PUT/PATCH request. The same will 
-apply for the other resources.
+    where inviter is current user id
 
 #### Response
 
-    {
-        "id": 4,
-        "name": "Mohaa",
-        "phone_number": "254722123456",
-        "group_id": 1,
-        "user_type": "Admin",
-        "member_since": "19/08/2014 09:15PM"
-    }
+    { in_a_group: 3, not_in_a_group: 2 }
 
-If is_in_a_group is true, the completing profile  screen is shown else, the create group screen is shown
+### Saving house details
+
+#### List of nearby estates
+
+    The URL is GET {URL}/nearby_estates?latitude=-1.2988742&longitude=36.7895526
+
+##### Response
+
+    [
+        {
+            "id": 1,
+            "house_name": "Barsha",
+            "location": "Nairobi",
+            "contact_id": 1,
+            "created_at": "2014-11-11T15:14:19.031Z",
+            "updated_at": "2014-11-11T15:14:19.031Z",
+            "latitude": 12.3532523,
+            "longitude": 12.3532523
+        }
+    ]
+
+#### List of all estates
+
+    The URL is GET {URL}/estates
+
+##### Response
+
+    [
+        {
+            "id": 1,
+            "house_name": "Barsha",
+            "location": "Nairobi",
+            "contact_id": 1,
+            "created_at": "2014-11-11T15:14:19.031Z",
+            "updated_at": "2014-11-11T15:14:19.031Z",
+            "latitude": 12.3532523,
+            "longitude": 12.3532523
+        }
+    ]
+
+#### Save house details
+
+    The URL is POST {URL}/save_house_details
+
+    post : { estate_id: 1, contact_id: 1, appartment_name: "43A" }
+
+##### Response
+
+    {
+        "contact_id": "1",
+        "estate_id": "1",
+        "appartment_id": 4
+    }
 
 ### User Details (Profile)
 
-#### Request
-
-    GET {URL}/contacts/{id}.json
+    GET {URL}/contacts/{id}
 
 #### Response
 
@@ -100,54 +139,12 @@ If is_in_a_group is true, the completing profile  screen is shown else, the crea
         "name": "Mohaa",
         "phone_number": "254722123456",
         "group_id": 1,
-        "user_type": "Admin",
+        "contact_type": "Admin",
         "house_name": "My House",
         "house_number": "40",
         "photo": "41.242.2.154:3001/system/users/photos/000/000/476/original/RackMultipart20141111-21067-1xpy3vr?1415719508",
         "member_since": "19/08/2014 09:15PM"
     }
-
-### Creating a group
-    
-
-#### Request    
-    
-    The Url is POST  {URL}/groups.json
-
-    post {"group_name" => "Group 1", "location" => "Some location", "user_id" => "Group admin id"}
-    
-
-#### Response
-    
-    If group doesn't exist in the database: (ie group_name should be unique)
-    
-    {
-        "id": 3
-        "status" : "success"
-    }
-    
-    else
-
-    {
-        "id": 8,
-        "status": "Group already exists!"
-    }
-
-    If a user who is already in a group tries to create another group, response is:
-
-    {
-        "error": "You already belong to group_name."
-    }
-
-### Adding contacts to group
-    
-#### Request    
-    
-    The Url is POST  {URL}/add_members
-
-    post :add_members, {"group" => group_id, users => [{name: "John Doe", phone_number: "254722772838"}, {name: "Jane Doe", phone_number: "254722772832"}]}
-
-group_id comes from the previous response when creating the group
 
 ### Group Members
 
@@ -165,7 +162,7 @@ group_id comes from the previous response when creating the group
 			"id_number":1233435343,
       "in_a_group":true,
 			"group_id":134,
-			"user_type":"Admin"
+			"contact_type":"Admin"
 		},
 		{
 			"id":102,
@@ -183,7 +180,7 @@ group_id comes from the previous response when creating the group
     
     The Url is POST {URL}/notifications.json
     
-    {"user_id" => "1", "group_id" => 1, "message" => "Hello"}
+    {"notification[contact_id]" => "1", "notification[group_id]" => 1, "notification[message]" => "Hello"}
     
 #### Response
 
@@ -202,13 +199,13 @@ group_id comes from the previous response when creating the group
 
     [
      {
-      "user_id": 1,
+      "contact_id": 1,
       "group_id": 1,
       "message": "Hi",
       "time": "08/09/2014 04:24PM"
      },
      {
-      "user_id": 2,
+      "contact_id": 2,
       "group_id": 1,
       "message": "Hi",
       "time": "08/09/2014 04:30PM"
@@ -272,7 +269,7 @@ This will happen when a user chooses one of the items in the panic menu
     
     The Url is POST {URL}/panic_menu_actions
 
-    {"user_id" => "1", "service" => "Security", "location" => "2134353435,123243642"}
+    {"contact_id" => "1", "service" => "Security", "location" => "2134353435,123243642"}
 
 #### Response
 
