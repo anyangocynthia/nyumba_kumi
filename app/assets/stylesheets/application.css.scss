@@ -11,6 +11,7 @@
  * file per style scope.
  *
  * require_tree .
+ *= require_tree ./new
  *= require bootstrap.min
  *= require flexslider
  *= require custom
@@ -18,3 +19,19 @@
  *= require_self
  */
 
+ 
+ @import 'new/less/variables.less';
+ @import 'new/less/mixins.less';
+ @import 'new/less/mixins.less';
+ @import 'new/less/common.less';
+ @import 'new/less/helper.less';
+ @import 'new/less/navbar.less';
+ @import 'new/less/header-13.less';
+ @import 'new/less/content-1.less';
+ @import 'new/less/content-30.less';
+ @import 'new/less/content-12.less';
+ @import 'new/less/content-4.less';
+ @import 'new/less/crew-4.less';
+ @import 'new/less/contact-4.less';
+ @import 'new/less/content-12.less';
+ @import 'new/less/footer-11.less';

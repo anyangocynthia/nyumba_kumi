@@ -17,3 +17,4 @@
 //= require flexslider
 //= require underscore
 // require_tree .
+//= require_tree ./new
