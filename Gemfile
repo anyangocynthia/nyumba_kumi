@@ -22,6 +22,8 @@ gem 'geocoder'
 gem 'google_places'
 gem 'httparty'
 gem 'phony_rails'
+gem 'less-rails', '~> 2.6.0'
+gem 'therubyracer', '~> 0.12.1'
 gem "paperclip"#, :git => "git://github.com/thoughtbot/paperclip.git"
 # gem 'leaflet-rails'
 gem 'gcm'
