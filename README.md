@@ -118,14 +118,14 @@ Instead, it is sent along with the `phone_number` when the user submits it.
 
     The URL is POST {URL}/save_house_details
 
-    post : { estate_id: 1, contact_id: 1, appartment_name: "43A" }
+    post : { estate_id: 1, contact_id: 1, apartment_name: "43A" }
 
 ##### Response
 
     {
         "contact_id": "1",
         "estate_id": "1",
-        "appartment_id": 4
+        "apartment_id": 4
     }
 
 ### User Details (Profile)
